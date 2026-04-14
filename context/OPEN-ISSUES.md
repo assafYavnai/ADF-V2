@@ -7,17 +7,19 @@ Status: active
 The current `foundation/README.md` is a first pass only.
 It must be reviewed and explicitly approved by the CEO before it becomes trusted foundation truth.
 
-## O-002 - Lighthouse documents not yet defined
+## O-002 - Foundation bootstrap files not yet created
 
-`VISION`, `MISSION-STATEMENT`, and `PHASE1` do not exist yet in approved form.
-They are the next system-defining layer after README approval.
+`AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` do not exist yet.
+Foundation Step 1 is not complete until those files exist and are wired into the foundation path.
 
-## O-003 - Roles, building blocks, and workflows not yet defined
+## O-003 - Foundation context framework not yet frozen
 
-The high-level definition layer for:
-- CEO / CTO / DEV
-- ADF building blocks
-- CEO<->CTO workflow
-- CTO<->DEV workflow
+The structure and rules for:
+- decisions
+- artifacts
+- handoff
+- open issues
+- status tracking
+- save, commit, and push behavior
 
-still needs to be created after the lighthouse layer is frozen.
+are now drafted, but not yet frozen by the CEO.

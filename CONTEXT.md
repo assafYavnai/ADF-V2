@@ -13,8 +13,19 @@ Its purpose is to preserve continuity, reduce drift, and make it possible for a 
 The current context structure includes:
 - `context/decisions/`
 - `context/artifacts/`
+- `context/STATUS.md`
 - `context/HANDOFF.md`
 - `context/OPEN-ISSUES.md`
+
+## Workplan And Step Tracking
+
+The actual steps are defined in:
+- `foundation/WORKPLAN.md`
+
+The rule for current and next is:
+- `current` and `next` are defined in `context/HANDOFF.md`
+- the thin operational tracker is kept in `context/STATUS.md`
+- by default, `next` is the next inline step in the workplan unless the CEO explicitly says otherwise
 
 ## Decisions
 
@@ -46,6 +57,21 @@ Several decisions may be grouped into one entry if the discussion resulted in mu
 Decisions are currently saved as files under:
 - `context/decisions/<slug>.md`
 
+### Decision file shape
+
+Each decision file must contain:
+- `CONTEXT`
+  - short summary of the discussion topic
+- `OPTIONS`
+  - what needed to be decided
+- `DECISION`
+  - the actual decision made
+- `APPROVAL`
+  - `EXPLICIT` or `IMPLICIT`
+
+The target is to make approvals explicit whenever possible.
+If an agent makes or carries an implicit decision, it must still be recorded so it can be audited later.
+
 ## Artifacts
 
 Artifacts are files that were created but are not yet approved.
@@ -73,6 +99,18 @@ Promotion means:
 
 Promoted artifacts are moved, not duplicated.
 
+### Artifact file shape
+
+Each artifact entry should carry:
+- `STATUS`
+  - `DRAFT` or `FROZEN`
+- `OWNER`
+  - who currently owns the next action on the artifact
+- `FREEZE-GATE`
+  - whether the artifact is not ready, ready for review, or ready to freeze
+- `PROMOTED-TARGET`
+  - the final canonical location the artifact moves to after freeze approval
+
 ## Handoff
 
 Handoff is used to hand work off to another contextless agent.
@@ -86,6 +124,18 @@ Handoff should include:
 - highlights from the current discussion
 - important decisions
 - current issues being solved
+
+### Handoff shape
+
+The handoff should explicitly carry:
+- discussion summary of the last session
+- topics discussed
+- high-level decisions made
+- pointers to files created or updated in the session
+- current task
+- current step
+- next step
+- open blockers or risks
 
 ### Canonical handoff
 
@@ -115,6 +165,14 @@ This is a critical context layer because it prevents ideas, suggestions, gaps, a
 Open issues are tracked in:
 - `context/OPEN-ISSUES.md`
 
+### Open issue shape
+
+Each open issue should explicitly capture:
+- the issue itself
+- why it was deferred
+- what kind of follow-up is needed
+- current status
+
 ### Update rule
 
 Open issues must be updated frequently:
@@ -128,6 +186,25 @@ When an open issue becomes closed:
 - create a decision that the item was closed
 - include reason and relevant context
 - remove the item from the open issues list
+
+## Status
+
+Status is the thin operational tracker for the current foundation state.
+
+The canonical status file is:
+- `context/STATUS.md`
+
+### Status shape
+
+The status file should stay thin and contain:
+- current stage
+- current step
+- next step
+- current gate state
+
+The status file complements handoff.
+Status is operational and compact.
+Handoff is narrative and broader.
 
 ## Draft Note
 
@@ -149,6 +226,8 @@ Push should happen when the repo reaches a stable checkpoint such as:
 - after an artifact is promoted
 - before handoff to another session
 - when the CEO explicitly asks to push
+
+These git and save rules are part of context governance and belong here.
 
 Context files must be written explicitly and concretely.
 Do not write flat shorthand bullets that leave room for interpretation.

@@ -16,7 +16,7 @@ Foundation Step 1 includes:
 - define `context/artifacts`
 - define `context/decisions`
 - define `context/HANDOFF`
-- define `context/OPEN-ITEMS`
+- define `context/OPEN-ISSUES`
 - define the steps list and the rule for marking current and next
 - define high-level rules such as:
   - when to save a decision
