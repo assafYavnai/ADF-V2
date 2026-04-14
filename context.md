@@ -132,3 +132,30 @@ When an open issue becomes closed:
 ## Draft Note
 
 This file is a draft and should not be treated as frozen until the CEO explicitly approves it.
+
+## Git And Context Writing Rules
+
+Every CRUD operation that changes repo truth must end with a commit.
+
+Commit messages must be descriptive enough that a reader can understand what changed and why without opening the diff.
+Avoid thin one-line commit messages that force later readers to inspect files or diffs just to understand the change.
+
+The working tree must stay clean at all times.
+
+Push should not happen automatically after every commit.
+Push should happen when the repo reaches a stable checkpoint such as:
+- after a step is completed
+- after a decision is frozen
+- after an artifact is promoted
+- before handoff to another session
+- when the CEO explicitly asks to push
+
+Context files must be written explicitly and concretely.
+Do not write flat shorthand bullets that leave room for interpretation.
+
+Write context so that a contextless agent can continue correctly without guessing:
+- what changed
+- why it changed
+- what is current
+- what is next
+- what is still open
