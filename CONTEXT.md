@@ -1,6 +1,6 @@
-# Context
+# CONTEXT
 
-Status: draft
+Status: DRAFT
 
 ## Purpose
 
@@ -55,7 +55,10 @@ Several decisions may be grouped into one entry if the discussion resulted in mu
 ### Storage
 
 Decisions are currently saved as files under:
-- `context/decisions/<slug>.md`
+- `context/decisions/<DECISION-SLUG>.md`
+
+Decision filenames must follow the markdown naming rule:
+- `UPPERCASE-WITH-HYPHENS.md`
 
 ### Decision file shape
 
@@ -81,6 +84,9 @@ Draft artifacts are saved under:
 
 Example:
 - if `README.md` is still draft, it should live under `context/artifacts/README.md`
+
+Artifact filenames must follow the markdown naming rule:
+- `UPPERCASE-WITH-HYPHENS.md`
 
 ### Freeze rule
 

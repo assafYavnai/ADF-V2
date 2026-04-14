@@ -1,6 +1,6 @@
 # Foundation Workplan
 
-Status: active
+Status: ACTIVE
 
 ## Purpose
 

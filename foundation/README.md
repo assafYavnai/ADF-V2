@@ -1,6 +1,6 @@
 # Foundation README
 
-Status: draft
+Status: DRAFT
 
 ## What This File Is
 

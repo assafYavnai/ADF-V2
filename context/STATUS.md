@@ -1,6 +1,6 @@
-# Status
+# STATUS
 
-Status: active
+Status: ACTIVE
 
 ## Current stage
 
@@ -12,7 +12,7 @@ Define and stabilize the foundation framework itself.
 
 ## Next step
 
-Continue Foundation Step 1 until the framework is complete enough to reach the foundation approval gate.
+Review the drafted foundation documents and supporting context rules until the framework is complete enough to reach the foundation approval gate.
 
 ## Gate state
 

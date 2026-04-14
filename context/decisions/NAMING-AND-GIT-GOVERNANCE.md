@@ -1,0 +1,27 @@
+# NAMING-AND-GIT-GOVERNANCE
+
+## CONTEXT
+
+The repo needed explicit conventions for markdown file naming and for how repo truth is saved so later agents do not improvise these rules.
+
+## OPTIONS
+
+- Allow mixed markdown filename casing and ad hoc commit behavior.
+- Freeze a canonical markdown naming rule and explicit git hygiene rules for repo-truth changes.
+
+## DECISION
+
+Markdown filenames must use:
+- `UPPERCASE-WITH-HYPHENS.md`
+
+When humans refer to `adf` or `ADF` in discussion or folder references, the terms are interchangeable when the meaning is clear from context.
+
+Git governance for repo-truth changes is:
+- every CRUD operation that changes repo truth must end with a commit
+- commit messages must be descriptive enough that a reader can understand what changed and why without opening the diff
+- the working tree must stay clean
+- push happens at stable checkpoints or when the CEO explicitly asks for it
+
+## APPROVAL
+
+EXPLICIT
