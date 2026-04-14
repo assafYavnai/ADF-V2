@@ -1,106 +1,122 @@
-# ADF-V2 Foundation
+# Foundation README
 
-## Why ADF-V2 exists
+Status: draft
 
-ADF-V2 is a full restart.
+## What This File Is
 
-We are creating it because ADF v1 taught us important lessons, but the repo, architecture, and accumulated operating context became too heavy to keep using as the place where first-principles v2 decisions are made.
+This file explains the foundation layer only.
 
-The goal of ADF-V2 is not to deny the work done in v1.
-The goal is to keep the lessons, drop the drift, and create a clean place where the foundation can be frozen clearly.
+At this stage, foundation means:
+- folder structure
+- context mechanism
 
-## What we learned from ADF-V1
+This file does not define the ADF system as a whole.
+It does not define vision, mission, scope, architecture, roles, workflows, or implementation.
 
-ADF-V1 proved several important ideas:
-- the user should stay in the CEO role
-- the system must carry intent into execution without losing the plot
-- durable state, governance, and operating discipline matter
-- Phase 1 should focus on building the first real startup that can shape work and deliver implementation
+## Why We Started Fresh
 
-ADF-V1 also exposed real problems:
-- too many competing truth surfaces accumulated in one repo
-- architectural thinking, implementation work, generated artifacts, operating logs, and agent residue all mixed together
-- agents were repeatedly influenced by broad historical context instead of a small active source of truth
-- COO-centered and other inherited framings kept reappearing even when we were trying to define a thinner v2 model
-- Brain and other support tooling made it too easy to depend on old context instead of freezing new truth directly in the repo
+We started fresh because trying to create v2 inside the old work failed.
 
-## Why we created a new repository
+Main reasons:
+- agents kept getting confused and losing focus inside the old context
+- old assumptions kept getting dragged into new v2 thinking
+- instead of a clean v2, we kept creating a hybrid of old and new ideas
+- the startup-mode focus of v2 kept getting lost
 
-We are creating a new repository because the cleanest way to avoid endless drift is to stop asking agents to reason inside the full historical weight of v1.
+The result was too much drift, too much confusion, and too much room for agents to misread what the active direction was.
 
-This new repo exists to:
-- reduce context surface area
-- prevent accidental inheritance from v1
-- keep active truth small, explicit, and reviewable
-- let us freeze the foundation before migration or implementation
+## Why The Old Work Was Abandoned
 
-ADF-V1 remains valuable as a reference repository.
-It is the place to look for lessons, candidate carry-over ideas, and evidence of what worked or failed.
-It is not the place where ADF-V2 foundation truth should be authored.
+The old work is abandoned as active context for ADF-V2 foundation.
 
-## Context policy for ADF-V2 right now
+Reason:
+- if agents keep looking backward while foundation is being created, they quickly lose focus and reintroduce the same assumptions we are trying to escape
 
-At the start of ADF-V2, context is saved manually in the repository.
+For foundation work:
+- this repo is the only active truth surface
+- agents must not bring in old assumptions by default
+- agents must not treat old work as active design context
 
-For now:
-- no Brain is treated as the active source of truth
-- no external memory tool is treated as authority
-- no broad historical context should override what is explicitly frozen in this repo
+## Why ADF-V2 Must Be Designed Top Down
 
-The repo itself is the truth surface.
-If something matters, it should be written here clearly.
+ADF-V2 must be designed from a clean slate.
 
-## What must be frozen first
+That means:
+- define the high-level direction first
+- define the system layers clearly
+- define the working model before implementation
 
-Before migration from v1 or implementation of v2, we need to freeze the foundation.
+The purpose of this repository is to make that possible without constant contamination from older structures and assumptions.
 
-The first foundation layers are:
+## Current V2 Focus
+
+The current focus of ADF-V2 is startup mode:
+- CEO
+- CTO
+- DEV
+
+This focus was repeatedly lost before.
+The fresh start exists partly to protect this assumption until it can be defined properly in later foundation work.
+
+## Foundation Goals
+
+The goals of the foundation layer are:
+- create a clean folder structure for ADF-V2 work
+- create a context mechanism that supports continuity across sessions
+- keep the active truth surface small and explicit
+- prevent drift while the deeper system definition is still being created
+
+## Context Mechanism - Current State
+
+Current state:
+- context is manual
+
+The practical meaning for now is:
+- important decisions must be written explicitly
+- handoff between sessions must be written explicitly
+- open issues must be tracked explicitly
+
+No external or automatic system is the authority for foundation truth at this stage.
+
+## Context Mechanism - Future Direction
+
+Future context evolution may happen later.
+
+Possible directions already discussed:
+- semi-automatic context
+- fully automatic governed context
+
+These directions are not frozen now.
+They are not part of current foundation truth.
+
+## Foundation Rules
+
+Rules for the foundation layer:
+- keep it narrow
+- keep it explicit
+- do not widen into later layers too early
+- do not let agents fill gaps by inference
+- do not let old assumptions re-enter by default
+
+## Boundary
+
+This file is only for explaining:
+- why ADF-V2 started fresh
+- why foundation must stay narrow
+- what foundation means
+- how foundation context works right now
+
+This file is not for defining:
 - vision
-- mission statement
-- phase 1
+- mission
+- phase scope
+- architecture
+- role definitions
+- workflows
+- implementation design
 
-After that, we expect to define:
-- the roles of CEO, CTO, and DEV
-- the expectations and rules for those roles
-- the boxed building blocks ADF-V2 will be built from
-- the workflows between CEO and CTO
-- the workflows between CTO and DEV
+## Draft Note
 
-Only after those layers are clear should we continue decomposing the system toward implementation.
+This file is still a draft.
 
-## What this repo is for right now
-
-This repo is the clean room for ADF-V2 foundation work.
-
-It is for:
-- freezing the top-level direction
-- capturing decisions in a small and explicit way
-- building the minimum trusted definition of the system before code or migration starts
-
-It is not for:
-- importing v1 by default
-- recreating old structure because it already exists elsewhere
-- carrying broad agent residue forward
-- rushing into implementation before the foundation is stable
-
-## Relationship to ADF-V1
-
-ADF-V1 is now a reference system.
-
-Use it for:
-- lessons
-- examples
-- evidence
-- possible carry-over candidates later
-
-Do not use it as:
-- automatic architecture
-- automatic role model
-- automatic workflow definition
-- automatic context authority
-
-## Immediate operating rule
-
-Keep ADF-V2 small.
-Freeze one layer at a time.
-Do not widen the system before the current layer is truly clear.
+It captures the current intended direction so it is not lost, but it should not be treated as frozen until the CEO explicitly approves it.
