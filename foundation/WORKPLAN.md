@@ -1,80 +1,66 @@
-# ADF-V2 Workplan
+# Foundation Workplan
+
+Status: active
 
 ## Purpose
 
-This workplan defines the high-level order for creating ADF-V2 foundation.
+This workplan defines Foundation Step 1 and the foundation approval gate.
 
-It exists to keep the repo small, to prevent drift, and to stop agents from widening scope or creating system-defining documents without explicit CEO approval.
+Foundation Step 1 is only about creating the foundation framework itself.
+It is not yet about defining ADF vision, mission, scope, architecture, or implementation.
 
-## Step 1 - Approve and freeze README
+## Foundation Step 1
 
-Owner:
-- CEO
+Foundation Step 1 includes:
 
-Rule:
-- the current `foundation/README.md` must be reviewed and explicitly approved by the CEO
-- agent wording should not be trusted automatically for system-defining truth
-- no later foundational document should be treated as valid before this approval happens
+- define `context/artifacts`
+- define `context/decisions`
+- define `context/HANDOFF`
+- define `context/OPEN-ITEMS`
+- define the steps list and the rule for marking current and next
+- define high-level rules such as:
+  - when to save a decision
+  - when to commit
+  - when to push
+  - when to update handoff and open items
+- update `foundation/README.md`
+- create `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md`
+- wire all foundation work into those bootstrap files
 
-Purpose:
-- confirm that the repo-start explanation is correct
-- freeze the reason ADF-V2 exists
-- freeze the immediate context policy for this repository
+## Foundation Step 2 - Approval Gate
 
-## Step 2 - Define the lighthouse with the CEO
+Foundation Step 2 is the approval gate for foundation.
 
-Owner:
-- CEO with CTO support
+Question:
+- is foundation complete enough to freeze, approve, and move forward?
 
-Hard rule:
-- an agent is never allowed to create system-defining documents without CEO approval
-- these documents must be created with the CEO, not for the CEO
+### If yes
 
-The lighthouse layer includes:
+- freeze foundation
+- approve foundation
+- move to the next workplan layer
 
-### VISION
+### If no
 
-The lighthouse.
-The enduring top truth of what ADF is trying to become and the principles every later decision must obey.
+- define the next foundation step
+- complete that step
+- return to this approval gate again
 
-### MISSION-STATEMENT
+## Gate Rule
 
-The phased path to realize that vision.
+Foundation stays inside the loop until it is explicitly decided complete.
 
-### PHASE1
+The loop is:
+1. complete the current foundation step
+2. reach the approval gate
+3. if incomplete, define the next foundation step
+4. return to the gate after that step is done
+5. only exit when foundation is explicitly frozen and approved
 
-The concrete definition of the first phase in that mission.
+## Current State
 
-Purpose:
-- freeze the enduring direction first
-- define the path second
-- define the first concrete phase third
+Current focus:
+- complete Foundation Step 1
 
-## Step 3 - High-level definitions
-
-After the lighthouse layer is frozen, define the next high-level layer:
-
-- roles, rules, boundaries, expectations, and responsibilities of CEO / CTO / DEV
-- ADF building blocks, meaning the boxed building blocks of the system
-- workflows between CEO<->CTO and CTO<->DEV
-
-Purpose:
-- define the system screenplay at a high level
-- define the main characters and what each one does
-- define the building pieces of the system before deeper decomposition starts
-- define the main interaction flows before implementation design begins
-
-## Sequencing rule
-
-Do not skip layers.
-
-The order is:
-1. approve README
-2. freeze lighthouse documents
-3. freeze high-level definitions
-
-Only after these are clear should ADF-V2 continue into deeper system decomposition.
-
-## Guardrail
-
-No migration from ADF-V1 and no implementation of ADF-V2 should begin before these layers are explicitly approved and frozen.
+Current gate status:
+- not ready for approval yet
