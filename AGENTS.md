@@ -19,6 +19,7 @@ Before doing substantive work, read these files in this order:
 - Do not treat draft artifacts as frozen truth.
 - Use `foundation/WORKPLAN.md` as the step list authority.
 - Use `context/HANDOFF.md` as the narrative current-state authority.
+- After reading `context/HANDOFF.md`, read the required decision files listed there for the current handoff.
 - Use `context/STATUS.md` as the thin operational tracker.
 - Use `context/OPEN-ISSUES.md` as the deferred-items tracker.
 - Follow `RULES.md` for naming and writing conventions.

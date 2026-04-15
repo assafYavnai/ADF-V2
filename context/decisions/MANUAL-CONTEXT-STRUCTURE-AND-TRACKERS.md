@@ -24,6 +24,7 @@ The canonical tracking rules are:
 - `context/STATUS.md` is the thin operational tracker
 - by default, next step is the next inline step in the workplan unless the CEO explicitly says otherwise
 - `context/HANDOFF.md` is the one canonical handoff file
+- `context/HANDOFF.md` carries the curated decision files required for the current handoff
 - `context/OPEN-ISSUES.md` is the one canonical deferred-items file
 
 ## APPROVAL

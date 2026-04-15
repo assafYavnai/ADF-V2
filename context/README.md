@@ -13,3 +13,10 @@ Canonical files in this folder are:
 - `context/STATUS.md`
 - `context/artifacts/README.md`
 - `context/decisions/README.md`
+
+`context/HANDOFF.md` carries:
+- the narrative current-state handoff
+- the curated decision files the next agent must read for that handoff
+
+The handoff decision list is curated.
+It is not a flat summary of every decision in the repo.

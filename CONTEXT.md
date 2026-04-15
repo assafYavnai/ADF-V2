@@ -131,6 +131,9 @@ Handoff should include:
 - important decisions
 - current issues being solved
 
+Important decisions in handoff must be carried as a curated decision-read list.
+Do not make the next agent scan the full decisions folder by default.
+
 ### Handoff shape
 
 The handoff should explicitly carry:
@@ -138,6 +141,9 @@ The handoff should explicitly carry:
 - topics discussed
 - high-level decisions made
 - pointers to files created or updated in the session
+- the required decision files for the current handoff
+- the newly created decisions in the current session
+- the older decisions the current session depends on
 - current task
 - current step
 - next step
@@ -147,6 +153,9 @@ The handoff should explicitly carry:
 
 There is one canonical handoff file:
 - `context/HANDOFF.md`
+
+That canonical handoff file is also responsible for carrying the curated decision-read list the next agent actually needs.
+It must not point the next agent at a growing flat decision summary as a substitute.
 
 ### Update rule
 
