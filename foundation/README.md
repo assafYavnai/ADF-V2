@@ -1,6 +1,6 @@
 # Foundation README
 
-Status: DRAFT
+Status: FROZEN
 
 ## What This File Is
 
@@ -127,8 +127,6 @@ This file is not for defining:
 - workflows
 - implementation design
 
-## Draft Note
+## Freeze Note
 
-This file is still a draft.
-
-It captures the current intended direction so it is not lost, but it should not be treated as frozen until the CEO explicitly approves it.
+This file is frozen and is active repo truth until explicitly replaced by a later CEO-approved decision.
