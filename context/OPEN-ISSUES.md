@@ -12,10 +12,10 @@ It must be reviewed and explicitly approved by the CEO before it becomes trusted
 `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` now exist.
 They still need CEO review as part of the broader Foundation Step 1 freeze before they can be treated as approved bootstrap truth.
 
-## O-003 - Foundation docs still need freeze review and consistency pass
+## O-003 - Foundation docs still need CEO freeze review
 
-The core foundation decisions from this discussion are now saved under `context/decisions/`.
-The remaining open work is to finish reviewing the drafted documents themselves so they are aligned, explicit, and ready for CEO freeze.
+The recent governance mismatches in `CONTEXT.md` were addressed.
+The remaining open work is explicit CEO freeze review of the drafted foundation documents.
 
 The main draft surfaces still needing that review are:
 - `foundation/README.md`

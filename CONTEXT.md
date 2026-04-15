@@ -23,30 +23,54 @@ The actual steps are defined in:
 - `foundation/WORKPLAN.md`
 
 The rule for current and next is:
-- `current` and `next` are defined in `context/HANDOFF.md`
-- the thin operational tracker is kept in `context/STATUS.md`
+- `context/HANDOFF.md` is the primary current-state authority
+- `context/STATUS.md` is the thin operational mirror
 - by default, `next` is the next inline step in the workplan unless the CEO explicitly says otherwise
+
+If `context/HANDOFF.md` and `context/STATUS.md` ever diverge:
+- `context/HANDOFF.md` wins
+- `context/STATUS.md` must be updated immediately to match it
 
 ## Decisions
 
-Decision means:
-- an issue
-- a suggestion
-- a proposal
-- or another discussion artifact
+Decision means a fork-closing choice that changes current truth.
 
-that ends in CEO approval or a CEO decision.
+Typical examples are choices that change:
+- scope
+- workflow
+- rules
+- structure
+- next-step direction
+- active interpretation of repo truth
 
 ### Save rule
 
-Decisions must be saved automatically by the agent when a real decision is made.
+Frozen decisions must be saved automatically by the agent when a real decision is made and explicitly approved by the CEO.
 
 The rule is:
 - if discussion reaches a fork in the road and options are presented
 - and the CEO responds with another question, discussion continues
-- and the CEO responds with a decision, the decision must be saved
+- and the CEO responds with a decision, the frozen decision must be saved
 
 The CEO can also explicitly ask to save a decision.
+
+### Frozen decision rule
+
+`context/decisions/` holds frozen decisions only.
+
+Frozen decisions must be:
+- explicitly approved by the CEO
+- saved as individual decision files
+- treated as active repo truth unless later replaced by another explicit CEO-approved decision
+
+### Implicit assumption rule
+
+Implicit agent assumptions are not frozen decisions.
+
+If an implicit assumption matters, it should be:
+- surfaced in `context/HANDOFF.md`
+- tracked in `context/OPEN-ISSUES.md` if it needs later resolution
+- or turned into a real frozen decision after explicit CEO approval
 
 ### Grouping rule
 
@@ -70,20 +94,22 @@ Each decision file must contain:
 - `DECISION`
   - the actual decision made
 - `APPROVAL`
-  - `EXPLICIT` or `IMPLICIT`
+  - `EXPLICIT`
 
-The target is to make approvals explicit whenever possible.
-If an agent makes or carries an implicit decision, it must still be recorded so it can be audited later.
+Frozen decision files in `context/decisions/` do not use `IMPLICIT`.
+If an implicit assumption needs to be preserved before approval, keep it out of the frozen decision ledger.
 
 ## Artifacts
 
 Artifacts are files that were created but are not yet approved.
 
-Draft artifacts are saved under:
-- `context/artifacts/`
+Draft artifacts may exist in two forms:
+- in-place draft canonical files
+- pre-canonical drafts under `context/artifacts/`
 
 Example:
-- if `README.md` is still draft, it should live under `context/artifacts/README.md`
+- a canonical file such as `CONTEXT.md` may stay in its final location while its status is still `DRAFT`
+- a pre-canonical working draft may live under `context/artifacts/`
 
 Artifact filenames must follow the markdown naming rule:
 - `UPPERCASE-WITH-HYPHENS.md`
@@ -99,15 +125,16 @@ If the answer is:
 ### Promotion rule
 
 Promotion means:
-- for foundation scope, where we are currently creating docs
+- for pre-canonical drafts stored under `context/artifacts/`
 - the artifact is marked as frozen
 - and it is moved to its promoted location
 
-Promoted artifacts are moved, not duplicated.
+In-place draft canonical files do not need a move step.
+They stay in place and change status from `DRAFT` to `FROZEN` after CEO approval.
 
 ### Artifact file shape
 
-Each artifact entry should carry:
+Each pre-canonical artifact stored under `context/artifacts/` should carry these fixed headings:
 - `STATUS`
   - `DRAFT` or `FROZEN`
 - `OWNER`
@@ -116,6 +143,11 @@ Each artifact entry should carry:
   - whether the artifact is not ready, ready for review, or ready to freeze
 - `PROMOTED-TARGET`
   - the final canonical location the artifact moves to after freeze approval
+
+In-place canonical draft files are allowed to use a lighter contract such as:
+- `Status: DRAFT`
+
+They do not need to duplicate the full pre-canonical artifact metadata block.
 
 ## Handoff
 
@@ -159,8 +191,10 @@ It must not point the next agent at a growing flat decision summary as a substit
 
 ### Update rule
 
-Handoff is updated under two conditions:
+Handoff is updated under these conditions:
 - automatically after a step is complete and current/next step is updated
+- automatically after a frozen decision is saved
+- automatically after a meaningful current-state change that the next agent would need in order to continue correctly
 - explicitly when the CEO asks to update handoff in order to continue in another session
 
 ## Open Issues
@@ -221,18 +255,35 @@ The status file complements handoff.
 Status is operational and compact.
 Handoff is narrative and broader.
 
+## Rule Ownership
+
+`RULES.md` holds narrow cross-repo conventions such as:
+- naming conventions
+- file-format conventions
+
+`CONTEXT.md` holds context governance such as:
+- decision save rules
+- artifact and freeze rules
+- handoff rules
+- open-issue rules
+- git/save/push governance for repo-truth updates
+
 ## Draft Note
 
 This file is a draft and should not be treated as frozen until the CEO explicitly approves it.
 
 ## Git And Context Writing Rules
 
-Every CRUD operation that changes repo truth must end with a commit.
+Every logical repo-truth checkpoint must end with a commit.
+
+A logical repo-truth checkpoint means one coherent set of related edits that together create or update one piece of repo truth.
+Do not split one coherent change across multiple uncommitted checkpoints longer than necessary.
+Do not begin the next unrelated repo-truth change while the previous one is still uncommitted.
 
 Commit messages must be descriptive enough that a reader can understand what changed and why without opening the diff.
 Avoid thin one-line commit messages that force later readers to inspect files or diffs just to understand the change.
 
-The working tree must stay clean at all times.
+The working tree must return to clean at each checkpoint and at session closeout.
 
 Push should not happen automatically after every commit.
 Push should happen when the repo reaches a stable checkpoint such as:

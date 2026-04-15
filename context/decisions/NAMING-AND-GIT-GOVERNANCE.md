@@ -17,9 +17,9 @@ Markdown filenames must use:
 When humans refer to `adf` or `ADF` in discussion or folder references, the terms are interchangeable when the meaning is clear from context.
 
 Git governance for repo-truth changes is:
-- every CRUD operation that changes repo truth must end with a commit
+- every logical repo-truth checkpoint must end with a commit
 - commit messages must be descriptive enough that a reader can understand what changed and why without opening the diff
-- the working tree must stay clean
+- the working tree must return to clean at each checkpoint and at session closeout
 - push happens at stable checkpoints or when the CEO explicitly asks for it
 
 ## APPROVAL
