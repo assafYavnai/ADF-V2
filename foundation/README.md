@@ -8,10 +8,12 @@ This file explains the foundation layer only.
 
 At this stage, foundation means:
 - folder structure
-- context mechanism
+- manual context mechanism
+- foundation governance rules
+- agent bootstrap and routing surfaces
 
 This file does not define the ADF system as a whole.
-It does not define vision, mission, scope, architecture, roles, workflows, or implementation.
+It does not define the full ADF system vision, mission, architecture, detailed role model, workflows, or implementation.
 
 ## Why We Started Fresh
 
@@ -48,21 +50,26 @@ That means:
 
 The purpose of this repository is to make that possible without constant contamination from older structures and assumptions.
 
-## Current V2 Focus
+## Protected Orientation Requirement
 
-The current focus of ADF-V2 is startup mode:
+ADF-V2 is being protected around startup mode:
 - CEO
 - CTO
 - DEV
 
-This focus was repeatedly lost before.
-The fresh start exists partly to protect this assumption until it can be defined properly in later foundation work.
+This orientation was repeatedly lost before.
+For that reason, future system-definition documents and implementation must align to CEO / CTO / DEV.
+
+This file does not claim that the full CEO / CTO / DEV layer is already specified in detail.
+It freezes the requirement that later documentation and implementation must not drift away from that structure.
 
 ## Foundation Goals
 
 The goals of the foundation layer are:
 - create a clean folder structure for ADF-V2 work
 - create a context mechanism that supports continuity across sessions
+- define the foundation governance rules that keep repo truth explicit
+- create the bootstrap and routing surfaces that force agents through the active truth path
 - keep the active truth surface small and explicit
 - prevent drift while the deeper system definition is still being created
 
@@ -98,6 +105,10 @@ Rules for the foundation layer:
 - do not let agents fill gaps by inference
 - do not let old assumptions re-enter by default
 
+Foundation progresses through an approval gate.
+If Foundation Step 1 is incomplete, define the next foundation step and continue.
+If Foundation Step 1 is complete, leave foundation and move to the next workplan layer.
+
 ## Boundary
 
 This file is only for explaining:
@@ -105,13 +116,14 @@ This file is only for explaining:
 - why foundation must stay narrow
 - what foundation means
 - how foundation context works right now
+- what foundation must protect before later layers are defined
 
 This file is not for defining:
 - vision
 - mission
 - phase scope
 - architecture
-- role definitions
+- detailed role definitions
 - workflows
 - implementation design
 

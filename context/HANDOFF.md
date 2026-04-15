@@ -27,6 +27,7 @@ For handoff, the next agent must read the curated decision list below rather tha
 The `CONTEXT.md` contract gaps found during review were addressed in this session so the draft now matches actual repo practice more closely.
 The naming-rule scope and open-issue closure rule were tightened again in this session to remove the last remaining governance ambiguities.
 `CONTEXT.md` was then explicitly approved, frozen, and promoted in place.
+`foundation/README.md` was then rewritten to match the live foundation contract and the mandatory future-alignment requirement around CEO / CTO / DEV.
 
 ## Session pointers
 
@@ -51,13 +52,14 @@ The naming-rule scope and open-issue closure rule were tightened again in this s
 - `context/decisions/CONTEXT-GOVERNANCE-CLARIFICATIONS.md`
 - `context/decisions/NAMING-AND-OPEN-ISSUE-CLOSURE-CLARIFICATIONS.md`
 - `context/decisions/CONTEXT-FREEZE-AND-PROMOTION.md`
+- `context/decisions/FOUNDATION-README-SCOPE-AND-ALIGNMENT-CLARIFICATIONS.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decision and the older decisions this session depends on.
 
 ## Newly created decisions in this session
 
-- `context/decisions/CONTEXT-FREEZE-AND-PROMOTION.md`
+- `context/decisions/FOUNDATION-README-SCOPE-AND-ALIGNMENT-CLARIFICATIONS.md`
 
 ## Older decisions this handoff depends on
 
@@ -69,6 +71,7 @@ The list includes both the current-session decision and the older decisions this
 - `context/decisions/HANDOFF-USES-CURATED-DECISION-LIST.md`
 - `context/decisions/CONTEXT-GOVERNANCE-CLARIFICATIONS.md`
 - `context/decisions/NAMING-AND-OPEN-ISSUE-CLOSURE-CLARIFICATIONS.md`
+- `context/decisions/CONTEXT-FREEZE-AND-PROMOTION.md`
 
 ## Next step
 

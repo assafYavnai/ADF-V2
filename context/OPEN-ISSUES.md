@@ -4,8 +4,8 @@ Status: ACTIVE
 
 ## O-001 - Foundation README not yet frozen
 
-The current `foundation/README.md` is a first pass only.
-It must be reviewed and explicitly approved by the CEO before it becomes trusted foundation truth.
+`foundation/README.md` has been revised to match the live foundation contract more closely.
+It still must be reviewed and explicitly approved by the CEO before it becomes trusted foundation truth.
 
 ## O-002 - Foundation bootstrap files created but not yet frozen
 
