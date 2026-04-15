@@ -45,7 +45,7 @@ Typical examples are choices that change:
 
 ### Save rule
 
-Frozen decisions must be saved automatically by the agent when a real decision is made and explicitly approved by the CEO.
+Frozen decisions must be saved automatically by the agent when a real decision is made and explicitly approved under the global freeze rule.
 
 The rule is:
 - if discussion reaches a fork in the road and options are presented
@@ -59,9 +59,9 @@ The CEO can also explicitly ask to save a decision.
 `context/decisions/` holds frozen decisions only.
 
 Frozen decisions must be:
-- explicitly approved by the CEO
+- explicitly approved by both CEO and CTO
 - saved as individual decision files
-- treated as active repo truth unless later replaced by another explicit CEO-approved decision
+- treated as active repo truth unless later replaced by another explicit CEO+CTO-approved decision
 
 ### Implicit assumption rule
 
@@ -70,7 +70,7 @@ Implicit agent assumptions are not frozen decisions.
 If an implicit assumption matters, it should be:
 - surfaced in `context/HANDOFF.md`
 - tracked in `context/OPEN-ISSUES.md` if it needs later resolution
-- or turned into a real frozen decision after explicit CEO approval
+- or turned into a real frozen decision after explicit CEO+CTO approval
 
 ### Grouping rule
 
@@ -103,6 +103,21 @@ If an implicit assumption needs to be preserved before approval, keep it out of 
 
 Artifacts are files that were created but are not yet approved.
 
+## Global Freeze Rule
+
+Freeze is a global governance rule.
+
+Any freeze requires approval from both:
+- CEO
+- CTO
+
+This applies to:
+- step freeze
+- phase freeze
+- artifact freeze for promotion
+- frozen decisions
+- any other surface that is being frozen into trusted repo truth
+
 Draft artifacts may exist in two forms:
 - in-place draft canonical files
 - pre-canonical drafts under `context/artifacts/`
@@ -118,6 +133,8 @@ Pre-canonical artifact filenames must follow the governed entry-file naming rule
 
 When the agent believes an artifact is ready to freeze, it asks the CEO for freeze approval.
 
+Artifact freeze follows the global freeze rule and therefore requires approval from both CEO and CTO.
+
 If the answer is:
 - no: apply CEO comments and check the freeze gate again later
 - yes: promote the artifact
@@ -130,7 +147,7 @@ Promotion means:
 - and it is moved to its promoted location
 
 In-place draft canonical files do not need a move step.
-They stay in place and change status from `DRAFT` to `FROZEN` after CEO approval.
+They stay in place and change status from `DRAFT` to `FROZEN` after freeze approval under the global rule.
 
 ### Artifact file shape
 
@@ -232,7 +249,7 @@ Open issues must be updated frequently:
 ### Closure rule
 
 When an open issue becomes closed:
-- if the closure itself creates or changes frozen repo truth, create a CEO-approved decision and remove the item from the open issues list
+- if the closure itself creates or changes frozen repo truth, create a CEO+CTO-approved decision and remove the item from the open issues list
 - if the closure is routine and does not change frozen repo truth, close it directly through `context/OPEN-ISSUES.md` and preserve any needed carry-forward context in `context/HANDOFF.md`
 
 ## Status
@@ -269,7 +286,7 @@ Handoff is narrative and broader.
 
 ## Freeze Note
 
-This file is frozen and is active repo truth until explicitly replaced by a later CEO-approved decision.
+This file is frozen and is active repo truth until explicitly replaced by a later CEO+CTO-approved decision.
 
 ## Git And Context Writing Rules
 

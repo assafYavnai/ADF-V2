@@ -2,7 +2,7 @@
 
 ## CONTEXT
 
-`foundation/README.md` was reviewed, rewritten to match the live foundation contract, and then explicitly approved by the CEO for freeze and promotion.
+`foundation/README.md` was reviewed, rewritten to match the live foundation contract, and then explicitly approved under the global freeze rule for freeze and promotion.
 
 ## OPTIONS
 

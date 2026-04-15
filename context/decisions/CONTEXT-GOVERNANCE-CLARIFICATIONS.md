@@ -14,8 +14,8 @@
 The clarified governance model is:
 - in-place draft canonical files are allowed
 - `context/artifacts/` is for pre-canonical drafts, not for every draft file
-- `context/decisions/` holds frozen CEO-approved decisions only
-- implicit assumptions are not frozen decisions and should live in handoff or open issues until explicitly approved
+- `context/decisions/` holds frozen CEO+CTO-approved decisions only
+- implicit assumptions are not frozen decisions and should live in handoff or open issues until explicitly approved under the freeze rule
 - `context/HANDOFF.md` is the primary current-state authority and `context/STATUS.md` is its thin mirror
 - if handoff and status ever diverge, handoff wins and status must be aligned immediately
 - `RULES.md` is narrow naming and file-convention guidance

@@ -29,6 +29,7 @@ The naming-rule scope and open-issue closure rule were tightened again in this s
 `CONTEXT.md` was then explicitly approved, frozen, and promoted in place.
 `foundation/README.md` was then rewritten to match the live foundation contract and the mandatory future-alignment requirement around CEO / CTO / DEV.
 `foundation/README.md` was then explicitly approved, frozen, and promoted in place.
+The foundation work model was then clarified so the gate is a post-freeze check, not a step, and freeze was made explicit as a global CEO+CTO approval rule.
 
 ## Session pointers
 
@@ -55,13 +56,14 @@ The naming-rule scope and open-issue closure rule were tightened again in this s
 - `context/decisions/CONTEXT-FREEZE-AND-PROMOTION.md`
 - `context/decisions/FOUNDATION-README-SCOPE-AND-ALIGNMENT-CLARIFICATIONS.md`
 - `context/decisions/FOUNDATION-README-FREEZE-AND-PROMOTION.md`
+- `context/decisions/FOUNDATION-WORKFLOW-AND-GLOBAL-FREEZE-RULE.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decision and the older decisions this session depends on.
 
 ## Newly created decisions in this session
 
-- `context/decisions/FOUNDATION-README-FREEZE-AND-PROMOTION.md`
+- `context/decisions/FOUNDATION-WORKFLOW-AND-GLOBAL-FREEZE-RULE.md`
 
 ## Older decisions this handoff depends on
 
@@ -75,8 +77,9 @@ The list includes both the current-session decision and the older decisions this
 - `context/decisions/NAMING-AND-OPEN-ISSUE-CLOSURE-CLARIFICATIONS.md`
 - `context/decisions/CONTEXT-FREEZE-AND-PROMOTION.md`
 - `context/decisions/FOUNDATION-README-SCOPE-AND-ALIGNMENT-CLARIFICATIONS.md`
+- `context/decisions/FOUNDATION-README-FREEZE-AND-PROMOTION.md`
 
 ## Next step
 
 Continue Foundation Step 1.
-The next concrete work is to run CEO freeze review on the remaining unfrozen foundation support docs, especially the bootstrap files and supporting context readmes and trackers.
+The next concrete work is to run CEO freeze review on the remaining unfrozen foundation support docs, freeze them under the global CEO+CTO freeze rule, and then run the foundation gate as a post-freeze check.

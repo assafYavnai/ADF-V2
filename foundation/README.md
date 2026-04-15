@@ -105,9 +105,20 @@ Rules for the foundation layer:
 - do not let agents fill gaps by inference
 - do not let old assumptions re-enter by default
 
-Foundation progresses through an approval gate.
-If Foundation Step 1 is incomplete, define the next foundation step and continue.
-If Foundation Step 1 is complete, leave foundation and move to the next workplan layer.
+Foundation uses a local work process:
+- define the current foundation step
+- implement the step
+- freeze the step
+- run the foundation gate after the step is frozen
+
+Freeze follows the global freeze rule.
+Any freeze requires approval from both CEO and CTO.
+
+If the gate says foundation is incomplete:
+- define the next foundation step and continue
+
+If the gate says foundation is complete:
+- freeze foundation and move to the next workplan layer
 
 ## Boundary
 
@@ -129,4 +140,4 @@ This file is not for defining:
 
 ## Freeze Note
 
-This file is frozen and is active repo truth until explicitly replaced by a later CEO-approved decision.
+This file is frozen and is active repo truth until explicitly replaced by a later CEO+CTO-approved decision.

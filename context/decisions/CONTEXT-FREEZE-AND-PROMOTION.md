@@ -2,7 +2,7 @@
 
 ## CONTEXT
 
-`CONTEXT.md` was reviewed, its contract mismatches were fixed, and the CEO explicitly approved it for freeze and promotion.
+`CONTEXT.md` was reviewed, its contract mismatches were fixed, and it was explicitly approved under the global freeze rule for freeze and promotion.
 
 ## OPTIONS
 

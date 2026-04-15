@@ -4,7 +4,7 @@ Status: ACTIVE
 
 ## Purpose
 
-This workplan defines Foundation Step 1 and the foundation approval gate.
+This workplan defines Foundation Step 1 and the local foundation work process.
 
 Foundation Step 1 is only about creating the foundation framework itself.
 It is not yet about defining ADF vision, mission, scope, architecture, or implementation.
@@ -27,35 +27,49 @@ Foundation Step 1 includes:
 - create `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md`
 - wire all foundation work into those bootstrap files
 
-## Foundation Step 2 - Approval Gate
+## Local Foundation Workflow
 
-Foundation Step 2 is the approval gate for foundation.
+The foundation workflow is:
+1. define the current foundation step
+2. implement the step
+3. when the step is complete, freeze the step
+4. after the step is frozen, run the foundation gate
 
-Question:
-- is foundation complete enough to freeze, approve, and move forward?
+The gate is a check.
+It is not a step.
 
-### If yes
+## Freeze Rule
 
-- freeze foundation
-- approve foundation
+Freeze is a global governance rule.
+
+Any freeze requires approval from both:
+- CEO
+- CTO
+
+This applies to:
+- step freeze
+- foundation freeze
+- artifact freeze for promotion
+- any other surface that is being frozen into trusted repo truth
+
+## Foundation Gate
+
+The foundation gate runs only after the current foundation step is frozen.
+
+Gate question:
+- is foundation complete?
+
+If yes:
+- freeze the foundation phase
+- foundation freeze requires approval from both CEO and CTO
+- mark foundation complete
 - move to the next workplan layer
 
-### If no
-
+If no:
 - define the next foundation step
-- complete that step
-- return to this approval gate again
-
-## Gate Rule
-
-Foundation stays inside the loop until it is explicitly decided complete.
-
-The loop is:
-1. complete the current foundation step
-2. reach the approval gate
-3. if incomplete, define the next foundation step
-4. return to the gate after that step is done
-5. only exit when foundation is explicitly frozen and approved
+- implement it
+- freeze it
+- run the gate again after that step is frozen
 
 ## Current State
 

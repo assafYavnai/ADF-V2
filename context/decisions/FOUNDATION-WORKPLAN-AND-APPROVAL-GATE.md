@@ -10,20 +10,18 @@ The discussion focused on where the broader workplan should live and how foundat
 - Keep the broader ADF-V2 workplan inside `foundation/WORKPLAN.md`.
 - Move the broader downstream workplan out of foundation and reserve `foundation/WORKPLAN.md` for the foundation layer itself.
 - Let foundation progress linearly without a formal completion gate.
-- Make foundation completion an explicit approval gate that loops until the CEO decides the layer is complete.
+- Use a post-freeze foundation gate to decide whether the foundation phase is complete.
 
 ## DECISION
 
 The broader downstream workplan is moved to `system-definition/WORKPLAN.md`.
 `foundation/WORKPLAN.md` is reserved for foundation work only.
 
-Foundation is governed by:
-- Foundation Step 1: define the foundation framework itself
-- Foundation Step 2: approval gate
+Foundation uses a local work process followed by a post-freeze gate.
 
-The approval gate rule is:
-- if foundation is complete enough, freeze and approve it
-- if it is not complete enough, define the next foundation step, complete it, and return to the gate
+The gate runs after the current foundation step is frozen.
+If foundation is complete enough, freeze foundation and move forward.
+If it is not complete enough, define the next foundation step, complete it, freeze it, and run the gate again.
 
 ## APPROVAL
 
