@@ -24,6 +24,7 @@ The root bootstrap files now exist, and `AGENTS.md` routes agents through the fo
 The explicit decisions from this discussion are now saved under `context/decisions/`.
 For handoff, the next agent must read the curated decision list below rather than trying to infer truth from the full decisions folder.
 The `CONTEXT.md` contract gaps found during review were addressed in this session so the draft now matches actual repo practice more closely.
+The naming-rule scope and open-issue closure rule were tightened again in this session to remove the last remaining governance ambiguities.
 
 ## Session pointers
 
@@ -46,13 +47,14 @@ The `CONTEXT.md` contract gaps found during review were addressed in this sessio
 - `context/decisions/AGENT-BOOTSTRAP-ROUTING.md`
 - `context/decisions/HANDOFF-USES-CURATED-DECISION-LIST.md`
 - `context/decisions/CONTEXT-GOVERNANCE-CLARIFICATIONS.md`
+- `context/decisions/NAMING-AND-OPEN-ISSUE-CLOSURE-CLARIFICATIONS.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decision and the older decisions this session depends on.
 
 ## Newly created decisions in this session
 
-- `context/decisions/CONTEXT-GOVERNANCE-CLARIFICATIONS.md`
+- `context/decisions/NAMING-AND-OPEN-ISSUE-CLOSURE-CLARIFICATIONS.md`
 
 ## Older decisions this handoff depends on
 
@@ -62,6 +64,7 @@ The list includes both the current-session decision and the older decisions this
 - `context/decisions/NAMING-AND-GIT-GOVERNANCE.md`
 - `context/decisions/AGENT-BOOTSTRAP-ROUTING.md`
 - `context/decisions/HANDOFF-USES-CURATED-DECISION-LIST.md`
+- `context/decisions/CONTEXT-GOVERNANCE-CLARIFICATIONS.md`
 
 ## Next step
 

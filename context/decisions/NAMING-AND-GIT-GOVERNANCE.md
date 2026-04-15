@@ -7,12 +7,14 @@ The repo needed explicit conventions for markdown file naming and for how repo t
 ## OPTIONS
 
 - Allow mixed markdown filename casing and ad hoc commit behavior.
-- Freeze a canonical markdown naming rule and explicit git hygiene rules for repo-truth changes.
+- Freeze a governed entry-file naming rule and explicit git hygiene rules for repo-truth changes.
 
 ## DECISION
 
-Markdown filenames must use:
+Governed created markdown entry files must use:
 - `UPPERCASE-WITH-HYPHENS.md`
+
+Fixed canonical repo surfaces may use established names defined by repo truth.
 
 When humans refer to `adf` or `ADF` in discussion or folder references, the terms are interchangeable when the meaning is clear from context.
 

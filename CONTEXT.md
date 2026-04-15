@@ -81,7 +81,7 @@ Several decisions may be grouped into one entry if the discussion resulted in mu
 Decisions are currently saved as files under:
 - `context/decisions/<DECISION-SLUG>.md`
 
-Decision filenames must follow the markdown naming rule:
+Decision filenames must follow the governed entry-file naming rule:
 - `UPPERCASE-WITH-HYPHENS.md`
 
 ### Decision file shape
@@ -111,7 +111,7 @@ Example:
 - a canonical file such as `CONTEXT.md` may stay in its final location while its status is still `DRAFT`
 - a pre-canonical working draft may live under `context/artifacts/`
 
-Artifact filenames must follow the markdown naming rule:
+Pre-canonical artifact filenames must follow the governed entry-file naming rule:
 - `UPPERCASE-WITH-HYPHENS.md`
 
 ### Freeze rule
@@ -232,9 +232,8 @@ Open issues must be updated frequently:
 ### Closure rule
 
 When an open issue becomes closed:
-- create a decision that the item was closed
-- include reason and relevant context
-- remove the item from the open issues list
+- if the closure itself creates or changes frozen repo truth, create a CEO-approved decision and remove the item from the open issues list
+- if the closure is routine and does not change frozen repo truth, close it directly through `context/OPEN-ISSUES.md` and preserve any needed carry-forward context in `context/HANDOFF.md`
 
 ## Status
 
