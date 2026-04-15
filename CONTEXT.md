@@ -1,6 +1,6 @@
 # CONTEXT
 
-Status: DRAFT
+Status: FROZEN
 
 ## Purpose
 
@@ -267,9 +267,9 @@ Handoff is narrative and broader.
 - open-issue rules
 - git/save/push governance for repo-truth updates
 
-## Draft Note
+## Freeze Note
 
-This file is a draft and should not be treated as frozen until the CEO explicitly approves it.
+This file is frozen and is active repo truth until explicitly replaced by a later CEO-approved decision.
 
 ## Git And Context Writing Rules
 
