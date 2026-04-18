@@ -2,8 +2,8 @@
 
 Before doing substantive work, read these files in this order:
 
-1. `foundation/WORKPLAN.md`
-2. `foundation/README.md`
+1. `phases/backlog/foundation/WORKPLAN.md`
+2. `phases/backlog/foundation/README.md`
 3. `CONTEXT.md`
 4. `RULES.md`
 5. `context/STATUS.md`
@@ -17,7 +17,7 @@ Before doing substantive work, read these files in this order:
 - Treat the files above as the active foundation truth surface.
 - Do not widen scope beyond those files unless the CEO explicitly asks.
 - Do not treat draft artifacts as frozen truth.
-- Use `foundation/WORKPLAN.md` as the step list authority.
+- Use `phases/backlog/foundation/WORKPLAN.md` as the step list authority.
 - Use `context/HANDOFF.md` as the narrative current-state authority.
 - After reading `context/HANDOFF.md`, read the required decision files listed there for the current handoff.
 - Use `context/STATUS.md` as the thin operational tracker.

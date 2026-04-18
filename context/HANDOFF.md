@@ -7,7 +7,7 @@ Status: ACTIVE
 ADF-V2 is a new clean repository.
 The foundation layer is still being defined.
 `CONTEXT.md` is now frozen.
-`foundation/README.md` is now frozen.
+`phases/backlog/foundation/README.md` is now frozen.
 
 ## Current task
 
@@ -27,15 +27,15 @@ For handoff, the next agent must read the curated decision list below rather tha
 The `CONTEXT.md` contract gaps found during review were addressed in this session so the draft now matches actual repo practice more closely.
 The naming-rule scope and open-issue closure rule were tightened again in this session to remove the last remaining governance ambiguities.
 `CONTEXT.md` was then explicitly approved, frozen, and promoted in place.
-`foundation/README.md` was then rewritten to match the live foundation contract and the mandatory future-alignment requirement around CEO / CTO / DEV.
-`foundation/README.md` was then explicitly approved, frozen, and promoted in place.
+`phases/backlog/foundation/README.md` was then rewritten to match the live foundation contract and the mandatory future-alignment requirement around CEO / CTO / DEV.
+`phases/backlog/foundation/README.md` was then explicitly approved, frozen, and promoted in place.
 The foundation work model was then clarified so the gate is a post-freeze check, not a step, and freeze was made explicit as a global CEO+CTO approval rule.
 Additional deferred foundation concerns were then captured in `OPEN-ISSUES.md` so they stay visible without widening the current active step.
 
 ## Session pointers
 
-- `foundation/WORKPLAN.md`
-- `foundation/README.md`
+- `phases/backlog/foundation/WORKPLAN.md`
+- `phases/backlog/foundation/README.md`
 - `CONTEXT.md`
 - `RULES.md`
 - `AGENTS.md`
