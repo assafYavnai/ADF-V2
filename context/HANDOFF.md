@@ -31,6 +31,7 @@ The naming-rule scope and open-issue closure rule were tightened again in this s
 `phases/phase0-foundation/README.md` was then explicitly approved, frozen, and promoted in place.
 The foundation work model was then clarified so the gate is a post-freeze check, not a step, and freeze was made explicit as a global CEO+CTO approval rule.
 Additional deferred foundation concerns were then captured in `OPEN-ISSUES.md` so they stay visible without widening the current active step.
+A first draft artifact for high-level phase-model requirements was then created under `context/artifacts/` so the ongoing discussion can keep agreed items, open questions, and later-deferred items separate without freezing phase truth too early.
 
 ## Session pointers
 
@@ -43,6 +44,7 @@ Additional deferred foundation concerns were then captured in `OPEN-ISSUES.md` s
 - `GEMINI.md`
 - `context/STATUS.md`
 - `context/OPEN-ISSUES.md`
+- `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`
 
 ## Required decision files for this handoff
 
@@ -85,3 +87,4 @@ The list includes both the current-session decision and the older decisions this
 Continue Foundation Step 1.
 The next concrete work is to run CEO freeze review on the remaining unfrozen foundation support docs, freeze them under the global CEO+CTO freeze rule, and then run the foundation gate as a post-freeze check.
 If the gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include phase folder structure, context-gap implementation, and memory infrastructure.
+The current phase-model discussion is now also captured in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` as a draft artifact and should continue there rather than being reconstructed from memory.
