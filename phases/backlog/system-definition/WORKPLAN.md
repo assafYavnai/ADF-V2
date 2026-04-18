@@ -12,7 +12,7 @@ Owner:
 - CEO
 
 Rule:
-- the current `phases/backlog/foundation/README.md` must be reviewed and explicitly approved by the CEO
+- the current `phases/phase0-foundation/README.md` must be reviewed and explicitly approved by the CEO
 - agent wording should not be trusted automatically for system-defining truth
 - no later foundational document should be treated as valid before this approval happens
 

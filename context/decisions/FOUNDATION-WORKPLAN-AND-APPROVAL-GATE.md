@@ -7,15 +7,15 @@ The discussion focused on where the broader workplan should live and how foundat
 
 ## OPTIONS
 
-- Keep the broader ADF-V2 workplan inside `phases/backlog/foundation/WORKPLAN.md`.
-- Move the broader downstream workplan out of foundation and reserve `phases/backlog/foundation/WORKPLAN.md` for the foundation layer itself.
+- Keep the broader ADF-V2 workplan inside `phases/phase0-foundation/WORKPLAN.md`.
+- Move the broader downstream workplan out of foundation and reserve `phases/phase0-foundation/WORKPLAN.md` for the foundation layer itself.
 - Let foundation progress linearly without a formal completion gate.
 - Use a post-freeze foundation gate to decide whether the foundation phase is complete.
 
 ## DECISION
 
 The broader downstream workplan is moved to `phases/backlog/system-definition/WORKPLAN.md`.
-`phases/backlog/foundation/WORKPLAN.md` is reserved for foundation work only.
+`phases/phase0-foundation/WORKPLAN.md` is reserved for foundation work only.
 
 Foundation uses a local work process followed by a post-freeze gate.
 

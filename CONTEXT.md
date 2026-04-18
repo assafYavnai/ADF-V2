@@ -20,7 +20,7 @@ The current context structure includes:
 ## Workplan And Step Tracking
 
 The actual steps are defined in:
-- `phases/backlog/foundation/WORKPLAN.md`
+- `phases/phase0-foundation/WORKPLAN.md`
 
 The rule for current and next is:
 - `context/HANDOFF.md` is the primary current-state authority

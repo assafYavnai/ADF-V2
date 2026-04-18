@@ -2,7 +2,7 @@
 
 ## CONTEXT
 
-`phases/backlog/foundation/README.md` was reviewed and found to understate the actual foundation contract, to frame CEO / CTO / DEV too loosely, and to imply a predeclared later foundation layer that the current workplan does not actually promise.
+`phases/phase0-foundation/README.md` was reviewed and found to understate the actual foundation contract, to frame CEO / CTO / DEV too loosely, and to imply a predeclared later foundation layer that the current workplan does not actually promise.
 
 ## OPTIONS
 
@@ -11,7 +11,7 @@
 
 ## DECISION
 
-`phases/backlog/foundation/README.md` must describe foundation as including:
+`phases/phase0-foundation/README.md` must describe foundation as including:
 - folder structure
 - manual context mechanism
 - foundation governance rules

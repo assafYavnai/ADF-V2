@@ -19,7 +19,7 @@ Manual context v1 uses this structure:
 - `context/STATUS.md`
 
 The canonical tracking rules are:
-- the actual step list is defined in `phases/backlog/foundation/WORKPLAN.md`
+- the actual step list is defined in `phases/phase0-foundation/WORKPLAN.md`
 - current step and next step are defined in `context/HANDOFF.md`
 - `context/STATUS.md` is the thin operational tracker
 - by default, next step is the next inline step in the workplan unless the CEO explicitly says otherwise

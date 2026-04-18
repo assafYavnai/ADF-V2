@@ -10,7 +10,7 @@ They still need CEO review as part of the broader Foundation Step 1 freeze befor
 ## O-003 - Remaining foundation support docs still need CEO freeze review
 
 `CONTEXT.md` is now frozen.
-`phases/backlog/foundation/README.md` is now frozen.
+`phases/phase0-foundation/README.md` is now frozen.
 The remaining open work is explicit CEO freeze review of the other drafted foundation support documents.
 
 The main draft surfaces still needing that review are:
@@ -39,3 +39,10 @@ If it stays inside foundation scope, it needs explicit definition and implementa
 
 This is not the current active step.
 It is a deferred foundation concern that should be revisited if the foundation gate decides more foundation work is needed.
+
+## O-007 - Step 1 context support for phases
+
+Foundation Step 1 now needs explicit context support for phases.
+That includes deciding how phase work should carry its own context while staying aligned with foundation governance.
+
+This is in scope for completing the foundation phase cleanly before continuing to Phase 1.
