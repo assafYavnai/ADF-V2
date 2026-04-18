@@ -11,11 +11,11 @@ The foundation layer is still being defined.
 
 ## Current task
 
-Complete Foundation Step 1 by defining and aligning the foundation framework files.
+Define the high-level phase model in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` as the current active Foundation Step 1 draft surface.
 
 ## Current step
 
-Foundation Step 1
+Foundation Step 1 - high-level phase model requirements
 
 ## Session summary
 
@@ -84,7 +84,6 @@ The list includes both the current-session decision and the older decisions this
 
 ## Next step
 
-Continue Foundation Step 1.
-The next concrete work is to run CEO freeze review on the remaining unfrozen foundation support docs, freeze them under the global CEO+CTO freeze rule, and then run the foundation gate as a post-freeze check.
-If the gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include phase folder structure, context-gap implementation, and memory infrastructure.
-The current phase-model discussion is now also captured in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` as a draft artifact and should continue there rather than being reconstructed from memory.
+Continue Foundation Step 1 through `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
+The next concrete work is to resolve the remaining high-level open questions in that artifact before returning to freeze review of the remaining unfrozen foundation support docs.
+If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and the lower-level phase-model details intentionally postponed until the high-level model is agreed.

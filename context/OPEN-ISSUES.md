@@ -12,17 +12,10 @@ They still need CEO review as part of the broader Foundation Step 1 freeze befor
 `CONTEXT.md` is now frozen.
 `phases/phase0-foundation/README.md` is now frozen.
 The remaining open work is explicit CEO freeze review of the other drafted foundation support documents.
+That review is still pending, but it is no longer the immediate active task while the high-level phase model is being drafted in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
 
 The main draft surfaces still needing that review are:
 - supporting context readmes and trackers
-
-## O-004 - Define phase folder structure for intermediate step files
-
-Foundation still needs a decision on the phase folder structure used to hold intermediate step files.
-That includes deciding which files are required at each folder level so step work has a governed place to live.
-
-This is not the current active step.
-It is a deferred foundation concern that should be revisited if the foundation gate decides more foundation work is needed.
 
 ## O-005 - Implement the known context gap
 
@@ -40,9 +33,16 @@ If it stays inside foundation scope, it needs explicit definition and implementa
 This is not the current active step.
 It is a deferred foundation concern that should be revisited if the foundation gate decides more foundation work is needed.
 
-## O-007 - Step 1 context support for phases
+## O-008 - Lower-level phase-model rules remain deferred until the high-level model is agreed
 
-Foundation Step 1 now needs explicit context support for phases.
-That includes deciding how phase work should carry its own context while staying aligned with foundation governance.
+The current active work is the high-level phase-model draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
+Lower-level details are intentionally deferred until that high-level model is agreed.
 
-This is in scope for completing the foundation phase cleanly before continuing to Phase 1.
+Examples include:
+- the final minimum field list for phase and step contracts
+- the detailed workplan unfreeze and re-freeze procedure
+- approval recording mechanics
+- later script governance around routing and gates
+
+This is not the current active step.
+It should be revisited after the high-level phase model is agreed.

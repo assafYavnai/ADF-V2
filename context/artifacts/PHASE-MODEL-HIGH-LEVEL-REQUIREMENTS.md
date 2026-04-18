@@ -19,6 +19,7 @@ NOT READY
 This artifact captures the current high-level phase-model discussion.
 It is a working draft only.
 It does not freeze phase truth.
+It is the current active working surface for this discussion inside Foundation Step 1.
 
 ## Agreed So Far
 

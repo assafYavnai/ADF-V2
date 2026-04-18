@@ -8,11 +8,11 @@ Foundation Step 1
 
 ## Current step
 
-Define and stabilize the foundation framework itself.
+Define the high-level phase model in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
 
 ## Next step
 
-Run CEO freeze review on the remaining drafted foundation support docs, freeze them under the global CEO+CTO freeze rule, and then run the foundation gate as a post-freeze check.
+Resolve the remaining high-level open questions in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`, then return to freeze review of the remaining drafted foundation support docs.
 
 ## Gate state
 

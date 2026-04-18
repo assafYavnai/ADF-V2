@@ -9,11 +9,12 @@ Before doing substantive work, read these files in this order:
 5. `context/HANDOFF.md`
 6. `context/OPEN-ISSUES.md`
 7. `context/artifacts/README.md`
-8. `context/decisions/README.md`
+8. `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`
+9. `context/decisions/README.md`
 
 ## Current Step
 
-1. Define and stabilize the foundation framework itself.
+1. Define the high-level phase model in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
 
 ## Routing Rules
 
@@ -25,6 +26,7 @@ Before doing substantive work, read these files in this order:
 - After reading `context/HANDOFF.md`, read the required decision files listed there for the current handoff.
 - Use `context/STATUS.md` as the thin operational tracker.
 - Use `context/OPEN-ISSUES.md` as the deferred-items tracker.
+- Use `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` as the active draft surface for the current phase-model discussion.
 - Follow `RULES.md` for naming and writing conventions.
 
 ## Working Mode
