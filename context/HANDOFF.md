@@ -40,6 +40,9 @@ That transition rule and local-handoff governance were then saved as an explicit
 Reviewer pushback on the promoted-phase root model and transition from the current bootstrap tree was then addressed in the draft.
 The draft now makes root promoted phases selectable rather than implicitly active, makes phase number a reviewed recommendation-order number among open promoted phases, separates phase close from next-phase selection, and records the intended normalization of `phase0-foundation` and `phase1-Strategic_Definition` at the later phase-model promotion checkpoint.
 That promoted-root, ordering, and transition rule was then also saved as an explicit decision.
+Reviewer pushback on active-step tracking and close-gate step flow was then addressed in the draft.
+The draft now makes `Current step` an explicit `WORKPLAN.md` field, keeps default next-step flow in the ordered implementation step list, and keeps post-implementation close-gate follow-up work inside the workplan rather than in a separate tracker.
+That workplan-authority and close-gate-flow rule was then saved as another explicit decision.
 
 ## Session pointers
 
@@ -70,6 +73,7 @@ That promoted-root, ordering, and transition rule was then also saved as an expl
 - `context/decisions/FOUNDATION-WORKFLOW-AND-GLOBAL-FREEZE-RULE.md`
 - `context/decisions/PHASE-MODEL-DECISION-INDEX-AND-LOCAL-HANDOFF-TRANSITION.md`
 - `context/decisions/PHASE-MODEL-PROMOTED-ROOT-ORDER-AND-TRANSITION.md`
+- `context/decisions/PHASE-MODEL-WORKPLAN-CURRENT-STEP-AND-CLOSE-GATE-FLOW.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -79,6 +83,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/FOUNDATION-WORKFLOW-AND-GLOBAL-FREEZE-RULE.md`
 - `context/decisions/PHASE-MODEL-DECISION-INDEX-AND-LOCAL-HANDOFF-TRANSITION.md`
 - `context/decisions/PHASE-MODEL-PROMOTED-ROOT-ORDER-AND-TRANSITION.md`
+- `context/decisions/PHASE-MODEL-WORKPLAN-CURRENT-STEP-AND-CLOSE-GATE-FLOW.md`
 
 ## Older decisions this handoff depends on
 
@@ -100,5 +105,6 @@ The list includes both the current-session decisions and the older decisions thi
 Continue Foundation Step 1 through `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
 The next concrete work is to continue review of that artifact against the remaining findings after the decision-routing and local-handoff pushback was fixed.
 The promoted-root, renumbering, and close-versus-selection pushback is also now fixed in the draft.
+The workplan current-step and close-gate-flow pushback is also now fixed in the draft.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.

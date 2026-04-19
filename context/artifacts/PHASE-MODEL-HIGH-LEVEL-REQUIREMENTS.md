@@ -118,6 +118,9 @@ Step sequencing belongs to the active phase `WORKPLAN.md`.
 If no active phase is currently selected, `phases/ROUTING.md` must say that selection is pending.
 Agents must not infer an active phase when routing says none is selected.
 
+For routing purposes, a step is selected only when the active phase `WORKPLAN.md` explicit `Current step` field points to a step folder under that phase.
+If `Current step` points to a close-gate follow-up item instead, agents do not infer an active step folder unless the workplan explicitly points to one.
+
 The required active-phase read order is:
 1. active phase `CONTRACT.md`
 2. active phase `WORKPLAN.md`
@@ -252,18 +255,35 @@ Phase and step contracts must each define a promotion rule for their artifacts.
 The minimum required field list for a phase `WORKPLAN.md` is:
 - purpose
 - contract reference
-- ordered step list
+- current step
+- ordered implementation step list
 - step dependencies or prerequisites
 - default next-step rule
+- close-gate follow-up steps
 - change-control rule
 - phase workplan close gate
 
 No implementation starts until the phase workplan is frozen.
-`WORKPLAN.md` is the authority for current and next step inside the phase.
+`WORKPLAN.md` is the authority for current step and default next-step flow inside the phase.
 No separate phase-local status tracker is introduced for step sequencing.
 
-When a step is approved closed by the user, the next step defaults to the next item in the workplan unless the user explicitly overrides it.
+`Current step` must be an explicit field inside `WORKPLAN.md`.
+The ordered implementation step list defines the default implementation-step flow.
+
+When a step is approved closed by the user, the next step defaults to the next item in the ordered implementation step list unless the user explicitly overrides it.
 If that override changes the frozen workplan flow, the workplan must be unfrozen and revised, and the reason must be captured in the revision decision and in the revised `WORKPLAN.md`.
+
+When all original implementation steps are completed, the phase does not move into a no-current-step state.
+Instead, `WORKPLAN.md` transitions into close-gate follow-up steps as the next current-step area until phase close-gate dependencies are satisfied.
+
+Close-gate follow-up steps may be listed in a separate section of `WORKPLAN.md` so it is clear they were added after the original implementation steps were complete.
+Those follow-up steps may include:
+- resolving, addressing, or explicitly deferring remaining open issues that still block phase close
+- completing any remaining close-gate dependencies required before freeze can be suggested
+- preparing the agent freeze recommendation and summary for user review
+
+When all close-gate dependencies are satisfied, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject.
+If the user rejects and asks for further work that changes the frozen workplan flow, that rejection triggers a quick workplan unfreeze, revision, and re-freeze before execution continues.
 
 ## Workplan Change Control
 
