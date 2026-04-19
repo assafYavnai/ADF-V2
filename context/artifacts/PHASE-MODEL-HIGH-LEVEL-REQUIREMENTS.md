@@ -35,22 +35,36 @@ The `phases/` layer uses these top-level states:
 - `phases/ROUTING.md`
 - `phases/backlog/`
 - `phases/complete/`
-- one active promoted phase at `phases/phaseNNN-<slug>/`
+- one or more promoted phases at `phases/phaseNNN-<slug>/`
 
 The meanings are:
 - `phases/backlog/` holds unpromoted phase candidates
 - `phases/complete/` holds closed promoted phases
-- the root `phases/phaseNNN-<slug>/` path holds the one currently active promoted phase
+- the root `phases/phaseNNN-<slug>/` paths hold promoted open phases
+- exactly one promoted phase may be active at a time
+- active focus is selected by `phases/ROUTING.md`
 
 A blocked or deferred active phase does not need a separate suspended state.
 If a promoted phase is deferred, it may be demoted back to backlog.
 
-Promoted phase identity and execution order are different concerns.
-The promoted phase folder keeps one stable phase id in its path.
-Execution order is carried by the active phase `WORKPLAN.md` and its approved revisions, not by the folder path.
+Storage class, recommended order, active focus, and step sequencing are different concerns.
+
+The ownership rule is:
+- path answers storage class
+- phase number answers current recommended order among open promoted phases
+- `phases/ROUTING.md` answers execution focus
+- the active phase `WORKPLAN.md` answers step sequencing
+- `OPEN-ISSUES.md` answers deferred unresolved work at its scope
+- `context/decisions/INDEX.md` answers required global decision reads
+- `HANDOFF.md`, if present, answers continuity only
+
+The phase slug is the stable identity anchor across renumbering.
+Open promoted phase numbers are recommendation-order numbers, not permanent identities.
+The user may change that order during next-phase selection because information visible at closeout may differ from what was known earlier.
+Completed phases preserve the number they closed under in `phases/complete/`.
 
 Naming rules are:
-- promoted active phase folders use `phases/phaseNNN-<slug>/`
+- promoted open phase folders use `phases/phaseNNN-<slug>/`
 - backlog candidate folders use `phases/backlog/<slug>/`
 - completed phase folders use `phases/complete/phaseNNN-<slug>/`
 - step folders use `stepNN-<slug>/` under the phase folder
@@ -67,15 +81,30 @@ Until this phase model is frozen and promoted, the current foundation-bootstrap 
 This model must not become active piecemeal.
 When it is promoted, the same logical checkpoint must bring routing, decision reads, and phase layout into alignment with this document before this model becomes active repo truth.
 
+Current foundation-bootstrap root folders are transition-era exceptions until that checkpoint.
+The promotion checkpoint must normalize each transition-era root folder into one target storage class:
+- promoted open phase at `phases/phaseNNN-<slug>/`
+- backlog candidate under `phases/backlog/`
+- completed phase under `phases/complete/`
+
+A non-conforming transition-era root folder must not remain ambiguous after the promotion checkpoint.
+That same checkpoint must also rename transition-era folders into the governed naming pattern when needed.
+
+The current intended transition mapping is:
+- `phases/phase0-foundation/` becomes the active promoted foundation phase under the target model
+- the current phase-model work becomes Foundation Step 1 inside that phase
+- foundation normalization into full target-model compliance becomes Foundation Step 2
+- `phases/phase1-Strategic_Definition/` remains a promoted but inactive/selectable phase after it is normalized into the governed target-model shape
+
 ## Routing
 
 `phases/ROUTING.md` is the only phase-system entry point for agents.
 
 `phases/ROUTING.md` must contain:
 - the purpose of the routing surface
-- the active phase pointer
-- all resources required to reconstruct full context for the active phase
-- the required read order for the active phase
+- the active phase pointer, or an explicit statement that no active phase is currently selected
+- all resources required to reconstruct full context for the active phase when one is selected
+- the required read order for the active phase when one is selected
 - the local handoff lookup rule
 - the current pending user decision, if any
 - a mention that backlog candidates exist
@@ -85,6 +114,9 @@ When it is promoted, the same logical checkpoint must bring routing, decision re
 It must point to `context/decisions/INDEX.md`.
 `phases/ROUTING.md` must not manage step sequencing itself.
 Step sequencing belongs to the active phase `WORKPLAN.md`.
+
+If no active phase is currently selected, `phases/ROUTING.md` must say that selection is pending.
+Agents must not infer an active phase when routing says none is selected.
 
 The required active-phase read order is:
 1. active phase `CONTRACT.md`
@@ -100,7 +132,7 @@ The required active-phase read order is:
 Default agent routing behavior is:
 - do not scan `phases/backlog/` by default
 - do not scan `phases/complete/` by default
-- do not scan other phases by default
+- do not scan non-active promoted phases by default unless routing or the user explicitly points to them
 - do not scan the full `context/decisions/` folder by default
 - do not scan unrelated `HANDOFF.md` files by default
 
@@ -163,7 +195,7 @@ That combined decision-plus-index change must end with a commit.
 Do not leave a frozen decision file added without the matching `INDEX.md` update committed with it.
 Do not update `INDEX.md` to reference a frozen decision that has not been committed as part of the same checkpoint.
 
-## Backlog Candidates, Promotion, And Demotion
+## Backlog Candidates, Promotion, Demotion, And Order
 
 Backlog candidates may be lightweight or mature.
 
@@ -171,11 +203,19 @@ A backlog candidate must have at minimum:
 - a slug-based folder under `phases/backlog/`
 - a `README.md` with explanation and context of the candidate
 
-Promotion from backlog to active phase requires:
+Promotion from backlog into the promoted-phases root requires:
 - a fully compliant `CONTRACT.md`
 - a fully compliant `WORKPLAN.md`
 
-A phase receives its promoted phase number only when the user selects it for promotion.
+A phase receives its first promoted phase number when the user promotes it into the open promoted-phase set.
+Open promoted phases may later be renumbered.
+
+Renumbering rule:
+- renumbering is allowed only during the next-phase selection transition
+- renumbering updates open promoted phases to reflect the current reviewed recommendation order
+- the slug remains the stable identity anchor across renumbering
+- completed phases are not renumbered after completion
+- folder renames and reference updates caused by renumbering must be completed in the same logical checkpoint
 
 Demotion of a promoted phase back to backlog requires explicit user approval.
 
@@ -402,8 +442,25 @@ A step is ready for freeze review when its required outputs are complete and ver
 Satisfying a phase or step freeze-review gate means the work is ready to ask for freeze approval.
 Actual freeze requires explicit approval from both CEO and CTO under the global freeze rule.
 
-A completed phase is moved to `phases/complete/` after the user approves the phase close gate.
-Completion may also move outputs to other destinations if that is defined in the phase contract.
+Phase close gate and next-phase selection are separate transitions.
+
+The phase close gate asks only whether the current active phase may close.
+If the phase close gate is approved:
+- the phase closes
+- the phase moves to `phases/complete/` with the number it closed under
+- completion may also move outputs to other destinations if that is defined in the phase contract
+- `phases/ROUTING.md` may temporarily state that no active phase is selected yet
+
+Closing a phase does not require immediate selection of the next active phase.
+
+Next-phase selection happens after close as a separate transition step.
+During next-phase selection, the user may choose the next active phase from:
+- already promoted open phases at the root
+- backlog candidates
+- a newly shaped candidate
+
+If the user selects a backlog candidate or newly shaped candidate, that candidate is promoted into the open promoted-phase set during the same transition.
+After the user selects the next active phase, the open promoted phases are renumbered to reflect the current reviewed recommendation order, and `phases/ROUTING.md` is updated to point to the selected active phase.
 
 Approvals must be recorded explicitly in repo files.
 Approval is never inferred from progress, silence, or downstream edits.
@@ -420,6 +477,10 @@ For contracts and workplans:
 For step and phase closure:
 - closure approval must be reflected in the governing workplan and any affected `OPEN-ISSUES.md`
 - if closure causes promotion, the related artifact or folder move must be part of the same logical checkpoint
+
+For next-phase selection and renumbering:
+- routing updates, folder renames, and reference updates caused by the reviewed selection order must be part of the same logical checkpoint
+- do not leave promoted-phase numbering and routing partially updated across checkpoints
 
 For decisions:
 - decision approval is recorded in the decision file under `APPROVAL`
