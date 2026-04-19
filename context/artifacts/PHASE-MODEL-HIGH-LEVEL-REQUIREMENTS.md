@@ -241,11 +241,14 @@ The minimum required field list for a phase `CONTRACT.md` is:
 - scope
 - out-of-scope
 - outputs
+- artifact collection and promotion rule
 - success criteria
 - verification
 - close gate
 
-Phase and step contracts must each define a promotion rule for their artifacts.
+The phase contract must define:
+- which collected phase artifacts are promotable to canonical repo locations at phase close
+- the canonical promotion targets for those artifacts
 
 ## Phase Workplan
 
@@ -341,6 +344,7 @@ The minimum required step contract is:
 - scope
 - prerequisites
 - outputs
+- draft-output promotion rule
 - verification
 - close gate
 
@@ -434,24 +438,42 @@ The required file inventory inside a promoted phase folder is:
 - `OPEN-ISSUES.md`
 - one or more `stepNN-<slug>/` folders
 
-A phase or step creates `artifacts/` when it first needs to hold draft artifacts.
-`artifacts/` is optional in scopes that do not yet have draft artifacts.
+Artifacts are authored only inside steps.
+The phase does not create draft artifacts of its own.
+The phase collects approved step outputs and is the only scope that may promote those collected artifacts toward canonical repo truth.
 
-Step draft artifacts are stored under `stepNN-<slug>/artifacts/`.
-When a step artifact is frozen, it is promoted from `stepNN-<slug>/artifacts/` to the step root by default.
-If a step artifact is later demoted, it moves back from the step root into `stepNN-<slug>/artifacts/`.
+Artifact storage is boxed as:
+- step `drafts/`
+- phase `artifacts/`
+- canonical repo destinations outside the active phase only after phase promotion
 
-When a step closes, artifacts at step root promote by the step contract promotion rule.
-If the step contract does not define a different destination, the default step promotion destination is the phase-root `artifacts/` folder.
-If neither the step contract nor the artifact metadata defines a destination where one is required, the artifact is not ready for freeze review.
+`drafts/` is optional inside a step and is created only when that step needs to author draft outputs.
+`artifacts/` is optional at phase scope and is created only when the phase first collects approved step outputs.
 
-Phase draft artifacts are stored under `phases/phaseNNN-<slug>/artifacts/`.
-When a phase artifact is frozen, it is promoted from the phase `artifacts/` folder to the phase root by default.
-If a phase artifact is later demoted, it moves back from the phase root into the phase `artifacts/` folder.
+Step draft artifacts are stored under `stepNN-<slug>/drafts/`.
+The step contract must define:
+- which draft outputs are promotable to phase scope
+- any conditions that must be satisfied before those outputs may be collected by the phase
 
-When a phase closes, artifacts at phase root promote by the phase contract promotion rule.
-If the phase contract does not define a different destination, the default phase promotion destination is the canonical repo location explicitly named by the artifact promotion target.
-If neither the phase contract nor the artifact metadata defines a destination where one is required, the artifact is not ready for freeze review.
+When a step closes, the phase scope executes step promotion under the step contract promotion rule.
+Approved step outputs move from `stepNN-<slug>/drafts/` into the phase-root `artifacts/` folder.
+
+`phases/phaseNNN-<slug>/artifacts/` holds collected phase-owned artifacts while the phase is still active.
+Those artifacts remain isolated inside the phase until phase promotion.
+
+When a phase closes, the phase scope executes phase promotion under the phase contract artifact collection and promotion rule.
+Selected collected artifacts move from the phase-root `artifacts/` folder to the canonical repo locations named by the phase contract.
+
+If a collected artifact later needs revision before phase close, it must return to an explicit step `drafts/` scope for rework rather than being revised ad hoc at phase scope.
+That rework may happen in the original step or in a new explicit revision step, but it must return to step scope before being collected again by the phase.
+
+An artifact is not ready for freeze review unless:
+- its required content is complete
+- its required verification is complete
+- the relevant step or phase contract defines enough promotion information for the next allowed move
+
+The artifact model does not require a separate per-artifact metadata schema at this stage.
+Contracts are the authoritative source for what outputs exist, what may be promoted, and where promoted artifacts may move.
 
 ## Gates, Approvals, And Checkpoints
 

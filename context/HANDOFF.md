@@ -46,6 +46,9 @@ That workplan-authority and close-gate-flow rule was then saved as another expli
 Reviewer pushback on approval ordering, promotion ownership, and movement to `phases/complete/` was then addressed in the draft.
 The draft now defines a two-gate flow of freeze-ready, freeze approval, review-fix cycle, close-ready, close approval, promotion, and post-promotion state, while making promotion a mechanical phase-owned step rather than another approval gate.
 That two-gate, promotion, and routing-update rule was then saved as another explicit decision.
+Reviewer pushback on artifact governance and promotion enforceability was then addressed in the draft.
+The draft now uses the simpler boxed artifact model of step `drafts/`, phase `artifacts/`, and phase-owned promotion to canonical repo locations, while removing the earlier need for separate per-artifact metadata at this stage.
+That step-drafts, phase-artifacts, and contract-owned promotion rule was then saved as another explicit decision.
 
 ## Session pointers
 
@@ -78,6 +81,7 @@ That two-gate, promotion, and routing-update rule was then saved as another expl
 - `context/decisions/PHASE-MODEL-PROMOTED-ROOT-ORDER-AND-TRANSITION.md`
 - `context/decisions/PHASE-MODEL-WORKPLAN-CURRENT-STEP-AND-CLOSE-GATE-FLOW.md`
 - `context/decisions/PHASE-MODEL-TWO-GATE-APPROVAL-AND-PROMOTION-FLOW.md`
+- `context/decisions/PHASE-MODEL-STEP-DRAFTS-AND-PHASE-ARTIFACTS.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -89,6 +93,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/PHASE-MODEL-PROMOTED-ROOT-ORDER-AND-TRANSITION.md`
 - `context/decisions/PHASE-MODEL-WORKPLAN-CURRENT-STEP-AND-CLOSE-GATE-FLOW.md`
 - `context/decisions/PHASE-MODEL-TWO-GATE-APPROVAL-AND-PROMOTION-FLOW.md`
+- `context/decisions/PHASE-MODEL-STEP-DRAFTS-AND-PHASE-ARTIFACTS.md`
 
 ## Older decisions this handoff depends on
 
@@ -112,5 +117,6 @@ The next concrete work is to continue review of that artifact against the remain
 The promoted-root, renumbering, and close-versus-selection pushback is also now fixed in the draft.
 The workplan current-step and close-gate-flow pushback is also now fixed in the draft.
 The two-gate approval, promotion, and routing-update pushback is also now fixed in the draft.
+The artifact-governance and promotion-enforceability pushback is also now fixed in the draft.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.
