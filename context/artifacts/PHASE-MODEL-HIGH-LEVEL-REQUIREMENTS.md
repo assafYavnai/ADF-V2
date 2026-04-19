@@ -47,7 +47,7 @@ If a promoted phase is deferred, it may be demoted back to backlog.
 
 Promoted phase identity and execution order are different concerns.
 The promoted phase folder keeps one stable phase id in its path.
-Execution order is carried by routing and current-state tracking, not by the folder path.
+Execution order is carried by the active phase `WORKPLAN.md` and its approved revisions, not by the folder path.
 
 Naming rules are:
 - promoted active phase folders use `phases/phaseNNN-<slug>/`
@@ -58,6 +58,15 @@ Naming rules are:
 
 `phases/STATUS.md` is not used at this stage.
 
+## Transition From Foundation Bootstrap
+
+This document defines the target phase model, not the current foundation-bootstrap runtime.
+
+Until this phase model is frozen and promoted, the current foundation-bootstrap surfaces remain authoritative for the running repository state.
+
+This model must not become active piecemeal.
+When it is promoted, the same logical checkpoint must bring routing, decision reads, and phase layout into alignment with this document before this model becomes active repo truth.
+
 ## Routing
 
 `phases/ROUTING.md` is the only phase-system entry point for agents.
@@ -67,12 +76,15 @@ Naming rules are:
 - the active phase pointer
 - all resources required to reconstruct full context for the active phase
 - the required read order for the active phase
+- the local handoff lookup rule
 - the current pending user decision, if any
 - a mention that backlog candidates exist
 - a mention that completed phases exist
 
 `phases/ROUTING.md` must not manage decision membership itself.
 It must point to `context/decisions/INDEX.md`.
+`phases/ROUTING.md` must not manage step sequencing itself.
+Step sequencing belongs to the active phase `WORKPLAN.md`.
 
 The required active-phase read order is:
 1. active phase `CONTRACT.md`
@@ -82,12 +94,15 @@ The required active-phase read order is:
 5. active step `OPEN-ISSUES.md`, if a step is selected
 6. `context/decisions/INDEX.md`
 7. only the decision files listed in `context/decisions/INDEX.md`
+8. active step `HANDOFF.md`, if it exists
+9. active phase `HANDOFF.md`, if no step-local handoff exists and a phase-local handoff exists
 
 Default agent routing behavior is:
 - do not scan `phases/backlog/` by default
 - do not scan `phases/complete/` by default
 - do not scan other phases by default
 - do not scan the full `context/decisions/` folder by default
+- do not scan unrelated `HANDOFF.md` files by default
 
 ## Decisions
 
@@ -136,6 +151,12 @@ Default agent decision-read behavior is:
 1. read `context/decisions/INDEX.md`
 2. read only the listed decision files
 3. do not scan the full `context/decisions/` folder by default
+
+Transition and supersession rule:
+- until this phase model is frozen and promoted, the foundation-bootstrap runtime may still use the current global `context/HANDOFF.md` decision-read list
+- when this phase model is promoted, `context/decisions/INDEX.md` supersedes global `context/HANDOFF.md` as the curated decision-read surface
+- the promotion checkpoint must create or update `context/decisions/INDEX.md`, update `phases/ROUTING.md` to point to it, and remove any requirement that global `context/HANDOFF.md` curate decision membership
+- do not activate decision-index routing in isolation from the rest of the phase-model promotion checkpoint
 
 Whenever a new frozen decision is saved, the matching `context/decisions/INDEX.md` update must be made in the same logical change.
 That combined decision-plus-index change must end with a commit.
@@ -198,9 +219,11 @@ The minimum required field list for a phase `WORKPLAN.md` is:
 - phase workplan close gate
 
 No implementation starts until the phase workplan is frozen.
+`WORKPLAN.md` is the authority for current and next step inside the phase.
+No separate phase-local status tracker is introduced for step sequencing.
 
 When a step is approved closed by the user, the next step defaults to the next item in the workplan unless the user explicitly overrides it.
-Any override must be documented with the reason.
+If that override changes the frozen workplan flow, the workplan must be unfrozen and revised, and the reason must be captured in the revision decision and in the revised `WORKPLAN.md`.
 
 ## Workplan Change Control
 
@@ -288,7 +311,8 @@ Step-local `OPEN-ISSUES.md` uses:
 - `phases/phaseNNN-<slug>/stepNN-<slug>/OPEN-ISSUES.md`
 
 Only `OPEN-ISSUES.md` is required locally at this stage.
-Local `STATUS.md` and `HANDOFF.md` are not introduced at the phase or step layer at this stage.
+Local `STATUS.md` is not introduced at the phase or step layer.
+Local `HANDOFF.md` is optional continuity support only.
 
 Local open issues should be resolved locally by default at the step or phase level.
 If a local open issue cannot be resolved locally, it may be explicitly deferred upward to the global `OPEN-ISSUES.md`.
@@ -300,6 +324,47 @@ Promotion from a global open issue into `phases/backlog/<slug>/` is an explicit 
 A step cannot close while it still owns unresolved step-scoped open items unless those items are explicitly transferred forward.
 A phase cannot close while it still owns unresolved phase-scoped open items.
 To close a phase, remaining phase-scoped items must be either resolved or transferred out to backlog or general-level open items.
+
+## Handoff
+
+`HANDOFF.md` is optional and local in the target phase model.
+It is not a boxed truth surface.
+It is a continuity aid only.
+
+Allowed local handoff locations are:
+- `phases/phaseNNN-<slug>/HANDOFF.md`
+- `phases/phaseNNN-<slug>/stepNN-<slug>/HANDOFF.md`
+
+Local `HANDOFF.md` may be created only:
+- when an actual handoff is needed
+- when the user explicitly asks to preserve cross-session continuity for that local scope
+
+Local `HANDOFF.md` may be updated only when a meaningful local-state change would be hard for a new agent to reconstruct from the boxed files alone.
+It is not a routine progress mirror.
+
+Local `HANDOFF.md` may contain:
+- a short session summary
+- what changed recently in that scope
+- local blockers or risks
+- temporary working notes needed for the next agent
+- pointers to already authoritative local files
+
+Local `HANDOFF.md` must not contain:
+- scope authority
+- current-step or next-step authority
+- decision membership authority
+- gate authority
+- approval state that is not already reflected in the boxed files
+- rules that override `CONTRACT.md`, `WORKPLAN.md`, `OPEN-ISSUES.md`, or `context/decisions/INDEX.md`
+
+If a step-local `HANDOFF.md` exists, agents should prefer it over the phase-local `HANDOFF.md` for that step handoff.
+If no step-local `HANDOFF.md` exists, agents may read the phase-local `HANDOFF.md` if it exists.
+
+Local `HANDOFF.md` is a snapshot aid, not a continuously accumulated ledger.
+It should be refreshed, replaced, or removed when it becomes stale.
+
+The current global `context/HANDOFF.md` is part of the foundation-bootstrap runtime and not part of the target phase execution model.
+When this phase model is promoted, global `context/HANDOFF.md` is no longer the decision-read authority.
 
 ## Artifacts
 

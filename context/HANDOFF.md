@@ -34,6 +34,9 @@ Additional deferred foundation concerns were then captured in `OPEN-ISSUES.md` s
 A first draft artifact for high-level phase-model requirements was then created under `context/artifacts/` so the ongoing discussion can keep agreed items, open questions, and later-deferred items separate without freezing phase truth too early.
 The lower-level operational mechanics were then defined so the phase-model draft no longer carries open model holes.
 That draft was then rewritten into a review-ready canonical form while still remaining an unfrozen artifact.
+Reviewer pushback on decision routing and handoff governance was then addressed in the draft.
+The draft now makes `WORKPLAN.md` the owner of current and next step inside a phase, defines `context/decisions/INDEX.md` as the target curated decision-read surface, and constrains `HANDOFF.md` to optional local continuity-only use in the target model.
+That transition rule and local-handoff governance were then saved as an explicit decision so later agents do not have to reconstruct the reasoning from memory.
 
 ## Session pointers
 
@@ -62,13 +65,15 @@ That draft was then rewritten into a review-ready canonical form while still rem
 - `context/decisions/FOUNDATION-README-SCOPE-AND-ALIGNMENT-CLARIFICATIONS.md`
 - `context/decisions/FOUNDATION-README-FREEZE-AND-PROMOTION.md`
 - `context/decisions/FOUNDATION-WORKFLOW-AND-GLOBAL-FREEZE-RULE.md`
+- `context/decisions/PHASE-MODEL-DECISION-INDEX-AND-LOCAL-HANDOFF-TRANSITION.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
-The list includes both the current-session decision and the older decisions this session depends on.
+The list includes both the current-session decisions and the older decisions this session depends on.
 
 ## Newly created decisions in this session
 
 - `context/decisions/FOUNDATION-WORKFLOW-AND-GLOBAL-FREEZE-RULE.md`
+- `context/decisions/PHASE-MODEL-DECISION-INDEX-AND-LOCAL-HANDOFF-TRANSITION.md`
 
 ## Older decisions this handoff depends on
 
@@ -83,9 +88,11 @@ The list includes both the current-session decision and the older decisions this
 - `context/decisions/CONTEXT-FREEZE-AND-PROMOTION.md`
 - `context/decisions/FOUNDATION-README-SCOPE-AND-ALIGNMENT-CLARIFICATIONS.md`
 - `context/decisions/FOUNDATION-README-FREEZE-AND-PROMOTION.md`
+- `context/decisions/FOUNDATION-WORKFLOW-AND-GLOBAL-FREEZE-RULE.md`
 
 ## Next step
 
 Continue Foundation Step 1 through `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
-The next concrete work is to review that artifact for freeze-readiness and, if approved, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
+The next concrete work is to continue review of that artifact against the remaining findings after the decision-routing and local-handoff pushback was fixed.
+If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.
