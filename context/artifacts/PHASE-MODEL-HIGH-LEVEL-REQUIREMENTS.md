@@ -455,25 +455,67 @@ If neither the phase contract nor the artifact metadata defines a destination wh
 
 ## Gates, Approvals, And Checkpoints
 
-A phase is ready for freeze review when its required outputs are complete and verified, its contract and workplan requirements are satisfied, and no unresolved phase-scoped open items remain unless they are explicitly transferred out under the phase rules.
+A step or phase moves through these states in order:
+1. in progress
+2. freeze ready
+3. freeze gate approved
+4. review-fix cycle
+5. close ready
+6. close gate approved
+7. promotion
+8. post-promotion state
 
-A step is ready for freeze review when its required outputs are complete and verified, its step contract requirements are satisfied, and no unresolved step-scoped open items remain unless they are explicitly transferred forward under the step rules.
+A phase is freeze ready when its implementation outputs are complete enough to stop execution and enter review under the phase rules.
 
-Satisfying a phase or step freeze-review gate means the work is ready to ask for freeze approval.
-Actual freeze requires explicit approval from both CEO and CTO under the global freeze rule.
+A step is freeze ready when its implementation outputs are complete enough to stop execution and enter review under the step rules.
 
-Phase close gate and next-phase selection are separate transitions.
+Freeze ready means the scope is ready to ask for freeze-gate approval and begin the review-fix cycle.
+Freeze ready does not itself close the scope.
 
-The phase close gate asks only whether the current active phase may close.
-If the phase close gate is approved:
-- the phase closes
+Both freeze gate and close gate require explicit user approval.
+Where a freeze event also changes trusted repo truth under the broader active context governance, that freeze approval must still satisfy the broader freeze rule.
+
+If the freeze gate is approved:
+- execution for that scope is frozen for review
+- the review-fix cycle begins
+- the scope remains open
+
+A phase is close ready when:
+- the review-fix cycle is complete
+- review findings are addressed
+- verification is rerun as required
+- close-gate dependencies are satisfied
+- no unresolved phase-scoped open items remain unless they are explicitly transferred out under the phase rules
+
+A step is close ready when:
+- the review-fix cycle is complete
+- review findings are addressed
+- verification is rerun as required
+- close-gate dependencies are satisfied
+- no unresolved step-scoped open items remain unless they are explicitly transferred forward under the step rules
+
+If the close gate is approved:
+- the scope closes
+- promotion runs next as a mechanical transition
+- promotion is not a separate approval gate
+
+Promotion execution is owned by the phase scope because the phase workplan owns completion flow.
+
+For step close and promotion:
+- the phase scope executes step promotion under the step contract promotion rule
+- the phase scope updates the phase workplan and any affected phase-local files in the same logical checkpoint
+- after step promotion, control returns to phase scope for the next current step
+
+For phase close and promotion:
+- the phase scope executes phase promotion
 - the phase moves to `phases/complete/` with the number it closed under
 - completion may also move outputs to other destinations if that is defined in the phase contract
-- `phases/ROUTING.md` may temporarily state that no active phase is selected yet
+- the phase scope updates `phases/ROUTING.md` in the same logical checkpoint
+- after phase promotion, routing either points to the selected next active phase or explicitly says that no active phase is selected and the system is idle / waiting for input
 
-Closing a phase does not require immediate selection of the next active phase.
+Closing a phase does not require immediate next-phase selection.
+Next-phase selection remains a separate transition after phase promotion.
 
-Next-phase selection happens after close as a separate transition step.
 During next-phase selection, the user may choose the next active phase from:
 - already promoted open phases at the root
 - backlog candidates
@@ -481,6 +523,9 @@ During next-phase selection, the user may choose the next active phase from:
 
 If the user selects a backlog candidate or newly shaped candidate, that candidate is promoted into the open promoted-phase set during the same transition.
 After the user selects the next active phase, the open promoted phases are renumbered to reflect the current reviewed recommendation order, and `phases/ROUTING.md` is updated to point to the selected active phase.
+
+For now, only explicit user input exits the idle routing state.
+Future script governance may define additional governed triggers.
 
 Approvals must be recorded explicitly in repo files.
 Approval is never inferred from progress, silence, or downstream edits.
