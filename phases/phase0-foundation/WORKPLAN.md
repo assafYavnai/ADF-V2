@@ -18,6 +18,7 @@ Foundation Step 1 includes:
 - define `context/HANDOFF`
 - define `context/OPEN-ISSUES`
 - define the high-level phase model requirements draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`
+- rewrite that draft into canonical review-ready wording
 - define the steps list and the rule for marking current and next
 - define high-level rules such as:
   - when to save a decision
@@ -75,7 +76,7 @@ If no:
 ## Current State
 
 Current focus:
-- continue Foundation Step 1 through the active draft artifact `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`
+- continue Foundation Step 1 through review of the active phase-model draft artifact `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`
 
 Current gate status:
 - not ready for approval yet

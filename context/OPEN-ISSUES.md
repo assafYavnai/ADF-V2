@@ -12,7 +12,7 @@ They still need CEO review as part of the broader Foundation Step 1 freeze befor
 `CONTEXT.md` is now frozen.
 `phases/phase0-foundation/README.md` is now frozen.
 The remaining open work is explicit CEO freeze review of the other drafted foundation support documents.
-That review is still pending, but it is no longer the immediate active task while the high-level phase model is being drafted in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
+That review is still pending, but it is no longer the immediate active task while the phase model draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` is under review.
 
 The main draft surfaces still needing that review are:
 - supporting context readmes and trackers
@@ -33,16 +33,15 @@ If it stays inside foundation scope, it needs explicit definition and implementa
 This is not the current active step.
 It is a deferred foundation concern that should be revisited if the foundation gate decides more foundation work is needed.
 
-## O-008 - Lower-level phase-model rules remain deferred until the high-level model is agreed
+## O-008 - Script-governance implementation remains deferred after the phase model draft
 
-The current active work is the high-level phase-model draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
-Lower-level details are intentionally deferred until that high-level model is agreed.
+The phase-model draft is now intended to be script-ready, but script governance is not part of the current implementation layer.
+If script enforcement is later chosen, it should enforce the frozen model rather than redefine it.
 
 Examples include:
-- the final minimum field list for phase and step contracts
-- the detailed workplan unfreeze and re-freeze procedure
-- approval recording mechanics
-- later script governance around routing and gates
+- routing enforcement
+- gate enforcement
+- promotion and demotion enforcement
 
 This is not the current active step.
-It should be revisited after the high-level phase model is agreed.
+It should be revisited after the phase model is frozen if implementation is later approved.

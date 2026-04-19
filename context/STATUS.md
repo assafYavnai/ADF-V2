@@ -8,11 +8,11 @@ Foundation Step 1
 
 ## Current step
 
-Define the high-level phase model in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
+Review the phase model draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
 
 ## Next step
 
-Resolve the remaining high-level open questions in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`, then return to freeze review of the remaining drafted foundation support docs.
+Run review on `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`. If it is approved for freeze-readiness, move it from review to freeze approval under the global CEO+CTO freeze rule before returning to the remaining drafted foundation support docs.
 
 ## Gate state
 

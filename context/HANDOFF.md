@@ -11,11 +11,11 @@ The foundation layer is still being defined.
 
 ## Current task
 
-Define the high-level phase model in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` as the current active Foundation Step 1 draft surface.
+Review the phase model draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` as the current active Foundation Step 1 surface.
 
 ## Current step
 
-Foundation Step 1 - high-level phase model requirements
+Foundation Step 1 - phase model review draft
 
 ## Session summary
 
@@ -32,6 +32,8 @@ The naming-rule scope and open-issue closure rule were tightened again in this s
 The foundation work model was then clarified so the gate is a post-freeze check, not a step, and freeze was made explicit as a global CEO+CTO approval rule.
 Additional deferred foundation concerns were then captured in `OPEN-ISSUES.md` so they stay visible without widening the current active step.
 A first draft artifact for high-level phase-model requirements was then created under `context/artifacts/` so the ongoing discussion can keep agreed items, open questions, and later-deferred items separate without freezing phase truth too early.
+The lower-level operational mechanics were then defined so the phase-model draft no longer carries open model holes.
+That draft was then rewritten into a review-ready canonical form while still remaining an unfrozen artifact.
 
 ## Session pointers
 
@@ -85,5 +87,5 @@ The list includes both the current-session decision and the older decisions this
 ## Next step
 
 Continue Foundation Step 1 through `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
-The next concrete work is to resolve the remaining high-level open questions in that artifact before returning to freeze review of the remaining unfrozen foundation support docs.
-If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and the lower-level phase-model details intentionally postponed until the high-level model is agreed.
+The next concrete work is to review that artifact for freeze-readiness and, if approved, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
+If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.

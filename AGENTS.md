@@ -14,7 +14,7 @@ Before doing substantive work, read these files in this order:
 
 ## Current Step
 
-1. Define the high-level phase model in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
+1. Review the phase model draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
 
 ## Routing Rules
 
@@ -26,7 +26,7 @@ Before doing substantive work, read these files in this order:
 - After reading `context/HANDOFF.md`, read the required decision files listed there for the current handoff.
 - Use `context/STATUS.md` as the thin operational tracker.
 - Use `context/OPEN-ISSUES.md` as the deferred-items tracker.
-- Use `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` as the active draft surface for the current phase-model discussion.
+- Use `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` as the active review-ready draft surface for the current phase-model work.
 - Follow `RULES.md` for naming and writing conventions.
 
 ## Working Mode
