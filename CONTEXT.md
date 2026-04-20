@@ -131,12 +131,12 @@ Pre-canonical artifact filenames must follow the governed entry-file naming rule
 
 ### Freeze rule
 
-When the agent believes an artifact is ready to freeze, it asks the CEO for freeze approval.
+When the agent believes an artifact is ready to freeze, it asks for freeze approval under the global freeze rule.
 
 Artifact freeze follows the global freeze rule and therefore requires approval from both CEO and CTO.
 
-If the answer is:
-- no: apply CEO comments and check the freeze gate again later
+If the freeze approval outcome is:
+- no: apply the approval comments and check the freeze gate again later
 - yes: promote the artifact
 
 ### Promotion rule

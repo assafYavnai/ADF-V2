@@ -76,6 +76,8 @@ The draft now says global `context/STATUS.md` is bootstrap-only and is retired a
 That global-status retirement rule was then saved as another explicit decision.
 A deeper carry-through audit then found one remaining partial-application gap in routing wording.
 The draft routing section now explicitly recognizes only instantiated numbered step folders as active steps, and that alignment was saved as another explicit decision instead of silently rewriting older frozen decisions.
+That same deeper audit then found one stale bootstrap freeze sentence in frozen `CONTEXT.md`.
+The bootstrap artifact-freeze wording was then normalized so the request and rejection path both use the already agreed global CEO+CTO freeze rule instead of drifting back to CEO-only phrasing.
 
 ## Session pointers
 
@@ -119,6 +121,7 @@ The draft routing section now explicitly recognizes only instantiated numbered s
 - `context/decisions/ARTIFACTS-README-USES-GLOBAL-FREEZE-RULE.md`
 - `context/decisions/PHASE-MODEL-RETIRE-GLOBAL-STATUS-AFTER-PROMOTION.md`
 - `context/decisions/PHASE-MODEL-ROUTING-USES-INSTANTIATED-NUMBERED-STEPS.md`
+- `context/decisions/CONTEXT-ARTIFACT-FREEZE-WORDING-USES-GLOBAL-RULE.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -141,6 +144,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/ARTIFACTS-README-USES-GLOBAL-FREEZE-RULE.md`
 - `context/decisions/PHASE-MODEL-RETIRE-GLOBAL-STATUS-AFTER-PROMOTION.md`
 - `context/decisions/PHASE-MODEL-ROUTING-USES-INSTANTIATED-NUMBERED-STEPS.md`
+- `context/decisions/CONTEXT-ARTIFACT-FREEZE-WORDING-USES-GLOBAL-RULE.md`
 
 ## Older decisions this handoff depends on
 
@@ -175,5 +179,6 @@ The live `system-definition` backlog candidate is also now normalized to the fol
 The local artifacts-readme freeze wording is also now aligned with frozen `CONTEXT.md`.
 The global `context/STATUS.md` retirement rule is also now explicitly carried through the target-model transition.
 The routing step-selection wording is also now fully aligned with the virtual-step and former-step model.
+The bootstrap artifact-freeze wording in frozen `CONTEXT.md` is also now internally aligned with the same global freeze rule.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.
