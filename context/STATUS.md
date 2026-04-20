@@ -12,7 +12,7 @@ Review the phase model draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIR
 
 ## Next step
 
-Continue review on `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` against the remaining findings after the decision-routing, local-handoff, promoted-root, transition, current-step, close-gate-flow, two-gate approval, artifact-governance, freeze-ready-versus-close-ready sequencing, and decisions-folder-contract pushback fixes. If it is approved for freeze-readiness, move it from review to freeze approval under the global CEO+CTO freeze rule before returning to the remaining drafted foundation support docs.
+Continue review on `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` against the remaining findings after the decision-routing, local-handoff, promoted-root, transition, current-step, close-gate-flow, two-gate approval, artifact-governance, freeze-ready-versus-close-ready sequencing, decisions-folder-contract, and open-issues-audit-trail pushback fixes. If it is approved for freeze-readiness, move it from review to freeze approval under the global CEO+CTO freeze rule before returning to the remaining drafted foundation support docs.
 
 ## Gate state
 

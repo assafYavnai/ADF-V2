@@ -400,6 +400,11 @@ Local `HANDOFF.md` is optional continuity support only.
 Local open issues should be resolved locally by default at the step or phase level.
 If a local open issue cannot be resolved locally, it may be explicitly deferred upward to the global `OPEN-ISSUES.md`.
 
+`OPEN-ISSUES.md` is a current-state surface, not a narrative history ledger.
+Audit trail for open-issue creation, closure, and transfer is provided by git checkpoints tied to the related repo-truth change.
+An empty `OPEN-ISSUES.md` means only that no issues are currently open at that scope.
+It does not itself distinguish whether no issue was ever found, all issues were resolved locally, or issues were transferred upward.
+
 Global open issues act as the intake pool for deferred future work, but they are not the same thing as backlog phase candidates.
 `phases/backlog/` holds explicit future phase candidates, not every deferred global open issue.
 Promotion from a global open issue into `phases/backlog/<slug>/` is an explicit shaping step, not an automatic move.
@@ -407,6 +412,12 @@ Promotion from a global open issue into `phases/backlog/<slug>/` is an explicit 
 A step cannot close while it still owns unresolved step-scoped open items unless those items are explicitly transferred forward.
 A phase cannot close while it still owns unresolved phase-scoped open items.
 To close a phase, remaining phase-scoped items must be either resolved or transferred out to backlog or general-level open items.
+
+Open-issues commit rule:
+- every meaningful `OPEN-ISSUES.md` update must be committed in the same logical checkpoint as the event it records
+- do not leave an open-issue creation, closure, transfer, or final-clear state sitting uncommitted across later unrelated work
+- when the last open issue at a scope is resolved or transferred out, the resulting empty `OPEN-ISSUES.md` state must be part of that same checkpoint so git preserves how the scope became clear
+- `OPEN-ISSUES.md` does not need a separate dedicated commit if the related repo-truth change is already part of the same logical checkpoint
 
 ## Handoff
 
