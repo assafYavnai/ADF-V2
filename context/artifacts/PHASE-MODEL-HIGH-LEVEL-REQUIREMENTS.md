@@ -277,16 +277,26 @@ When a step is approved closed by the user, the next step defaults to the next i
 If that override changes the frozen workplan flow, the workplan must be unfrozen and revised, and the reason must be captured in the revision decision and in the revised `WORKPLAN.md`.
 
 When all original implementation steps are completed, the phase does not move into a no-current-step state.
-Instead, `WORKPLAN.md` transitions into close-gate follow-up steps as the next current-step area until phase close-gate dependencies are satisfied.
+Instead, `WORKPLAN.md` transitions into freeze-ready preparation as the next current-step area until the scope is ready to ask for freeze-gate approval.
 
-Close-gate follow-up steps may be listed in a separate section of `WORKPLAN.md` so it is clear they were added after the original implementation steps were complete.
-Those follow-up steps may include:
-- resolving, addressing, or explicitly deferring remaining open issues that still block phase close
-- completing any remaining close-gate dependencies required before freeze can be suggested
+Freeze-ready preparation may be listed in a separate section of `WORKPLAN.md` so it is clear it begins after the original implementation steps are complete.
+That preparation may include:
+- confirming the implementation outputs are complete enough to stop execution and enter review
 - preparing the agent freeze recommendation and summary for user review
 
-When all close-gate dependencies are satisfied, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject.
-If the user rejects and asks for further work that changes the frozen workplan flow, that rejection triggers a quick workplan unfreeze, revision, and re-freeze before execution continues.
+When the scope is freeze ready, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject.
+If the freeze gate is approved, the review-fix cycle begins.
+
+After the review-fix cycle is complete, `WORKPLAN.md` transitions into close-gate follow-up steps as the next current-step area until phase close-gate dependencies are satisfied.
+
+Close-gate follow-up steps may be listed in a separate section of `WORKPLAN.md` so it is clear they happen after the review-fix cycle is complete.
+Those follow-up steps may include:
+- resolving, addressing, or explicitly deferring remaining open issues that still block phase close
+- rerunning required verification after review fixes
+- completing any remaining close-gate dependencies required before close can be suggested
+
+When all close-gate dependencies are satisfied, the next step is for the agent to suggest close with a summary and for the user to either approve or reject.
+If the user rejects either the freeze suggestion or the close suggestion and asks for further work that changes the frozen workplan flow, that rejection triggers a quick workplan unfreeze, revision, and re-freeze before execution continues.
 
 ## Workplan Change Control
 
