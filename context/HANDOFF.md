@@ -80,10 +80,13 @@ That same deeper audit then found one stale bootstrap freeze sentence in frozen 
 The bootstrap artifact-freeze wording was then normalized so the request and rejection path both use the already agreed global CEO+CTO freeze rule instead of drifting back to CEO-only phrasing.
 The remaining structural review issue on approval-state determinism was then addressed in the draft.
 The draft now explicitly separates document approval state from scope lifecycle state, makes phase `WORKPLAN.md` the canonical runtime-state owner for both phase and instantiated-step lifecycle, keeps contracts scoped to definition plus their own document approval state, keeps `OPEN-ISSUES.md` blocker-only, and makes git checkpoints the audit trail instead of introducing a new tracker layer.
+Deferred foundation-phase concerns that must survive current-step promotion were then moved out of the bootstrap global open-issues pool and into `phases/phase0-foundation/OPEN-ISSUES.md`.
+That phase-local file now carries the known context gap, persistent memory support, traceability gaps, KPI support, and later script governance as deferred foundation work.
 
 ## Session pointers
 
 - `phases/phase0-foundation/WORKPLAN.md`
+- `phases/phase0-foundation/OPEN-ISSUES.md`
 - `phases/phase0-foundation/README.md`
 - `CONTEXT.md`
 - `RULES.md`
@@ -185,5 +188,6 @@ The global `context/STATUS.md` retirement rule is also now explicitly carried th
 The routing step-selection wording is also now fully aligned with the virtual-step and former-step model.
 The bootstrap artifact-freeze wording in frozen `CONTEXT.md` is also now internally aligned with the same global freeze rule.
 The approval-state determinism gap is also now fixed by separating document approval from runtime lifecycle state and making the phase workplan the canonical runtime-state owner.
+Deferred foundation-phase concerns that must survive current-step promotion are also now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` instead of only in the bootstrap global open-issues file.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
-If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.
+If the foundation gate later decides foundation is incomplete, the deferred foundation-phase concerns now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` include the known context gap, persistent memory, traceability gaps, KPI support, and later script-governance implementation.

@@ -80,3 +80,6 @@ Current focus:
 
 Current gate status:
 - not ready for approval yet
+
+Deferred foundation-phase concerns that must survive current-step promotion are tracked in:
+- `phases/phase0-foundation/OPEN-ISSUES.md`
