@@ -69,6 +69,8 @@ The draft now removes target-model structural exceptions, makes backlog candidat
 That no-exceptions and folder-based backlog rule was then saved as another explicit decision.
 The live `system-definition` backlog candidate was then normalized to match that model.
 Its backlog `WORKPLAN.md` was kept, its nested legacy `phases/` subtree was removed, and that concrete normalization path was saved as another explicit decision so later agents do not recreate the old shape.
+The stale local artifacts-readme freeze wording was then corrected to match frozen `CONTEXT.md`.
+The local readme now points to the global freeze rule instead of implying CEO-only artifact approval, and that correction was saved as another explicit decision.
 
 ## Session pointers
 
@@ -109,6 +111,7 @@ Its backlog `WORKPLAN.md` was kept, its nested legacy `phases/` subtree was remo
 - `context/decisions/PHASE-MODEL-VIRTUAL-STEPS-AND-FORMER-STEP-FOLDERS.md`
 - `context/decisions/PHASE-MODEL-NO-EXCEPTIONS-AND-FOLDER-BASED-BACKLOG.md`
 - `context/decisions/SYSTEM-DEFINITION-BACKLOG-NORMALIZATION.md`
+- `context/decisions/ARTIFACTS-README-USES-GLOBAL-FREEZE-RULE.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -128,6 +131,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/PHASE-MODEL-VIRTUAL-STEPS-AND-FORMER-STEP-FOLDERS.md`
 - `context/decisions/PHASE-MODEL-NO-EXCEPTIONS-AND-FOLDER-BASED-BACKLOG.md`
 - `context/decisions/SYSTEM-DEFINITION-BACKLOG-NORMALIZATION.md`
+- `context/decisions/ARTIFACTS-README-USES-GLOBAL-FREEZE-RULE.md`
 
 ## Older decisions this handoff depends on
 
@@ -159,5 +163,6 @@ The promoted-phase inventory contradiction is also now fixed in the draft.
 The step numbering and former-step tracking contradiction is also now fixed in the draft.
 The backlog-shape and no-exceptions contradiction is also now fixed in the draft.
 The live `system-definition` backlog candidate is also now normalized to the folder-based backlog model.
+The local artifacts-readme freeze wording is also now aligned with frozen `CONTEXT.md`.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.
