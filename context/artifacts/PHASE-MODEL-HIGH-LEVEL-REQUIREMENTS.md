@@ -98,6 +98,8 @@ The current intended transition mapping is:
 - the current phase-model work becomes Foundation Step 1 inside that phase
 - foundation normalization into full target-model compliance becomes Foundation Step 2
 - `phases/phase1-Strategic_Definition/` remains a promoted but inactive/selectable phase after it is normalized into the governed target-model shape
+- `phases/backlog/system-definition/` is normalized as a folder-based backlog candidate by keeping its backlog `WORKPLAN.md` and removing the nested legacy `phases/` subtree
+- if `system-definition` is later selected for promotion, that retained workplan may be reused if still compliant, and the promotion checkpoint must add the missing compliant phase contract and the rest of the required promoted-phase inventory
 
 ## Routing
 
