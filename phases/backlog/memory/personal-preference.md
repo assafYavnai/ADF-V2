@@ -1,0 +1,5 @@
+we need to find a place to save and list user personal preferences like how he expect agent to answer, or explain that when referening to a file in lower case, but convention mandate it to be in upper case agent must traet user input as case-insensitive, what importatnt to him etc. in other words its a user profile, personality and point of view.
+Also we need to  save and list user rules - example: if a prompt contatin a question and an action agent must just answer question (it means we continue discussion) with no action (ask user at the end if to execute the action stateed)
+
+
+reference - https://www.youtube.com/watch?v=2PWJu6uAaoU->https://natesnewsletter.substack.com/p/your-agent-needs-a-soulmd-you-cant?r=1z4sm5&utm_campaign=post&utm_medium=web->https://github.com/NateBJones-Projects/OB1/tree/main/recipes/work-operating-model-activation
