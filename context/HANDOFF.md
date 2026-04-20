@@ -52,6 +52,9 @@ That step-drafts, phase-artifacts, and contract-owned promotion rule was then sa
 Second-pass reviewer pushback on freeze-ready versus close-ready sequencing was then addressed in the draft.
 The draft now makes freeze recommendation happen at the freeze-ready checkpoint before review, and moves close-gate follow-up work to after the review-fix cycle.
 That lifecycle-sequencing clarification was then saved as another explicit decision so later agents do not have to reconcile conflicting wording by inference.
+Second-pass reviewer pushback on the decisions-folder contract was then addressed in the draft.
+The draft now makes `context/decisions/INDEX.md` an explicitly governed support file in the target model, while keeping the current bootstrap `frozen decisions only` folder contract authoritative until the later phase-model promotion checkpoint.
+That decisions-folder supersession rule was then saved as another explicit decision so later agents do not have to invent an exception by inference.
 
 ## Session pointers
 
@@ -86,6 +89,7 @@ That lifecycle-sequencing clarification was then saved as another explicit decis
 - `context/decisions/PHASE-MODEL-TWO-GATE-APPROVAL-AND-PROMOTION-FLOW.md`
 - `context/decisions/PHASE-MODEL-STEP-DRAFTS-AND-PHASE-ARTIFACTS.md`
 - `context/decisions/PHASE-MODEL-FREEZE-READY-PRECEDES-CLOSE-READY.md`
+- `context/decisions/PHASE-MODEL-DECISIONS-FOLDER-CONTRACT-SUPERSESSION.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -99,6 +103,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/PHASE-MODEL-TWO-GATE-APPROVAL-AND-PROMOTION-FLOW.md`
 - `context/decisions/PHASE-MODEL-STEP-DRAFTS-AND-PHASE-ARTIFACTS.md`
 - `context/decisions/PHASE-MODEL-FREEZE-READY-PRECEDES-CLOSE-READY.md`
+- `context/decisions/PHASE-MODEL-DECISIONS-FOLDER-CONTRACT-SUPERSESSION.md`
 
 ## Older decisions this handoff depends on
 
@@ -124,5 +129,6 @@ The workplan current-step and close-gate-flow pushback is also now fixed in the 
 The two-gate approval, promotion, and routing-update pushback is also now fixed in the draft.
 The artifact-governance and promotion-enforceability pushback is also now fixed in the draft.
 The freeze-ready versus close-ready sequencing contradiction is also now fixed in the draft.
+The decisions-folder contract contradiction is also now fixed in the draft.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.

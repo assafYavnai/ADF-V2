@@ -143,6 +143,13 @@ Default agent routing behavior is:
 
 Frozen decisions are global by nature and are written only under `context/decisions/`.
 
+In the target phase model, `context/decisions/` contains only:
+- frozen decision files
+- the canonical support file `context/decisions/INDEX.md`
+
+`context/decisions/INDEX.md` is a governed support file, not a frozen decision entry.
+It does not use the decision-entry contract of `CONTEXT`, `OPTIONS`, `DECISION`, and `APPROVAL`.
+
 Decision filename rule:
 - `UPPERCASE-WITH-HYPHENS.md`
 
@@ -190,7 +197,9 @@ Default agent decision-read behavior is:
 Transition and supersession rule:
 - until this phase model is frozen and promoted, the foundation-bootstrap runtime may still use the current global `context/HANDOFF.md` decision-read list
 - when this phase model is promoted, `context/decisions/INDEX.md` supersedes global `context/HANDOFF.md` as the curated decision-read surface
-- the promotion checkpoint must create or update `context/decisions/INDEX.md`, update `phases/ROUTING.md` to point to it, and remove any requirement that global `context/HANDOFF.md` curate decision membership
+- until that promotion checkpoint, the current bootstrap contract that `context/decisions/` holds frozen decisions only remains authoritative
+- when the phase model is promoted, the promotion checkpoint also changes the `context/decisions/` folder contract from `frozen decisions only` to `frozen decisions plus the canonical support file INDEX.md`
+- that same promotion checkpoint must create or update `context/decisions/INDEX.md`, update `phases/ROUTING.md` to point to it, update `CONTEXT.md`, update `context/decisions/README.md`, and remove any requirement that global `context/HANDOFF.md` curate decision membership
 - do not activate decision-index routing in isolation from the rest of the phase-model promotion checkpoint
 
 Whenever a new frozen decision is saved, the matching `context/decisions/INDEX.md` update must be made in the same logical change.
