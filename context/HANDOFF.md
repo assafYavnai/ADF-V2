@@ -58,6 +58,9 @@ That decisions-folder supersession rule was then saved as another explicit decis
 The open-issues audit-trail question was then clarified in the draft.
 The draft now keeps `OPEN-ISSUES.md` as a current-state surface and uses git checkpoints, not a new local activity file, as the governed audit trail for open-issue lifecycle changes.
 That git-backed open-issues audit-trail rule was then saved as another explicit decision.
+Second-pass reviewer pushback on promoted-phase inventory was then addressed in the draft.
+The draft now makes promotion eligibility depend on ready phase `CONTRACT.md` and `WORKPLAN.md`, while requiring the promotion checkpoint itself to end with a full promoted phase box, including phase `OPEN-ISSUES.md` and the first step box.
+That full-phase-box promotion rule was then saved as another explicit decision so later agents and scripts do not invent partial promotion behavior.
 
 ## Session pointers
 
@@ -94,6 +97,7 @@ That git-backed open-issues audit-trail rule was then saved as another explicit 
 - `context/decisions/PHASE-MODEL-FREEZE-READY-PRECEDES-CLOSE-READY.md`
 - `context/decisions/PHASE-MODEL-DECISIONS-FOLDER-CONTRACT-SUPERSESSION.md`
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-USE-GIT-FOR-AUDIT-TRAIL.md`
+- `context/decisions/PHASE-MODEL-PROMOTION-MUST-MATERIALIZE-FULL-PHASE-BOX.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -109,6 +113,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/PHASE-MODEL-FREEZE-READY-PRECEDES-CLOSE-READY.md`
 - `context/decisions/PHASE-MODEL-DECISIONS-FOLDER-CONTRACT-SUPERSESSION.md`
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-USE-GIT-FOR-AUDIT-TRAIL.md`
+- `context/decisions/PHASE-MODEL-PROMOTION-MUST-MATERIALIZE-FULL-PHASE-BOX.md`
 
 ## Older decisions this handoff depends on
 
@@ -136,5 +141,6 @@ The artifact-governance and promotion-enforceability pushback is also now fixed 
 The freeze-ready versus close-ready sequencing contradiction is also now fixed in the draft.
 The decisions-folder contract contradiction is also now fixed in the draft.
 The open-issues audit-trail rule is also now fixed in the draft.
+The promoted-phase inventory contradiction is also now fixed in the draft.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.

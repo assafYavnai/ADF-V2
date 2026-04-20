@@ -219,6 +219,23 @@ Promotion from backlog into the promoted-phases root requires:
 - a fully compliant `CONTRACT.md`
 - a fully compliant `WORKPLAN.md`
 
+Promotion eligibility is based on those ready phase-governing artifacts.
+Promotion execution must then materialize the full minimum promoted-phase box in the same logical checkpoint.
+
+By the end of the promotion checkpoint, the promoted phase must contain:
+- `CONTRACT.md`
+- `WORKPLAN.md`
+- `OPEN-ISSUES.md`
+- at least one `stepNN-<slug>/` folder
+
+That first step box must contain:
+- `CONTRACT.md`
+- `OPEN-ISSUES.md`
+
+The phase `CONTRACT.md`, phase `WORKPLAN.md`, and first step `CONTRACT.md` must already be compatible with each other at promotion time.
+The missing `OPEN-ISSUES.md` files and first step folder may either already exist inside the backlog candidate or be created atomically during the promotion checkpoint.
+No phase may appear in the promoted root as a partially initialized box at the end of a checkpoint.
+
 A phase receives its first promoted phase number when the user promotes it into the open promoted-phase set.
 Open promoted phases may later be renumbered.
 
@@ -467,6 +484,9 @@ The required file inventory inside a promoted phase folder is:
 - `WORKPLAN.md`
 - `OPEN-ISSUES.md`
 - one or more `stepNN-<slug>/` folders
+
+That inventory is not optional after promotion.
+If promotion is executed, the full promoted-phase inventory must exist by the end of the same logical checkpoint.
 
 Artifacts are authored only inside steps.
 The phase does not create draft artifacts of its own.
