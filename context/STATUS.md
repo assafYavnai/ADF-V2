@@ -12,7 +12,7 @@ Review the phase model draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIR
 
 ## Next step
 
-Continue review on `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` against the remaining findings after the decision-routing, local-handoff, promoted-root, transition, current-step, close-gate-flow, two-gate approval, artifact-governance, freeze-ready-versus-close-ready sequencing, decisions-folder-contract, open-issues-audit-trail, promoted-phase-inventory, step-numbering, and backlog-shape pushback fixes, with the live `system-definition` backlog candidate now normalized to the folder-based backlog model, the local artifacts readme now aligned with the global freeze rule, and the target-model retirement of global `context/STATUS.md` now made explicit. If it is approved for freeze-readiness, move it from review to freeze approval under the global CEO+CTO freeze rule before returning to the remaining drafted foundation support docs.
+Continue review on `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` after the carry-through audit that aligned routing step-selection wording with the already approved virtual-step and former-step model, with the live `system-definition` backlog candidate normalized to the folder-based backlog model, the local artifacts readme aligned with the global freeze rule, and the target-model retirement of global `context/STATUS.md` now made explicit. The remaining known structural review item is approval-state determinism. If the artifact is later approved for freeze-readiness, move it from review to freeze approval under the global CEO+CTO freeze rule before returning to the remaining drafted foundation support docs.
 
 ## Gate state
 

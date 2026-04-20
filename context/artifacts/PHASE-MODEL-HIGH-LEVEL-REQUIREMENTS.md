@@ -133,8 +133,8 @@ Step sequencing belongs to the active phase `WORKPLAN.md`.
 If no active phase is currently selected, `phases/ROUTING.md` must say that selection is pending.
 Agents must not infer an active phase when routing says none is selected.
 
-For routing purposes, a step is selected only when the active phase `WORKPLAN.md` explicit `Current step` field points to a step folder under that phase.
-If `Current step` points to a close-gate follow-up item instead, agents do not infer an active step folder unless the workplan explicitly points to one.
+For routing purposes, a step is selected only when the active phase `WORKPLAN.md` explicit `Current step` field points to an instantiated numbered step folder under that phase.
+If `Current step` points to a close-gate follow-up item or any other non-step item instead, agents do not infer an active step folder.
 
 The required active-phase read order is:
 1. active phase `CONTRACT.md`
