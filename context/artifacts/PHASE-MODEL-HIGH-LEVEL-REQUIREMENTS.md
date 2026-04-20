@@ -310,16 +310,23 @@ The phase contract must define:
 - which collected phase artifacts are promotable to canonical repo locations at phase close
 - the canonical promotion targets for those artifacts
 
+Every governed phase `CONTRACT.md` must also carry explicit document-state wording inside the file.
+That document state owns only the contract approval state.
+It does not own the runtime lifecycle state of the phase.
+
 ## Phase Workplan
 
 `WORKPLAN.md` is created after `CONTRACT.md`.
 `WORKPLAN.md` is derived from `CONTRACT.md` and cannot expand contract scope.
 
 The minimum required field list for a phase `WORKPLAN.md` is:
+- workplan document state
+- phase lifecycle state
 - purpose
 - contract reference
 - current step
 - ordered implementation step list
+- instantiated-step runtime state record
 - step dependencies or prerequisites
 - default next-step rule
 - close-gate follow-up steps
@@ -327,8 +334,15 @@ The minimum required field list for a phase `WORKPLAN.md` is:
 - phase workplan close gate
 
 No implementation starts until the phase workplan is frozen.
-`WORKPLAN.md` is the authority for current step and default next-step flow inside the phase.
+`WORKPLAN.md` is the canonical runtime-state surface for the phase.
+`WORKPLAN.md` is the authority for:
+- phase runtime lifecycle state
+- current step
+- runtime lifecycle state of each instantiated step
+- step close progression and default next-step flow inside the phase
+
 No separate phase-local status tracker is introduced for step sequencing.
+Because steps do not have a step-local workplan, step runtime lifecycle state is not recorded in step `CONTRACT.md`.
 
 `Current step` must be an explicit field inside `WORKPLAN.md`.
 The ordered implementation step list defines the default implementation-step flow.
@@ -336,6 +350,8 @@ The ordered implementation step list is the canonical execution order.
 Listed steps are virtual until they are instantiated in git.
 A step becomes an official execution step only when it is instantiated as a numbered folder under the phase.
 `Current step` may point only to an instantiated numbered step folder or to a governed non-step follow-up item.
+Virtual listed steps remain planned in `WORKPLAN.md` until they are instantiated.
+Once a step is instantiated, its current runtime state must be recorded in the phase `WORKPLAN.md` using the governed lifecycle vocabulary in this document.
 
 When a step is approved closed by the user, the next step defaults to the next item in the ordered implementation step list unless the user explicitly overrides it.
 If that override changes the frozen workplan flow, the workplan must be unfrozen and revised, and the reason must be captured in the revision decision and in the revised `WORKPLAN.md`.
@@ -423,6 +439,10 @@ The minimum required step contract is:
 - verification
 - close gate
 
+Every governed step `CONTRACT.md` must also carry explicit document-state wording inside the file.
+That document state owns only the step-contract approval state.
+Step runtime lifecycle state is recorded in the phase `WORKPLAN.md`, not in the step `CONTRACT.md`.
+
 The exact required file inventory inside a step folder is:
 - `CONTRACT.md`
 - `OPEN-ISSUES.md`
@@ -474,6 +494,8 @@ Local open issues should be resolved locally by default at the step or phase lev
 If a local open issue cannot be resolved locally, it may be explicitly deferred upward to the global `OPEN-ISSUES.md`.
 
 `OPEN-ISSUES.md` is a current-state surface, not a narrative history ledger.
+`OPEN-ISSUES.md` records scoped unresolved blockers, transfers, and explicit dispositions only.
+It does not own current step, document approval state, or lifecycle state.
 Audit trail for open-issue creation, closure, and transfer is provided by git checkpoints tied to the related repo-truth change.
 An empty `OPEN-ISSUES.md` means only that no issues are currently open at that scope.
 It does not itself distinguish whether no issue was ever found, all issues were resolved locally, or issues were transferred upward.
@@ -664,10 +686,28 @@ Future script governance may define additional governed triggers.
 Approvals must be recorded explicitly in repo files.
 Approval is never inferred from progress, silence, or downstream edits.
 
-Approval is recorded:
-- in the file being approved, by changing its approval or status wording
-- in the relevant tracker files, so current truth reflects the approval
-- in a global decision file when the approval freezes or changes repo truth in a way that the decision rules require
+Document approval state and scope lifecycle state are separate concepts.
+A contract or workplan being frozen or approved does not by itself mean the related step or phase is freeze ready, freeze-gate approved, close ready, or close-gate approved.
+A step or phase reaching one of those lifecycle states does not by itself re-approve the underlying contract or workplan.
+
+Approval-state ownership is:
+- phase `CONTRACT.md` owns phase-contract document approval state
+- step `CONTRACT.md` owns step-contract document approval state
+- phase `WORKPLAN.md` owns phase-workplan document approval state
+- phase `WORKPLAN.md` owns phase runtime lifecycle state
+- phase `WORKPLAN.md` owns step runtime lifecycle state for instantiated steps
+- scope `OPEN-ISSUES.md` owns unresolved blockers, transfers, and explicit dispositions only
+- a global decision file owns only broader repo-truth approvals that the decision rules require to be preserved as frozen decisions
+
+The lifecycle states in this section are scope-lifecycle states.
+For a phase, they are recorded in the phase `WORKPLAN.md`.
+For a step, they are also recorded in the phase `WORKPLAN.md` because no step-local `WORKPLAN.md` exists.
+
+Approval is recorded as follows:
+- document approval in the file being approved, by changing its document-state wording
+- scope-lifecycle approval in the governing phase `WORKPLAN.md`
+- blocker/open-item status in the relevant scope `OPEN-ISSUES.md`
+- broader repo-truth approval in a global decision file when the decision rules require it
 
 For contracts and workplans:
 - the approved file must explicitly say it is frozen or approved
@@ -687,6 +727,10 @@ For decisions:
 
 Each approval that changes repo truth must end in a commit.
 That commit must include all files needed to make the approved state self-consistent.
+
+Current truth is reconstructed from the boxed current-state files.
+Audit trail is reconstructed from git checkpoints that update those files.
+No separate narrative progress ledger is introduced at this stage.
 
 ## Script Readiness
 
