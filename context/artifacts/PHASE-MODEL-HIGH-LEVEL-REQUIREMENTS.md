@@ -67,7 +67,8 @@ Naming rules are:
 - promoted open phase folders use `phases/phaseNNN-<slug>/`
 - backlog candidate folders use `phases/backlog/<slug>/`
 - completed phase folders use `phases/complete/phaseNNN-<slug>/`
-- step folders use `stepNN-<slug>/` under the phase folder
+- official instantiated step folders use `stepNN-<slug>/` under the phase folder
+- preserved former-step folders use `<slug>/` under the phase folder when an instantiated step loses its execution number
 - folder and file naming use lowercase kebab-case for slugs, with zero-padded numeric ids for promoted phases and steps
 
 `phases/STATUS.md` is not used at this stage.
@@ -136,6 +137,7 @@ Default agent routing behavior is:
 - do not scan `phases/backlog/` by default
 - do not scan `phases/complete/` by default
 - do not scan non-active promoted phases by default unless routing or the user explicitly points to them
+- do not scan preserved former-step folders by default unless the active phase `WORKPLAN.md` or phase `OPEN-ISSUES.md` explicitly points to them
 - do not scan the full `context/decisions/` folder by default
 - do not scan unrelated `HANDOFF.md` files by default
 
@@ -298,6 +300,10 @@ No separate phase-local status tracker is introduced for step sequencing.
 
 `Current step` must be an explicit field inside `WORKPLAN.md`.
 The ordered implementation step list defines the default implementation-step flow.
+The ordered implementation step list is the canonical execution order.
+Listed steps are virtual until they are instantiated in git.
+A step becomes an official execution step only when it is instantiated as a numbered folder under the phase.
+`Current step` may point only to an instantiated numbered step folder or to a governed non-step follow-up item.
 
 When a step is approved closed by the user, the next step defaults to the next item in the ordered implementation step list unless the user explicitly overrides it.
 If that override changes the frozen workplan flow, the workplan must be unfrozen and revised, and the reason must be captured in the revision decision and in the revised `WORKPLAN.md`.
@@ -350,6 +356,7 @@ Allowed changes during workplan unfreeze are:
 - splitting one step into smaller steps
 - merging existing steps
 - reordering steps
+- changing the execution order of an instantiated step, but only by making it lose its number and updating the related phase `OPEN-ISSUES.md` entry in the same checkpoint
 - revising step prerequisites or dependencies
 - refining step verification detail
 - adding a new step if it stays fully inside frozen contract scope
@@ -388,7 +395,24 @@ The exact required file inventory inside a step folder is:
 - `CONTRACT.md`
 - `OPEN-ISSUES.md`
 
-Step folders use `stepNN-<slug>/`.
+A listed workplan step is virtual until instantiation.
+
+Official instantiated step folders use `stepNN-<slug>/`.
+
+Step instantiation rule:
+- when a step is selected for official execution, it receives the current execution number from `WORKPLAN.md`
+- before creating a new numbered step folder, the phase must check whether a preserved former-step folder with the same slug already exists at the phase root
+- if a matching preserved former-step folder exists, it must be re-instantiated by renaming it to `stepNN-<slug>/`
+- that same re-instantiation checkpoint must update its `CONTRACT.md` if needed to match the current frozen phase contract and workplan
+- that same re-instantiation checkpoint must also update the related phase `OPEN-ISSUES.md` entry so the former-step / orphan record is removed or closed
+- if no matching preserved former-step folder exists, create a new `stepNN-<slug>/` folder with the required files
+
+Step order-change rule:
+- if an instantiated step's execution order is changed, it loses its step number and stops being an official execution step
+- that preserved former-step folder keeps only the original slug at the phase root
+- the same checkpoint must create or update a phase `OPEN-ISSUES.md` entry that points to that preserved folder and records that it is a former step awaiting disposition
+- when that work is later selected again for execution, it receives the actual current execution number at re-instantiation time
+- no numbered step folder may remain if its number no longer matches execution order in practice
 
 ## Open Issues
 
@@ -429,6 +453,11 @@ Promotion from a global open issue into `phases/backlog/<slug>/` is an explicit 
 A step cannot close while it still owns unresolved step-scoped open items unless those items are explicitly transferred forward.
 A phase cannot close while it still owns unresolved phase-scoped open items.
 To close a phase, remaining phase-scoped items must be either resolved or transferred out to backlog or general-level open items.
+
+Preserved former-step folders are phase-scoped unresolved items.
+They must be tracked in the phase `OPEN-ISSUES.md` until they are re-instantiated, explicitly deferred upward, or explicitly accepted as no longer needed under the phase contract and user approval.
+When a preserved former-step folder is re-instantiated, the matching phase `OPEN-ISSUES.md` entry must be updated or removed in the same checkpoint.
+No phase may close while a preserved former-step folder still exists without an explicit recorded disposition.
 
 Open-issues commit rule:
 - every meaningful `OPEN-ISSUES.md` update must be committed in the same logical checkpoint as the event it records
