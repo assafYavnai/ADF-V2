@@ -82,14 +82,16 @@ Until this phase model is frozen and promoted, the current foundation-bootstrap 
 This model must not become active piecemeal.
 When it is promoted, the same logical checkpoint must bring routing, decision reads, and phase layout into alignment with this document before this model becomes active repo truth.
 
-Current foundation-bootstrap root folders are transition-era exceptions until that checkpoint.
-The promotion checkpoint must normalize each transition-era root folder into one target storage class:
+No target-model structural exceptions are allowed.
+Current non-target structures remain part of the current bootstrap runtime only and do not count as valid target-model shapes.
+The promotion checkpoint must normalize each affected current structure into one governed target storage class:
 - promoted open phase at `phases/phaseNNN-<slug>/`
 - backlog candidate under `phases/backlog/`
 - completed phase under `phases/complete/`
 
-A non-conforming transition-era root folder must not remain ambiguous after the promotion checkpoint.
-That same checkpoint must also rename transition-era folders into the governed naming pattern when needed.
+A non-conforming current root folder must not remain ambiguous after the promotion checkpoint.
+That same checkpoint must also rename current folders into the governed naming pattern when needed.
+The target model does not permit carrying forward a non-compliant structure as an exception.
 
 The current intended transition mapping is:
 - `phases/phase0-foundation/` becomes the active promoted foundation phase under the target model
@@ -215,7 +217,24 @@ Backlog candidates may be lightweight or mature.
 
 A backlog candidate must have at minimum:
 - a slug-based folder under `phases/backlog/`
-- a `README.md` with explanation and context of the candidate
+
+Backlog is folder-based, not entry-file-based.
+No special `README.md` file is required for a backlog candidate.
+The backlog candidate meaning is carried by the files inside its slug folder.
+
+Backlog candidate files may include:
+- proposed phase-definition material
+- proposed step-definition material
+- shaping notes
+- research
+- context needed to understand the candidate
+
+Each backlog file may contribute to a future phase or step definition.
+Backlog content is allowed to stay partial and exploratory until promotion shaping makes it compliant with the promoted-phase contract.
+
+No backlog exceptions are allowed under the target model.
+A backlog folder that does not fit this folder-based candidate model must be normalized before the target model is activated.
+Nested legacy structures such as `phases/backlog/<slug>/phases/...` must not survive the promotion checkpoint.
 
 Promotion from backlog into the promoted-phases root requires:
 - a fully compliant `CONTRACT.md`
@@ -253,12 +272,13 @@ Demotion of a promoted phase back to backlog requires explicit user approval.
 When a promoted phase is demoted back to backlog:
 - it moves to `phases/backlog/<slug>/`
 - its phase number is removed from the folder path
-- its former promoted id is preserved in the backlog candidate `README.md` for history
+- its former promoted id is preserved in the demoted candidate content for history
 
+If the demoted phase keeps `CONTRACT.md`, that file should preserve the former promoted id.
 The preserved former promoted id uses an explicit field such as:
 - `Former promoted id: phaseNNN`
 
-If the backlog candidate later becomes a full contract-bearing phase candidate, that preserved field may move into `CONTRACT.md`.
+If no `CONTRACT.md` is kept in the demoted backlog candidate, the demotion checkpoint must preserve that former promoted id in another backlog candidate file inside the same slug folder.
 
 ## Phase Contract
 

@@ -64,6 +64,9 @@ That full-phase-box promotion rule was then saved as another explicit decision s
 Second-pass reviewer pushback on step numbering and step-folder identity was then addressed in the draft.
 The draft now makes the workplan step list virtual until instantiation, makes numbered step folders mean official execution order in practice, and makes reordered instantiated steps lose their number and fall back to slug-only former-step folders tracked in phase `OPEN-ISSUES.md` until re-instantiation or explicit disposition.
 That virtual-step, re-instantiation, and former-step tracking rule was then saved as another explicit decision.
+The backlog-shape and no-exceptions rule was then clarified in the draft.
+The draft now removes target-model structural exceptions, makes backlog candidates folder-based rather than `README.md`-based, and requires legacy nested backlog structures to be normalized before target-model activation.
+That no-exceptions and folder-based backlog rule was then saved as another explicit decision.
 
 ## Session pointers
 
@@ -102,6 +105,7 @@ That virtual-step, re-instantiation, and former-step tracking rule was then save
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-USE-GIT-FOR-AUDIT-TRAIL.md`
 - `context/decisions/PHASE-MODEL-PROMOTION-MUST-MATERIALIZE-FULL-PHASE-BOX.md`
 - `context/decisions/PHASE-MODEL-VIRTUAL-STEPS-AND-FORMER-STEP-FOLDERS.md`
+- `context/decisions/PHASE-MODEL-NO-EXCEPTIONS-AND-FOLDER-BASED-BACKLOG.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -119,6 +123,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-USE-GIT-FOR-AUDIT-TRAIL.md`
 - `context/decisions/PHASE-MODEL-PROMOTION-MUST-MATERIALIZE-FULL-PHASE-BOX.md`
 - `context/decisions/PHASE-MODEL-VIRTUAL-STEPS-AND-FORMER-STEP-FOLDERS.md`
+- `context/decisions/PHASE-MODEL-NO-EXCEPTIONS-AND-FOLDER-BASED-BACKLOG.md`
 
 ## Older decisions this handoff depends on
 
@@ -148,5 +153,6 @@ The decisions-folder contract contradiction is also now fixed in the draft.
 The open-issues audit-trail rule is also now fixed in the draft.
 The promoted-phase inventory contradiction is also now fixed in the draft.
 The step numbering and former-step tracking contradiction is also now fixed in the draft.
+The backlog-shape and no-exceptions contradiction is also now fixed in the draft.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.
