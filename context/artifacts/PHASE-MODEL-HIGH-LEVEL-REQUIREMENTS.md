@@ -93,6 +93,16 @@ A non-conforming current root folder must not remain ambiguous after the promoti
 That same checkpoint must also rename current folders into the governed naming pattern when needed.
 The target model does not permit carrying forward a non-compliant structure as an exception.
 
+Bootstrap-only current-state surfaces remain bootstrap-only until the promotion checkpoint.
+Until that checkpoint:
+- global `context/HANDOFF.md` remains part of the current foundation-bootstrap runtime
+- global `context/STATUS.md` remains the bootstrap thin operational mirror
+
+When the target phase model is promoted:
+- global `context/STATUS.md` is retired and is not part of target phase execution
+- target operational state is reconstructed from `phases/ROUTING.md`, the active phase `WORKPLAN.md`, and scope `OPEN-ISSUES.md`
+- the promotion checkpoint must remove any requirement that target-phase agents read or update global `context/STATUS.md`
+
 The current intended transition mapping is:
 - `phases/phase0-foundation/` becomes the active promoted foundation phase under the target model
 - the current phase-model work becomes Foundation Step 1 inside that phase
@@ -527,6 +537,7 @@ It should be refreshed, replaced, or removed when it becomes stale.
 
 The current global `context/HANDOFF.md` is part of the foundation-bootstrap runtime and not part of the target phase execution model.
 When this phase model is promoted, global `context/HANDOFF.md` is no longer the decision-read authority.
+Global `context/STATUS.md` is also part of the foundation-bootstrap runtime only and not part of the target phase execution model after promotion.
 
 ## Artifacts
 

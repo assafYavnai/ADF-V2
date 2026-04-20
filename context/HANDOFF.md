@@ -71,6 +71,9 @@ The live `system-definition` backlog candidate was then normalized to match that
 Its backlog `WORKPLAN.md` was kept, its nested legacy `phases/` subtree was removed, and that concrete normalization path was saved as another explicit decision so later agents do not recreate the old shape.
 The stale local artifacts-readme freeze wording was then corrected to match frozen `CONTEXT.md`.
 The local readme now points to the global freeze rule instead of implying CEO-only artifact approval, and that correction was saved as another explicit decision.
+The target-model treatment of global `context/STATUS.md` was then made explicit in the draft.
+The draft now says global `context/STATUS.md` is bootstrap-only and is retired at phase-model promotion, with target operational state reconstructed from routing, workplan, and open-issues surfaces.
+That global-status retirement rule was then saved as another explicit decision.
 
 ## Session pointers
 
@@ -112,6 +115,7 @@ The local readme now points to the global freeze rule instead of implying CEO-on
 - `context/decisions/PHASE-MODEL-NO-EXCEPTIONS-AND-FOLDER-BASED-BACKLOG.md`
 - `context/decisions/SYSTEM-DEFINITION-BACKLOG-NORMALIZATION.md`
 - `context/decisions/ARTIFACTS-README-USES-GLOBAL-FREEZE-RULE.md`
+- `context/decisions/PHASE-MODEL-RETIRE-GLOBAL-STATUS-AFTER-PROMOTION.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -132,6 +136,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/PHASE-MODEL-NO-EXCEPTIONS-AND-FOLDER-BASED-BACKLOG.md`
 - `context/decisions/SYSTEM-DEFINITION-BACKLOG-NORMALIZATION.md`
 - `context/decisions/ARTIFACTS-README-USES-GLOBAL-FREEZE-RULE.md`
+- `context/decisions/PHASE-MODEL-RETIRE-GLOBAL-STATUS-AFTER-PROMOTION.md`
 
 ## Older decisions this handoff depends on
 
@@ -164,5 +169,6 @@ The step numbering and former-step tracking contradiction is also now fixed in t
 The backlog-shape and no-exceptions contradiction is also now fixed in the draft.
 The live `system-definition` backlog candidate is also now normalized to the folder-based backlog model.
 The local artifacts-readme freeze wording is also now aligned with frozen `CONTEXT.md`.
+The global `context/STATUS.md` retirement rule is also now explicitly carried through the target-model transition.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred candidates now tracked in `context/OPEN-ISSUES.md` include the known context gap, memory infrastructure, and later script-governance implementation.
