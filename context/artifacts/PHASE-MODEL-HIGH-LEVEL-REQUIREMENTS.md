@@ -119,15 +119,33 @@ The current intended transition mapping is:
 
 `AGENTS.md` is the top-level agent entry funnel.
 It is not the phase router and must not duplicate the current phase, current step, or active-task route.
+It also must not maintain a full map, index, inventory, layer summary, or repository description.
 
 `AGENTS.md` names only the top-level layer boxes and their entry-point paths.
 Agents reconstruct the operating structure by opening those entry-point files and then following only the links, pointers, and instructions provided by each opened box.
+
+The target `AGENTS.md` file has exactly two sections:
+- `Summary`
+- `Layers`
+
+`Summary` must explain the boxed traversal goal, the agent's goal to populate a working structure map by traversal, and the guardrail against scanning or inventing structure outside provided pointers.
+`Layers` must be YAML with explicit `name` and repo-relative `path` entries.
+Layer explanations and sublayer routing are owned by the layer entry files themselves, not by `AGENTS.md`.
+
+The current target top-level layers are:
+- `governance`, entered through `./RULES.md`
+- `context`, entered through `./CONTEXT.md`
+
+`governance` is the layer for global ADF governance such as rules and roles.
+Adding a governance surface, such as a role file, should be handled inside the governance layer unless it creates a genuinely new top-level layer.
+`context` is the layer for current operating context, including the later path into phase routing.
 
 `AGENTS.md` changes only when a top-level layer entry point is added, removed, or renamed.
 It does not change for normal phase execution, phase selection, step movement, or local context updates.
 
 Tool-specific stubs such as `CLAUDE.md` and `GEMINI.md` are static funnel files.
 They point their agents to `AGENTS.md` and do not change unless an LLM-specific setting is required.
+They must not change for phase execution, phase selection, routing movement, context movement, or normal repo work.
 
 The target `AGENTS.md` structure to apply when the phase model is promoted is:
 
