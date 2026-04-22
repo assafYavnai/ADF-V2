@@ -23,11 +23,12 @@ Current step is an explicit field in the workplan.
 Default next-step flow is derived from the ordered implementation step list.
 If the user changes that frozen flow, the workplan must be unfrozen and revised, with the reason captured in the revision decision and the revised workplan.
 
-The discussion also clarified close-gate behavior.
+The discussion also clarified post-implementation behavior.
 After the original implementation steps are complete, the phase does not enter a no-current-step state.
-Instead, the workplan transitions into close-gate follow-up steps.
-Those steps may be listed in a separate section so it is clear they were added after the original implementation steps finished.
-They can include remaining open-issue handling, remaining close-gate dependencies, and the agent freeze recommendation step.
+Instead, the workplan transitions into governed non-step current-work items.
+A later lifecycle-sequencing clarification split those items into freeze-ready preparation before review and close-gate follow-up after the review-fix cycle.
+Freeze-ready preparation includes the agent freeze recommendation step.
+Close-gate follow-up includes remaining open-issue handling, rerun verification after review fixes, remaining close-gate dependencies, and the agent close recommendation step.
 
 Finally, the discussion clarified what happens if the agent suggests freeze and the user rejects it.
 That rejection must trigger a quick workplan unfreeze, revision, and re-freeze before execution continues, so the workplan remains the authority.
@@ -38,7 +39,7 @@ That rejection must trigger a quick workplan unfreeze, revision, and re-freeze b
 - Treat current step as only deducible from the ordered step list.
 - Keep current step as an explicit field inside `WORKPLAN.md` and keep default next-step flow in the ordered implementation step list.
 - Let the phase move into a no-current-step state after implementation steps are complete.
-- Keep close-gate follow-up work inside `WORKPLAN.md`.
+- Keep post-implementation freeze-ready preparation and close-gate follow-up work inside `WORKPLAN.md`.
 
 ## DECISION
 
@@ -46,23 +47,34 @@ The agreed target phase-model rules are:
 
 - `WORKPLAN.md` is the authority for current step and default next-step flow inside the phase
 - `Current step` must be an explicit field in phase `WORKPLAN.md`
+- `Current step` is recorded in the required `## Workplan State` section
+- `Current step type` is recorded beside it and may be only `implementation-step`, `freeze-ready-preparation`, `close-gate-follow-up`, or `idle`
 - the ordered implementation step list defines the default implementation-step flow
+- the ordered implementation step list is virtual until instantiation and must not assign execution numbers ahead of time
 - routing does not decide current step
 - a step is selected for routing purposes only when the workplan `Current step` field points to a step folder
+- non-step current work may be selected only when `Current step` points to a stable item id in `## Freeze-Ready Preparation` or `## Close-Gate Follow-Up`
 
 - when a step is approved closed by the user, the next step defaults to the next item in the ordered implementation step list unless the user explicitly overrides it
 - if that override changes the frozen workplan flow, `WORKPLAN.md` must be unfrozen and revised
 - the reason for that revision must be captured in the revision decision and in the revised `WORKPLAN.md`
 
 - after the original implementation steps are complete, the phase does not move into a no-current-step state
-- instead, the workplan transitions into close-gate follow-up steps as the next current-step area
+- instead, the workplan transitions into freeze-ready preparation as the next current-step area
+- freeze-ready preparation items may be listed in a separate section of `WORKPLAN.md`
+- freeze-ready preparation items must use stable `freeze-<slug>` ids when they can be referenced by `Current step`
+- freeze-ready preparation includes confirming implementation outputs and preparing the agent freeze recommendation and summary
+- after the freeze gate is approved and the review-fix cycle is complete, the workplan transitions into close-gate follow-up steps as the next current-step area
 - close-gate follow-up steps may be listed in a separate section of `WORKPLAN.md`
+- close-gate follow-up items must use stable `close-<slug>` ids when they can be referenced by `Current step`
 - those follow-up steps may include:
   - resolving, addressing, or explicitly deferring remaining open issues that still block phase close
-  - completing any remaining close-gate dependencies required before freeze can be suggested
-  - preparing the agent freeze recommendation and summary for user review
+  - rerunning required verification after review fixes
+  - completing any remaining close-gate dependencies required before close can be suggested
+  - preparing the agent close recommendation and summary for user review
 
-- when all close-gate dependencies are satisfied, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject
+- when all freeze-ready preparation dependencies are satisfied, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject
+- when all close-gate dependencies are satisfied, the next step is for the agent to suggest close with a summary and for the user to either approve or reject
 - if the user rejects and asks for further work that changes the frozen workplan flow, that rejection triggers a quick workplan unfreeze, revision, and re-freeze before execution continues
 
 This decision clarifies the workplan authority model and closes the active-step-tracker ambiguity without introducing a new tracker surface.

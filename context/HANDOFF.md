@@ -42,7 +42,7 @@ Reviewer pushback on the promoted-phase root model and transition from the curre
 The draft now makes root promoted phases selectable rather than implicitly active, makes phase number a reviewed recommendation-order number among open promoted phases, separates phase close from next-phase selection, and records the intended normalization of `phase0-foundation` and `phase1-Strategic_Definition` at the later phase-model promotion checkpoint.
 That promoted-root, ordering, and transition rule was then also saved as an explicit decision.
 Reviewer pushback on active-step tracking and close-gate step flow was then addressed in the draft.
-The draft now makes `Current step` an explicit `WORKPLAN.md` field, keeps default next-step flow in the ordered implementation step list, and keeps post-implementation close-gate follow-up work inside the workplan rather than in a separate tracker.
+The draft now makes `Current step` an explicit `WORKPLAN.md` field, keeps default next-step flow in the ordered implementation step list, and keeps post-implementation freeze-ready preparation and close-gate follow-up work inside the workplan rather than in a separate tracker.
 That workplan-authority and close-gate-flow rule was then saved as another explicit decision.
 Reviewer pushback on approval ordering, promotion ownership, and movement to `phases/complete/` was then addressed in the draft.
 The draft now defines a two-gate flow of freeze-ready, freeze approval, review-fix cycle, close-ready, close approval, promotion, and post-promotion state, while making promotion a mechanical phase-owned step rather than another approval gate.
@@ -80,12 +80,15 @@ The draft routing section now explicitly recognizes only instantiated numbered s
 That same deeper audit then found one stale bootstrap freeze sentence in frozen `CONTEXT.md`.
 The bootstrap artifact-freeze wording was then normalized so the request and rejection path both use the already agreed global CEO+CTO freeze rule instead of drifting back to CEO-only phrasing.
 The remaining structural review issue on approval-state determinism was then addressed in the draft.
-The draft now explicitly separates document approval state from scope lifecycle state, makes phase `WORKPLAN.md` the canonical runtime-state owner for both phase and instantiated-step lifecycle, keeps contracts scoped to definition plus their own document approval state, keeps `OPEN-ISSUES.md` blocker-only, and makes git checkpoints the audit trail instead of introducing a new tracker layer.
+The draft now explicitly separates document approval state from scope lifecycle state, makes phase `WORKPLAN.md` the canonical runtime-state owner for both phase and instantiated-step lifecycle, defines the required workplan runtime-state schema, keeps contracts scoped to definition plus their own document approval state, keeps `OPEN-ISSUES.md` blocker-only, and makes git checkpoints the audit trail instead of introducing a new tracker layer.
 Deferred foundation-phase concerns that must survive current-step promotion were then moved out of the bootstrap global open-issues pool and into `phases/phase0-foundation/OPEN-ISSUES.md`.
 That phase-local file now carries the known context gap, persistent memory support, traceability gaps, KPI support, and later script governance as deferred foundation work.
+The global-vs-phase open-issues boundary was then clarified so `context/OPEN-ISSUES.md` remains global/bootstrap while foundation-scoped deferred items live in `phases/phase0-foundation/OPEN-ISSUES.md`, with promotion-time triage required.
 Reviewer pushback about bootstrap entrypoint migration was then corrected by clarifying the target top-level boxed traversal model.
 The boxed `AGENTS.md` shape is kept as a promotion-time template inside the phase-model draft.
 The live bootstrap files must not be changed until the phase model is promoted and implemented.
+Decision carry-through was then made explicit as both a global rule in `RULES.md` and a local phase-model requirement.
+Approved decisions cannot be described as integrated, fixed, closed, or implemented until all dependent surfaces are updated or explicitly marked unchanged with reason.
 
 ## Session pointers
 
@@ -133,6 +136,8 @@ The live bootstrap files must not be changed until the phase model is promoted a
 - `context/decisions/CONTEXT-ARTIFACT-FREEZE-WORDING-USES-GLOBAL-RULE.md`
 - `context/decisions/PHASE-MODEL-SEPARATES-DOCUMENT-APPROVAL-FROM-RUNTIME-STATE.md`
 - `context/decisions/AGENT-ENTRY-USES-BOXED-LAYER-TRAVERSAL.md`
+- `context/decisions/DECISION-CARRY-THROUGH-IS-MANDATORY.md`
+- `context/decisions/PHASE-MODEL-OPEN-ISSUES-TRANSITION-TRIAGE.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -158,6 +163,8 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/CONTEXT-ARTIFACT-FREEZE-WORDING-USES-GLOBAL-RULE.md`
 - `context/decisions/PHASE-MODEL-SEPARATES-DOCUMENT-APPROVAL-FROM-RUNTIME-STATE.md`
 - `context/decisions/AGENT-ENTRY-USES-BOXED-LAYER-TRAVERSAL.md`
+- `context/decisions/DECISION-CARRY-THROUGH-IS-MANDATORY.md`
+- `context/decisions/PHASE-MODEL-OPEN-ISSUES-TRANSITION-TRIAGE.md`
 
 ## Older decisions this handoff depends on
 
@@ -193,8 +200,10 @@ The local artifacts-readme freeze wording is also now aligned with frozen `CONTE
 The global `context/STATUS.md` retirement rule is also now explicitly carried through the target-model transition.
 The routing step-selection wording is also now fully aligned with the virtual-step and former-step model.
 The bootstrap artifact-freeze wording in frozen `CONTEXT.md` is also now internally aligned with the same global freeze rule.
-The approval-state determinism gap is also now fixed by separating document approval from runtime lifecycle state and making the phase workplan the canonical runtime-state owner.
+The approval-state determinism gap is also now fixed by separating document approval from runtime lifecycle state, making the phase workplan the canonical runtime-state owner, and defining the required workplan runtime-state schema.
 Deferred foundation-phase concerns that must survive current-step promotion are also now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` instead of only in the bootstrap global open-issues file.
+The global-vs-phase open-issues transition boundary and required promotion-time triage are also now saved as an explicit decision.
 The bootstrap entrypoint migration finding is addressed in the phase-model draft by defining the promotion-time boxed `AGENTS.md` template and keeping live bootstrap implementation deferred until promotion.
+The decision carry-through rule is also now recorded globally in `RULES.md`, locally in the phase-model draft, and as an explicit decision.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred foundation-phase concerns now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` include the known context gap, persistent memory, traceability gaps, KPI support, and later script-governance implementation.

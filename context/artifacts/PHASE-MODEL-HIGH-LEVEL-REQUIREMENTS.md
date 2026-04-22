@@ -214,7 +214,7 @@ If no active phase is currently selected, `phases/ROUTING.md` must say that sele
 Agents must not infer an active phase when routing says none is selected.
 
 For routing purposes, a step is selected only when the active phase `WORKPLAN.md` explicit `Current step` field points to an instantiated numbered step folder under that phase.
-If `Current step` points to a close-gate follow-up item or any other non-step item instead, agents do not infer an active step folder.
+If `Current step` points to a freeze-ready preparation item, close-gate follow-up item, or any other non-step item instead, agents do not infer an active step folder.
 
 The required active-phase read order is:
 1. active phase `CONTRACT.md`
@@ -390,9 +390,21 @@ The phase contract must define:
 - which collected phase artifacts are promotable to canonical repo locations at phase close
 - the canonical promotion targets for those artifacts
 
-Every governed phase `CONTRACT.md` must also carry explicit document-state wording inside the file.
+Every governed phase `CONTRACT.md` must also carry an explicit document-state field inside the file.
 That document state owns only the contract approval state.
 It does not own the runtime lifecycle state of the phase.
+
+The required phase-contract document-state field shape is:
+
+```md
+- Document state: <draft|freeze-review-ready|frozen|retired>
+```
+
+Allowed phase-contract `Document state` values are:
+- `draft`
+- `freeze-review-ready`
+- `frozen`
+- `retired`
 
 ## Phase Workplan
 
@@ -409,7 +421,8 @@ The minimum required field list for a phase `WORKPLAN.md` is:
 - instantiated-step runtime state record
 - step dependencies or prerequisites
 - default next-step rule
-- close-gate follow-up steps
+- freeze-ready preparation items
+- close-gate follow-up items
 - change-control rule
 - phase workplan close gate
 
@@ -423,6 +436,117 @@ No implementation starts until the phase workplan is frozen.
 
 No separate phase-local status tracker is introduced for step sequencing.
 Because steps do not have a step-local workplan, step runtime lifecycle state is not recorded in step `CONTRACT.md`.
+
+### Workplan State Schema
+
+A compliant phase `WORKPLAN.md` must contain a `## Workplan State` section before implementation work starts.
+That section is the machine-readable runtime-state block for the phase.
+
+The required fields are:
+- `Workplan document state`
+- `Phase lifecycle state`
+- `Current step`
+- `Current step type`
+
+Allowed `Workplan document state` values are:
+- `draft`
+- `freeze-review-ready`
+- `frozen`
+- `unfrozen`
+- `retired`
+
+Allowed `Phase lifecycle state` values are:
+- `in-progress`
+- `freeze-ready`
+- `freeze-gate-approved`
+- `review-fix-cycle`
+- `close-ready`
+- `close-gate-approved`
+- `promotion`
+- `post-promotion`
+
+Allowed `Current step type` values are:
+- `implementation-step`
+- `freeze-ready-preparation`
+- `close-gate-follow-up`
+- `idle`
+
+`Current step` must be one of:
+- an instantiated step folder name such as `stepNN-<slug>`
+- a freeze-ready preparation item id such as `freeze-<slug>`
+- a close-gate follow-up item id such as `close-<slug>`
+- `none`, only when `Current step type` is `idle`
+
+If `Current step type` is `implementation-step`, `Current step` must match an instantiated numbered step folder and a record in `## Instantiated Step Runtime`.
+If `Current step type` is `freeze-ready-preparation`, `Current step` must match an item in `## Freeze-Ready Preparation`.
+If `Current step type` is `close-gate-follow-up`, `Current step` must match an item in `## Close-Gate Follow-Up`.
+
+The required field block shape is:
+
+```md
+## Workplan State
+
+- Workplan document state: <draft|freeze-review-ready|frozen|unfrozen|retired>
+- Phase lifecycle state: <in-progress|freeze-ready|freeze-gate-approved|review-fix-cycle|close-ready|close-gate-approved|promotion|post-promotion>
+- Current step: <stepNN-<slug>|freeze-<slug>|close-<slug>|none>
+- Current step type: <implementation-step|freeze-ready-preparation|close-gate-follow-up|idle>
+```
+
+The ordered implementation step list is virtual until instantiation.
+It must not assign execution numbers ahead of time.
+It must contain step slugs in intended workplan order.
+The list order defines default next-step flow until a step is instantiated or the workplan is unfrozen and revised.
+
+The required ordered implementation step list shape is:
+
+```md
+## Ordered Implementation Steps
+
+| Plan order | Step slug | Purpose | Materialized folder |
+| --- | --- | --- | --- |
+| 1 | <slug> | <short purpose> | <blank or stepNN-slug> |
+```
+
+The instantiated-step runtime table records only materialized step folders.
+It is keyed by the instantiated folder name.
+
+The required instantiated-step runtime shape is:
+
+```md
+## Instantiated Step Runtime
+
+| Step folder | Step slug | Lifecycle state | Contract path |
+| --- | --- | --- | --- |
+| stepNN-<slug> | <slug> | <allowed lifecycle state> | stepNN-<slug>/CONTRACT.md |
+```
+
+Allowed instantiated-step `Lifecycle state` values are the same lifecycle values used for phase lifecycle state.
+
+Freeze-ready preparation and close-gate follow-up items are governed non-step current-work items.
+They exist so the workplan can remain the current-work authority without inventing a separate tracker after implementation steps finish.
+These items must use stable ids because `Current step` may point to them.
+
+Allowed follow-up item states are:
+- `pending`
+- `in-progress`
+- `complete`
+- `blocked`
+
+The required non-step follow-up shapes are:
+
+```md
+## Freeze-Ready Preparation
+
+| Item id | State | Gate dependency | Notes |
+| --- | --- | --- | --- |
+| freeze-<slug> | <pending|in-progress|complete|blocked> | <dependency or none> | <notes> |
+
+## Close-Gate Follow-Up
+
+| Item id | State | Gate dependency | Notes |
+| --- | --- | --- | --- |
+| close-<slug> | <pending|in-progress|complete|blocked> | <dependency or none> | <notes> |
+```
 
 `Current step` must be an explicit field inside `WORKPLAN.md`.
 The ordered implementation step list defines the default implementation-step flow.
@@ -519,9 +643,21 @@ The minimum required step contract is:
 - verification
 - close gate
 
-Every governed step `CONTRACT.md` must also carry explicit document-state wording inside the file.
+Every governed step `CONTRACT.md` must also carry an explicit document-state field inside the file.
 That document state owns only the step-contract approval state.
 Step runtime lifecycle state is recorded in the phase `WORKPLAN.md`, not in the step `CONTRACT.md`.
+
+The required step-contract document-state field shape is:
+
+```md
+- Document state: <draft|freeze-review-ready|frozen|retired>
+```
+
+Allowed step-contract `Document state` values are:
+- `draft`
+- `freeze-review-ready`
+- `frozen`
+- `retired`
 
 The exact required file inventory inside a step folder is:
 - `CONTRACT.md`
@@ -790,7 +926,7 @@ For a phase, they are recorded in the phase `WORKPLAN.md`.
 For a step, they are also recorded in the phase `WORKPLAN.md` because no step-local `WORKPLAN.md` exists.
 
 Approval is recorded as follows:
-- document approval in the file being approved, by changing its document-state wording
+- document approval in the file being approved, by changing its required document-state field
 - scope-lifecycle approval in the governing phase `WORKPLAN.md`
 - blocker/open-item status in the relevant scope `OPEN-ISSUES.md`
 - broader repo-truth approval in a global decision file when the decision rules require it
@@ -817,6 +953,25 @@ That commit must include all files needed to make the approved state self-consis
 Current truth is reconstructed from the boxed current-state files.
 Audit trail is reconstructed from git checkpoints that update those files.
 No separate narrative progress ledger is introduced at this stage.
+
+## Decision Carry-Through
+
+Approved decisions must be carried through before a phase-model item may be described as integrated, fixed, closed, or implemented.
+
+For this phase-model artifact, carry-through requires checking and updating every affected:
+- requirement section
+- schema or field contract
+- routing rule
+- gate rule
+- transition rule
+- decision file
+- example or template
+- live bootstrap status or handoff reference, if the live transition surface mentions the item
+
+If an affected surface is intentionally left unchanged, the reason must be recorded in the same logical checkpoint.
+
+The carry-through check must happen before commit.
+The commit must include every dependent update needed to keep the repo truth self-consistent.
 
 ## Script Readiness
 
