@@ -106,6 +106,7 @@ When the target phase model is promoted:
 - `AGENTS.md` remains the top-level layer entry funnel and is updated only when top-level layer entry points change
 - `CLAUDE.md` and `GEMINI.md` remain static funnel stubs unless an LLM-specific setting is required
 - implementation is only through this phase-model document until the phase model is promoted; live bootstrap files must not be changed early
+- the promotion checkpoint must triage `context/OPEN-ISSUES.md`, move foundation-scoped items into `phases/phase0-foundation/OPEN-ISSUES.md`, and leave only true global/bootstrap items in the global file so the post-transition structure is clean
 
 The current intended transition mapping is:
 - `phases/phase0-foundation/` becomes the active promoted foundation phase under the target model
@@ -582,6 +583,12 @@ It does not itself distinguish whether no issue was ever found, all issues were 
 Global open issues act as the intake pool for deferred future work, but they are not the same thing as backlog phase candidates.
 `phases/backlog/` holds explicit future phase candidates, not every deferred global open issue.
 Promotion from a global open issue into `phases/backlog/<slug>/` is an explicit shaping step, not an automatic move.
+
+During transition, the bootstrap global `context/OPEN-ISSUES.md` may still contain items that should become phase-local after promotion.
+The phase-model promotion checkpoint must explicitly triage that file.
+Foundation-scoped items must be moved into `phases/phase0-foundation/OPEN-ISSUES.md`.
+Only true global/bootstrap items may remain in `context/OPEN-ISSUES.md` after that triage.
+The triage and any moved items must be committed in the same logical checkpoint so git preserves the transfer audit trail.
 
 A step cannot close while it still owns unresolved step-scoped open items unless those items are explicitly transferred forward.
 A phase cannot close while it still owns unresolved phase-scoped open items.
