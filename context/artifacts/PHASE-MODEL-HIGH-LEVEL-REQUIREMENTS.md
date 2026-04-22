@@ -102,6 +102,9 @@ When the target phase model is promoted:
 - global `context/STATUS.md` is retired and is not part of target phase execution
 - target operational state is reconstructed from `phases/ROUTING.md`, the active phase `WORKPLAN.md`, and scope `OPEN-ISSUES.md`
 - the promotion checkpoint must remove any requirement that target-phase agents read or update global `context/STATUS.md`
+- the context layer entry surface must point agents into `phases/ROUTING.md` for phase execution
+- `AGENTS.md` remains the top-level layer entry funnel and is updated only when top-level layer entry points change
+- `CLAUDE.md` and `GEMINI.md` remain static funnel stubs unless an LLM-specific setting is required
 
 The current intended transition mapping is:
 - `phases/phase0-foundation/` becomes the active promoted foundation phase under the target model
@@ -110,6 +113,63 @@ The current intended transition mapping is:
 - `phases/phase1-Strategic_Definition/` remains a promoted but inactive/selectable phase after it is normalized into the governed target-model shape
 - `phases/backlog/system-definition/` is normalized as a folder-based backlog candidate by keeping its backlog `WORKPLAN.md` and removing the nested legacy `phases/` subtree
 - if `system-definition` is later selected for promotion, that retained workplan may be reused if still compliant, and the promotion checkpoint must add the missing compliant phase contract and the rest of the required promoted-phase inventory
+
+## Agent Entry And Boxed Traversal
+
+`AGENTS.md` is the top-level agent entry funnel.
+It is not the phase router and must not duplicate the current phase, current step, or active-task route.
+
+`AGENTS.md` names only the top-level layer boxes and their entry-point paths.
+Agents reconstruct the operating structure by opening those entry-point files and then following only the links, pointers, and instructions provided by each opened box.
+
+`AGENTS.md` changes only when a top-level layer entry point is added, removed, or renamed.
+It does not change for normal phase execution, phase selection, step movement, or local context updates.
+
+Tool-specific stubs such as `CLAUDE.md` and `GEMINI.md` are static funnel files.
+They point their agents to `AGENTS.md` and do not change unless an LLM-specific setting is required.
+
+The current `AGENTS.md` structure is:
+
+````md
+# ADF Agent Entry
+
+## Summary
+
+This file is the top-level entry funnel for agents working in ADF.
+
+The agent's first goal is to reconstruct the current ADF operating structure by traversing the declared layers below.
+
+Agents must read the YAML list under `Layers`.
+Each YAML item is a top-level layer entry point.
+
+For each YAML item:
+1. Read `name` as the layer name.
+2. Read `path` as the layer entry-point file.
+3. Open that `path`.
+4. Treat the opened file as the authority for that layer.
+5. Record the layer, its purpose, and any next pointers it provides in the agent's working structure map.
+6. Follow only the links, pointers, and instructions provided inside that opened layer file.
+7. Continue traversal only through pointers provided by the current opened box.
+
+ADF uses a boxed traversal model.
+Each layer is a box.
+Opening a box may reveal more boxes.
+Agents construct the operating structure by traversing provided pointers, not by scanning the repository or inventing a global map.
+
+**Guardrail: agents must only follow the links each layer / box provides. Do not infer missing structure, scan outside the provided traversal path, or build a separate global map unless the user explicitly asks.**
+
+After traversal, the agent should work only inside the reconstructed structure and the user's explicit request.
+
+## Layers
+
+```yaml
+layers:
+  - name: governance
+    path: ./RULES.md
+  - name: context
+    path: ./CONTEXT.md
+```
+````
 
 ## Routing
 

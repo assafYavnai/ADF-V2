@@ -8,6 +8,34 @@ Context is the manual layer responsible for holding current ADF context and bein
 
 Its purpose is to preserve continuity, reduce drift, and make it possible for a contextless agent to continue work without relying on memory or hidden assumptions.
 
+## Context Entry Traversal
+
+When an agent opens this file from `AGENTS.md`, the agent is inside the context layer box.
+The agent must use this section to continue traversal through the current context pointers.
+
+Current context read order:
+1. `context/STATUS.md`
+2. `context/HANDOFF.md`
+3. `context/OPEN-ISSUES.md`
+4. `phases/phase0-foundation/WORKPLAN.md`
+5. `phases/phase0-foundation/OPEN-ISSUES.md`
+6. `context/artifacts/README.md`
+7. `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`
+8. `context/decisions/README.md`
+9. the required decision files listed in `context/HANDOFF.md`
+
+Traversal rule:
+- read the files above as the current context box pointers
+- after opening each file, follow only the links, pointers, and instructions that file provides
+- do not scan outside the provided traversal path unless the user explicitly asks
+- do not treat draft artifacts as frozen truth
+
+Current active draft surface:
+- `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`
+
+Current phase workplan:
+- `phases/phase0-foundation/WORKPLAN.md`
+
 ## Context v1 Structure
 
 The current context structure includes:

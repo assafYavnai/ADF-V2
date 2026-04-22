@@ -1,36 +1,38 @@
-# ADF Bootstrap
+# ADF Agent Entry
 
-Before doing substantive work, read these files in this order:
+## Summary
 
-1. `CONTEXT.md`
-2. `RULES.md`
-3. `phases/phase0-foundation/WORKPLAN.md`
-4. `context/STATUS.md`
-5. `context/HANDOFF.md`
-6. `context/OPEN-ISSUES.md`
-7. `context/artifacts/README.md`
-8. `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`
-9. `context/decisions/README.md`
+This file is the top-level entry funnel for agents working in ADF.
 
-## Current Step
+The agent's first goal is to reconstruct the current ADF operating structure by traversing the declared layers below.
 
-1. Review the phase model draft in `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
+Agents must read the YAML list under `Layers`.
+Each YAML item is a top-level layer entry point.
 
-## Routing Rules
+For each YAML item:
+1. Read `name` as the layer name.
+2. Read `path` as the layer entry-point file.
+3. Open that `path`.
+4. Treat the opened file as the authority for that layer.
+5. Record the layer, its purpose, and any next pointers it provides in the agent's working structure map.
+6. Follow only the links, pointers, and instructions provided inside that opened layer file.
+7. Continue traversal only through pointers provided by the current opened box.
 
-- Treat the files above as the active truth surface.
-- Do not widen scope beyond those files unless the CEO explicitly asks.
-- Do not treat draft artifacts as frozen truth.
-- Use `phases/phase0-foundation/WORKPLAN.md` as the active phase workplan.
-- Use `context/HANDOFF.md` as the narrative current-state authority.
-- After reading `context/HANDOFF.md`, read the required decision files listed there for the current handoff.
-- Use `context/STATUS.md` as the thin operational tracker.
-- Use `context/OPEN-ISSUES.md` as the deferred-items tracker.
-- Use `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md` as the active review-ready draft surface for the current phase-model work.
-- Follow `RULES.md` for naming and writing conventions.
+ADF uses a boxed traversal model.
+Each layer is a box.
+Opening a box may reveal more boxes.
+Agents construct the operating structure by traversing provided pointers, not by scanning the repository or inventing a global map.
 
-## Working Mode
+**Guardrail: agents must only follow the links each layer / box provides. Do not infer missing structure, scan outside the provided traversal path, or build a separate global map unless the user explicitly asks.**
 
-- Work in CEO-facing, brief, decision-oriented mode unless the CEO asks for more detail.
-- Keep scope narrow.
-- Do not invent missing system truth by inference.
+After traversal, the agent should work only inside the reconstructed structure and the user's explicit request.
+
+## Layers
+
+```yaml
+layers:
+  - name: governance
+    path: ./RULES.md
+  - name: context
+    path: ./CONTEXT.md
+```
