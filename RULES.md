@@ -5,3 +5,4 @@
 - Fixed canonical repo surfaces may use established names such as `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `README.md`, `RULES.md`, `CONTEXT.md`, `HANDOFF.md`, `STATUS.md`, and `OPEN-ISSUES.md`.
 - If the CEO refers to a file in a different case, the agent must still save it using the canonical name defined by repo truth.
 - Governed repo structures must not rely on standing exceptions. If a structure is non-compliant, it must be normalized into the governed model in the same logical checkpoint that activates or reclassifies it.
+- Approved decisions require carry-through before they may be described as integrated, fixed, closed, or implemented. Carry-through means updating every dependent artifact section, decision file, example, routing rule, gate rule, status or handoff reference, and transition rule affected by the decision, or explicitly recording why a dependent surface is unchanged.
