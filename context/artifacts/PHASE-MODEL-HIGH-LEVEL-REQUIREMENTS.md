@@ -105,6 +105,7 @@ When the target phase model is promoted:
 - the context layer entry surface must point agents into `phases/ROUTING.md` for phase execution
 - `AGENTS.md` remains the top-level layer entry funnel and is updated only when top-level layer entry points change
 - `CLAUDE.md` and `GEMINI.md` remain static funnel stubs unless an LLM-specific setting is required
+- implementation is only through this phase-model document until the phase model is promoted; live bootstrap files must not be changed early
 
 The current intended transition mapping is:
 - `phases/phase0-foundation/` becomes the active promoted foundation phase under the target model
@@ -128,7 +129,7 @@ It does not change for normal phase execution, phase selection, step movement, o
 Tool-specific stubs such as `CLAUDE.md` and `GEMINI.md` are static funnel files.
 They point their agents to `AGENTS.md` and do not change unless an LLM-specific setting is required.
 
-The current `AGENTS.md` structure is:
+The target `AGENTS.md` structure to apply when the phase model is promoted is:
 
 ````md
 # ADF Agent Entry

@@ -21,8 +21,8 @@ Foundation Step 1 - phase model review draft
 
 This repository is still building the foundation framework itself.
 The current discussion is defining how context works, how files should be shaped, and how agents should preserve continuity without hidden assumptions.
-The root bootstrap files now exist.
-`AGENTS.md` is now the top-level boxed traversal funnel into governance and context, and `CONTEXT.md` owns the current context traversal into foundation workplan, open issues, handoff, status, artifacts, and decisions.
+The root bootstrap files now exist and remain the current transition runtime.
+The boxed `AGENTS.md` model is documented only inside the phase-model draft as a promotion-time template, not applied to the live bootstrap files during this transition.
 The explicit decisions from this discussion are now saved under `context/decisions/`.
 For handoff, the next agent must read the curated decision list below rather than trying to infer truth from the full decisions folder.
 The `CONTEXT.md` contract gaps found during review were addressed in this session so the draft now matches actual repo practice more closely.
@@ -83,9 +83,9 @@ The remaining structural review issue on approval-state determinism was then add
 The draft now explicitly separates document approval state from scope lifecycle state, makes phase `WORKPLAN.md` the canonical runtime-state owner for both phase and instantiated-step lifecycle, keeps contracts scoped to definition plus their own document approval state, keeps `OPEN-ISSUES.md` blocker-only, and makes git checkpoints the audit trail instead of introducing a new tracker layer.
 Deferred foundation-phase concerns that must survive current-step promotion were then moved out of the bootstrap global open-issues pool and into `phases/phase0-foundation/OPEN-ISSUES.md`.
 That phase-local file now carries the known context gap, persistent memory support, traceability gaps, KPI support, and later script governance as deferred foundation work.
-Reviewer pushback about bootstrap entrypoint migration was then corrected by clarifying the top-level boxed traversal model.
-`AGENTS.md` is now a thin top-level layer-entry funnel that points only to governance and context entry files, while `CONTEXT.md` owns the current context traversal into phase and support files.
-That boxed traversal rule was saved as a new decision and supersedes the older full read-order shape of `AGENTS.md`.
+Reviewer pushback about bootstrap entrypoint migration was then corrected by clarifying the target top-level boxed traversal model.
+The boxed `AGENTS.md` shape is kept as a promotion-time template inside the phase-model draft.
+The live bootstrap files must not be changed until the phase model is promoted and implemented.
 
 ## Session pointers
 
@@ -195,6 +195,6 @@ The routing step-selection wording is also now fully aligned with the virtual-st
 The bootstrap artifact-freeze wording in frozen `CONTEXT.md` is also now internally aligned with the same global freeze rule.
 The approval-state determinism gap is also now fixed by separating document approval from runtime lifecycle state and making the phase workplan the canonical runtime-state owner.
 Deferred foundation-phase concerns that must survive current-step promotion are also now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` instead of only in the bootstrap global open-issues file.
-The bootstrap entrypoint migration finding is now addressed by making `AGENTS.md` a boxed top-level layer-entry funnel and moving current context traversal into `CONTEXT.md`.
+The bootstrap entrypoint migration finding is addressed in the phase-model draft by defining the promotion-time boxed `AGENTS.md` template and keeping live bootstrap implementation deferred until promotion.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred foundation-phase concerns now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` include the known context gap, persistent memory, traceability gaps, KPI support, and later script-governance implementation.

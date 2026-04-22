@@ -15,6 +15,10 @@ The discussion also clarified that `CLAUDE.md` and `GEMINI.md` are static funnel
 They should not change for phase routing, phase execution, context movement, or normal work changes.
 They change only if an LLM-specific setting is required.
 
+This decision defines the target implementation rule for phase-model promotion.
+It does not authorize changing live bootstrap files during the current transition.
+Until promotion, implementation exists only through the phase-model document.
+
 ## OPTIONS
 
 - Keep `AGENTS.md` as a growing full-system map that lists active phase files, current tasks, and routing details.
@@ -23,7 +27,7 @@ They change only if an LLM-specific setting is required.
 
 ## DECISION
 
-The agreed repo-truth rules are:
+The agreed target repo-truth rules for phase-model promotion are:
 
 - `AGENTS.md` is the top-level entry funnel for agents working in ADF
 - `AGENTS.md` must list only top-level layer entry points
@@ -46,9 +50,10 @@ The agreed repo-truth rules are:
 - phase execution routing belongs below the context layer and is reached through the pointers exposed by the context box
 - after target phase-model promotion, the context layer must point agents into `phases/ROUTING.md` for phase execution
 - `CLAUDE.md` and `GEMINI.md` remain static funnel stubs unless an LLM-specific setting is required
+- until the phase model is promoted, the live transition bootstrap remains in place and this model is implemented only through `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`
 
-This decision supersedes the older `AGENT-BOOTSTRAP-ROUTING` decision only where that older decision implied that `AGENTS.md` should carry the full foundation-first read order directly.
-The older decision remains valid for the narrow rule that agents enter through `AGENTS.md` and that tool-specific stubs funnel to it.
+At phase-model promotion, this decision supersedes the older `AGENT-BOOTSTRAP-ROUTING` decision only where that older decision implied that `AGENTS.md` should carry the full foundation-first read order directly.
+Until promotion, the older decision remains the live transition runtime rule.
 
 ## APPROVAL
 
