@@ -67,8 +67,9 @@ Naming rules are:
 - promoted open phase folders use `phases/phaseNNN-<slug>/`
 - backlog candidate folders use `phases/backlog/<slug>/`
 - completed phase folders use `phases/complete/phaseNNN-<slug>/`
-- official instantiated step folders use `stepNN-<slug>/` under the phase folder
-- preserved former-step folders use `<slug>/` under the phase folder when an instantiated step loses its execution number
+- all step folders live under the phase-local `steps/` namespace
+- official instantiated step folders use `steps/stepNN-<slug>/` under the phase folder
+- preserved former-step folders use `steps/<slug>/` when an instantiated step loses its execution number
 - folder and file naming use lowercase kebab-case for slugs, with zero-padded numeric ids for promoted phases and steps
 
 `phases/STATUS.md` is not used at this stage.
@@ -107,6 +108,7 @@ When the target phase model is promoted:
 - `CLAUDE.md` and `GEMINI.md` remain static funnel stubs unless an LLM-specific setting is required
 - implementation is only through this phase-model document until the phase model is promoted; live bootstrap files must not be changed early
 - the promotion checkpoint must triage `context/OPEN-ISSUES.md`, move foundation-scoped items into `phases/phase0-foundation/OPEN-ISSUES.md`, and leave only true global/bootstrap items in the global file so the post-transition structure is clean
+- the promotion checkpoint must migrate legacy phase step folders into the `steps/` namespace; any root-level `stepNN-<slug>/` folder becomes `steps/stepNN-<slug>/`, any root-level preserved former-step `<slug>/` folder becomes `steps/<slug>/`, and all workplan, routing, open-issues, handoff, artifact, and decision references affected by the move must be updated in the same logical checkpoint
 
 The current intended transition mapping is:
 - `phases/phase0-foundation/` becomes the active promoted foundation phase under the target model
@@ -213,15 +215,15 @@ Step sequencing belongs to the active phase `WORKPLAN.md`.
 If no active phase is currently selected, `phases/ROUTING.md` must say that selection is pending.
 Agents must not infer an active phase when routing says none is selected.
 
-For routing purposes, a step is selected only when the active phase `WORKPLAN.md` explicit `Current step` field points to an instantiated numbered step folder under that phase.
+For routing purposes, a step is selected only when the active phase `WORKPLAN.md` explicit `Current step` field points to an instantiated numbered step folder under `steps/`.
 If `Current step` points to a freeze-ready preparation item, close-gate follow-up item, or any other non-step item instead, agents do not infer an active step folder.
 
 The required active-phase read order is:
 1. active phase `CONTRACT.md`
 2. active phase `WORKPLAN.md`
 3. active phase `OPEN-ISSUES.md`
-4. active step `CONTRACT.md`, if a step is selected
-5. active step `OPEN-ISSUES.md`, if a step is selected
+4. active step `CONTRACT.md` under `steps/`, if a step is selected
+5. active step `OPEN-ISSUES.md` under `steps/`, if a step is selected
 6. `context/decisions/INDEX.md`
 7. only the decision files listed in `context/decisions/INDEX.md`
 8. active step `HANDOFF.md`, if it exists
@@ -339,7 +341,8 @@ By the end of the promotion checkpoint, the promoted phase must contain:
 - `CONTRACT.md`
 - `WORKPLAN.md`
 - `OPEN-ISSUES.md`
-- at least one `stepNN-<slug>/` folder
+- `steps/`
+- at least one `steps/stepNN-<slug>/` folder
 
 That first step box must contain:
 - `CONTRACT.md`
@@ -472,7 +475,7 @@ Allowed `Current step type` values are:
 - `idle`
 
 `Current step` must be one of:
-- an instantiated step folder name such as `stepNN-<slug>`
+- an instantiated step folder path such as `steps/stepNN-<slug>`
 - a freeze-ready preparation item id such as `freeze-<slug>`
 - a close-gate follow-up item id such as `close-<slug>`
 - `none`, only when `Current step type` is `idle`
@@ -488,7 +491,7 @@ The required field block shape is:
 
 - Workplan document state: <draft|freeze-review-ready|frozen|unfrozen|retired>
 - Phase lifecycle state: <in-progress|freeze-ready|freeze-gate-approved|review-fix-cycle|close-ready|close-gate-approved|promotion|post-promotion>
-- Current step: <stepNN-<slug>|freeze-<slug>|close-<slug>|none>
+- Current step: <steps/stepNN-<slug>|freeze-<slug>|close-<slug>|none>
 - Current step type: <implementation-step|freeze-ready-preparation|close-gate-follow-up|idle>
 ```
 
@@ -504,7 +507,7 @@ The required ordered implementation step list shape is:
 
 | Plan order | Step slug | Purpose | Materialized folder |
 | --- | --- | --- | --- |
-| 1 | <slug> | <short purpose> | <blank or stepNN-slug> |
+| 1 | <slug> | <short purpose> | <blank or steps/stepNN-<slug>> |
 ```
 
 The instantiated-step runtime table records only materialized step folders.
@@ -517,7 +520,7 @@ The required instantiated-step runtime shape is:
 
 | Step folder | Step slug | Lifecycle state | Contract path |
 | --- | --- | --- | --- |
-| stepNN-<slug> | <slug> | <allowed lifecycle state> | stepNN-<slug>/CONTRACT.md |
+| steps/stepNN-<slug> | <slug> | <allowed lifecycle state> | steps/stepNN-<slug>/CONTRACT.md |
 ```
 
 Allowed instantiated-step `Lifecycle state` values are the same lifecycle values used for phase lifecycle state.
@@ -552,7 +555,7 @@ The required non-step follow-up shapes are:
 The ordered implementation step list defines the default implementation-step flow.
 The ordered implementation step list is the canonical execution order.
 Listed steps are virtual until they are instantiated in git.
-A step becomes an official execution step only when it is instantiated as a numbered folder under the phase.
+A step becomes an official execution step only when it is instantiated as a numbered folder under the phase-local `steps/` namespace.
 `Current step` may point only to an instantiated numbered step folder or to a governed non-step follow-up item.
 Virtual listed steps remain planned in `WORKPLAN.md` until they are instantiated.
 Once a step is instantiated, its current runtime state must be recorded in the phase `WORKPLAN.md` using the governed lifecycle vocabulary in this document.
@@ -665,19 +668,24 @@ The exact required file inventory inside a step folder is:
 
 A listed workplan step is virtual until instantiation.
 
-Official instantiated step folders use `stepNN-<slug>/`.
+All step folders live under the phase-local `steps/` namespace.
+Official instantiated step folders use `steps/stepNN-<slug>/`.
+Preserved former-step folders use `steps/<slug>/`.
+Step slugs must be unique within a phase.
+The `steps/` namespace isolates step slugs from phase-root governed files and folders.
+This resolves the review finding that former-step re-instantiation could misidentify or collide with phase-root folders.
 
 Step instantiation rule:
 - when a step is selected for official execution, it receives the current execution number from `WORKPLAN.md`
-- before creating a new numbered step folder, the phase must check whether a preserved former-step folder with the same slug already exists at the phase root
-- if a matching preserved former-step folder exists, it must be re-instantiated by renaming it to `stepNN-<slug>/`
+- before creating a new numbered step folder, the phase must check whether a preserved former-step folder with the same slug already exists under `steps/`
+- if a matching preserved former-step folder exists, it must be re-instantiated by renaming it to `steps/stepNN-<slug>/`
 - that same re-instantiation checkpoint must update its `CONTRACT.md` if needed to match the current frozen phase contract and workplan
 - that same re-instantiation checkpoint must also update the related phase `OPEN-ISSUES.md` entry so the former-step / orphan record is removed or closed
-- if no matching preserved former-step folder exists, create a new `stepNN-<slug>/` folder with the required files
+- if no matching preserved former-step folder exists, create a new `steps/stepNN-<slug>/` folder with the required files
 
 Step order-change rule:
 - if an instantiated step's execution order is changed, it loses its step number and stops being an official execution step
-- that preserved former-step folder keeps only the original slug at the phase root
+- that preserved former-step folder keeps only the original slug under `steps/`
 - the same checkpoint must create or update a phase `OPEN-ISSUES.md` entry that points to that preserved folder and records that it is a former step awaiting disposition
 - when that work is later selected again for execution, it receives the actual current execution number at re-instantiation time
 - no numbered step folder may remain if its number no longer matches execution order in practice
@@ -700,7 +708,7 @@ Phase-local `OPEN-ISSUES.md` uses:
 - `phases/phaseNNN-<slug>/OPEN-ISSUES.md`
 
 Step-local `OPEN-ISSUES.md` uses:
-- `phases/phaseNNN-<slug>/stepNN-<slug>/OPEN-ISSUES.md`
+- `phases/phaseNNN-<slug>/steps/stepNN-<slug>/OPEN-ISSUES.md`
 
 Only `OPEN-ISSUES.md` is required locally at this stage.
 Local `STATUS.md` is not introduced at the phase or step layer.
@@ -908,7 +916,7 @@ It is a continuity aid only.
 
 Allowed local handoff locations are:
 - `phases/phaseNNN-<slug>/HANDOFF.md`
-- `phases/phaseNNN-<slug>/stepNN-<slug>/HANDOFF.md`
+- `phases/phaseNNN-<slug>/steps/stepNN-<slug>/HANDOFF.md`
 
 Local `HANDOFF.md` may be created only:
 - when an actual handoff is needed
@@ -948,7 +956,8 @@ The required file inventory inside a promoted phase folder is:
 - `CONTRACT.md`
 - `WORKPLAN.md`
 - `OPEN-ISSUES.md`
-- one or more `stepNN-<slug>/` folders
+- `steps/`
+- one or more `steps/stepNN-<slug>/` folders
 
 That inventory is not optional after promotion.
 If promotion is executed, the full promoted-phase inventory must exist by the end of the same logical checkpoint.
@@ -965,13 +974,13 @@ Artifact storage is boxed as:
 `drafts/` is optional inside a step and is created only when that step needs to author draft outputs.
 `artifacts/` is optional at phase scope and is created only when the phase first collects approved step outputs.
 
-Step draft artifacts are stored under `stepNN-<slug>/drafts/`.
+Step draft artifacts are stored under `steps/stepNN-<slug>/drafts/`.
 The step contract must define:
 - which draft outputs are promotable to phase scope
 - any conditions that must be satisfied before those outputs may be collected by the phase
 
 When a step closes, the phase scope executes step promotion under the step contract promotion rule.
-Approved step outputs move from `stepNN-<slug>/drafts/` into the phase-root `artifacts/` folder.
+Approved step outputs move from `steps/stepNN-<slug>/drafts/` into the phase-root `artifacts/` folder.
 
 `phases/phaseNNN-<slug>/artifacts/` holds collected phase-owned artifacts while the phase is still active.
 Those artifacts remain isolated inside the phase until phase promotion.

@@ -26,7 +26,7 @@ This creates a stronger boxed model:
 - canonical repo truth is reached only through phase promotion
 
 The discussion therefore replaced the earlier artifact model with:
-- `stepNN-<slug>/drafts/`
+- `steps/stepNN-<slug>/drafts/`
 - `phases/phaseNNN-<slug>/artifacts/`
 - canonical repo destinations only after phase close and phase promotion
 
@@ -74,7 +74,7 @@ The agreed target phase-model artifact rules are:
   - the canonical promotion targets for those artifacts
 
 - when a step closes, the phase scope executes step promotion under the step contract promotion rule
-- approved step outputs move from `stepNN-<slug>/drafts/` into the phase-root `artifacts/` folder
+- approved step outputs move from `steps/stepNN-<slug>/drafts/` into the phase-root `artifacts/` folder
 
 - while the phase is active, `phases/phaseNNN-<slug>/artifacts/` holds collected phase-owned artifacts in isolation
 - when a phase closes, the phase scope executes phase promotion under the phase contract artifact collection and promotion rule

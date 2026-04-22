@@ -52,7 +52,7 @@ The agreed target phase-model rules are:
 - the ordered implementation step list defines the default implementation-step flow
 - the ordered implementation step list is virtual until instantiation and must not assign execution numbers ahead of time
 - routing does not decide current step
-- a step is selected for routing purposes only when the workplan `Current step` field points to a step folder
+- a step is selected for routing purposes only when the workplan `Current step` field points to an instantiated step folder under `steps/`
 - non-step current work may be selected only when `Current step` points to a stable item id in `## Freeze-Ready Preparation` or `## Close-Gate Follow-Up`
 
 - when a step is approved closed by the user, the next step defaults to the next item in the ordered implementation step list unless the user explicitly overrides it

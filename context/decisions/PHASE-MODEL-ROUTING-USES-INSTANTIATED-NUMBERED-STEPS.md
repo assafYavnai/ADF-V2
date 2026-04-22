@@ -8,13 +8,13 @@ That left one partial-application gap between the routing rules and the later st
 ## OPTIONS
 
 - Leave routing with the old generic `step folder` wording and rely on readers to infer that it now means only instantiated numbered steps.
-- Explicitly align routing with the virtual-step model by saying that routing only recognizes instantiated numbered step folders as active steps.
+- Explicitly align routing with the virtual-step model by saying that routing only recognizes instantiated numbered step folders under `steps/` as active steps.
 
 ## DECISION
 
 The agreed target phase-model rules are:
 
-- for routing purposes, a step is selected only when the active phase `WORKPLAN.md` explicit `Current step` field points to an instantiated numbered step folder under that phase
+- for routing purposes, a step is selected only when the active phase `WORKPLAN.md` explicit `Current step` field points to an instantiated numbered step folder under `steps/`
 - if `Current step` points to a freeze-ready preparation item, close-gate follow-up item, or any other non-step item, agents do not infer an active step folder
 - preserved former-step folders are not active steps for routing unless they are re-instantiated as numbered step folders
 

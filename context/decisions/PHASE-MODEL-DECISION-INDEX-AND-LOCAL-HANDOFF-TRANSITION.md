@@ -66,7 +66,7 @@ The agreed target phase-model rules are:
 - `HANDOFF.md` is optional and local in the target phase model
 - allowed locations are:
   - `phases/phaseNNN-<slug>/HANDOFF.md`
-  - `phases/phaseNNN-<slug>/stepNN-<slug>/HANDOFF.md`
+  - `phases/phaseNNN-<slug>/steps/stepNN-<slug>/HANDOFF.md`
 - local `HANDOFF.md` is continuity-only
 - local `HANDOFF.md` may be created only:
   - when an actual handoff is needed

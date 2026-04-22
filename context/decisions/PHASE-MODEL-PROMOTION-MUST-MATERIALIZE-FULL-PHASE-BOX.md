@@ -23,7 +23,8 @@ The agreed target phase-model rules are:
   - `CONTRACT.md`
   - `WORKPLAN.md`
   - `OPEN-ISSUES.md`
-  - at least one `stepNN-<slug>/` folder
+  - `steps/`
+  - at least one `steps/stepNN-<slug>/` folder
 - that first step box must contain:
   - `CONTRACT.md`
   - `OPEN-ISSUES.md`

@@ -11,7 +11,7 @@ When execution order changes after a step was instantiated, preserving the old n
 
 - Treat step numbers as stable identities and keep them even when execution order changes.
 - Renumber numbered step folders in place whenever execution order changes.
-- Make listed steps virtual until instantiation, make numbered folders mean official execution order in practice, and make reordered instantiated steps lose the number and fall back to preserved former-step folders tracked by phase open issues.
+- Make listed steps virtual until instantiation, make numbered folders under `steps/` mean official execution order in practice, and make reordered instantiated steps lose the number and fall back to preserved former-step folders under `steps/` tracked by phase open issues.
 
 ## DECISION
 
@@ -20,10 +20,13 @@ The agreed target phase-model rules are:
 - the ordered implementation step list in `WORKPLAN.md` is the canonical execution order
 - listed steps are virtual until instantiation
 - a step becomes an official execution step only when it is instantiated as a numbered folder
-- official instantiated step folders use `stepNN-<slug>/`
-- if an instantiated step's execution order is changed, it loses its number and becomes a preserved former-step folder that keeps only the original slug at the phase root
+- all step folders live under the phase-local `steps/` namespace
+- official instantiated step folders use `steps/stepNN-<slug>/`
+- if an instantiated step's execution order is changed, it loses its number and becomes a preserved former-step folder that keeps only the original slug under `steps/`
+- step slugs must be unique within a phase
+- the `steps/` namespace isolates step slugs from phase-root governed files and folders
 - numbered step folders therefore always represent execution order in practice
-- before creating a new numbered step folder, the phase must check whether a preserved former-step folder with the same slug already exists
+- before creating a new numbered step folder, the phase must check whether a preserved former-step folder with the same slug already exists under `steps/`
 - if it exists, the phase must re-instantiate that preserved folder by giving it the current execution number and updating its contract if needed
 - that same re-instantiation checkpoint must update the phase `OPEN-ISSUES.md` entry so the former-step record is removed or closed
 - if no preserved folder exists, the phase creates a new numbered step folder with the required files
@@ -31,7 +34,7 @@ The agreed target phase-model rules are:
 - preserved former-step folders must remain tracked until they are re-instantiated, deferred upward, or explicitly accepted as no longer needed under the phase contract and user approval
 - no phase may close while a preserved former-step folder still exists without an explicit recorded disposition
 
-This decision makes runtime behavior explicit for humans and scripts, keeps execution numbering clear, and prevents reordered step work from falling between the cracks.
+This decision makes runtime behavior explicit for humans and scripts, keeps execution numbering clear, prevents reordered step work from falling between the cracks, and avoids collisions with phase-root governed files by boxing all step folders under `steps/`.
 
 ## APPROVAL
 

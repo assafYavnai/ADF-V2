@@ -48,7 +48,7 @@ Reviewer pushback on approval ordering, promotion ownership, and movement to `ph
 The draft now defines a two-gate flow of freeze-ready, freeze approval, review-fix cycle, close-ready, close approval, promotion, and post-promotion state, while making promotion a mechanical phase-owned step rather than another approval gate.
 That two-gate, promotion, and routing-update rule was then saved as another explicit decision.
 Reviewer pushback on artifact governance and promotion enforceability was then addressed in the draft.
-The draft now uses the simpler boxed artifact model of step `drafts/`, phase `artifacts/`, and phase-owned promotion to canonical repo locations, while removing the earlier need for separate per-artifact metadata at this stage.
+The draft now uses the simpler boxed artifact model of `steps/<step>/drafts/`, phase `artifacts/`, and phase-owned promotion to canonical repo locations, while removing the earlier need for separate per-artifact metadata at this stage.
 That step-drafts, phase-artifacts, and contract-owned promotion rule was then saved as another explicit decision.
 Second-pass reviewer pushback on freeze-ready versus close-ready sequencing was then addressed in the draft.
 The draft now makes freeze recommendation happen at the freeze-ready checkpoint before review, and moves close-gate follow-up work to after the review-fix cycle.
@@ -64,7 +64,7 @@ Second-pass reviewer pushback on promoted-phase inventory was then addressed in 
 The draft now makes promotion eligibility depend on ready phase `CONTRACT.md` and `WORKPLAN.md`, while requiring the promotion checkpoint itself to end with a full promoted phase box, including phase `OPEN-ISSUES.md` and the first step box.
 That full-phase-box promotion rule was then saved as another explicit decision so later agents and scripts do not invent partial promotion behavior.
 Second-pass reviewer pushback on step numbering and step-folder identity was then addressed in the draft.
-The draft now makes the workplan step list virtual until instantiation, makes numbered step folders mean official execution order in practice, and makes reordered instantiated steps lose their number and fall back to slug-only former-step folders tracked in phase `OPEN-ISSUES.md` until re-instantiation or explicit disposition.
+The draft now makes the workplan step list virtual until instantiation, boxes all step folders under `steps/`, makes numbered step folders mean official execution order in practice, and makes reordered instantiated steps lose their number and fall back to slug-only former-step folders under `steps/` tracked in phase `OPEN-ISSUES.md` until re-instantiation or explicit disposition.
 That virtual-step, re-instantiation, and former-step tracking rule was then saved as another explicit decision.
 The backlog-shape and no-exceptions rule was then clarified in the draft.
 The draft now removes target-model structural exceptions, makes backlog candidates folder-based rather than `README.md`-based, and requires legacy nested backlog structures to be normalized before target-model activation.
@@ -77,7 +77,7 @@ The target-model treatment of global `context/STATUS.md` was then made explicit 
 The draft now says global `context/STATUS.md` is bootstrap-only and is retired at phase-model promotion, with target operational state reconstructed from routing, workplan, and open-issues surfaces.
 That global-status retirement rule was then saved as another explicit decision.
 A deeper carry-through audit then found one remaining partial-application gap in routing wording.
-The draft routing section now explicitly recognizes only instantiated numbered step folders as active steps, and that alignment was saved as another explicit decision instead of silently rewriting older frozen decisions.
+The draft routing section now explicitly recognizes only instantiated numbered step folders under `steps/` as active steps, and that alignment was saved as another explicit decision instead of silently rewriting older frozen decisions.
 That same deeper audit then found one stale bootstrap freeze sentence in frozen `CONTEXT.md`.
 The bootstrap artifact-freeze wording was then normalized so the request and rejection path both use the already agreed global CEO+CTO freeze rule instead of drifting back to CEO-only phrasing.
 The remaining structural review issue on approval-state determinism was then addressed in the draft.
@@ -139,6 +139,7 @@ Approved decisions cannot be described as integrated, fixed, closed, or implemen
 - `context/decisions/AGENT-ENTRY-USES-BOXED-LAYER-TRAVERSAL.md`
 - `context/decisions/DECISION-CARRY-THROUGH-IS-MANDATORY.md`
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-TRANSITION-TRIAGE.md`
+- `context/decisions/PHASE-MODEL-STEPS-NAMESPACE-AND-LEGACY-MIGRATION.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -166,6 +167,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/AGENT-ENTRY-USES-BOXED-LAYER-TRAVERSAL.md`
 - `context/decisions/DECISION-CARRY-THROUGH-IS-MANDATORY.md`
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-TRANSITION-TRIAGE.md`
+- `context/decisions/PHASE-MODEL-STEPS-NAMESPACE-AND-LEGACY-MIGRATION.md`
 
 ## Older decisions this handoff depends on
 
@@ -185,7 +187,8 @@ The list includes both the current-session decisions and the older decisions thi
 ## Next step
 
 Continue Foundation Step 1 through `context/artifacts/PHASE-MODEL-HIGH-LEVEL-REQUIREMENTS.md`.
-The next concrete work is to continue review of that artifact against the remaining findings after the decision-routing and local-handoff pushback was fixed.
+The known six-finding review set has now been addressed in the phase-model draft and carried through dependent decision/status surfaces.
+The next concrete work is to run a final audit or review pass before asking for freeze-readiness approval.
 The promoted-root, renumbering, and close-versus-selection pushback is also now fixed in the draft.
 The workplan current-step and close-gate-flow pushback is also now fixed in the draft.
 The two-gate approval, promotion, and routing-update pushback is also now fixed in the draft.
@@ -206,5 +209,6 @@ Deferred foundation-phase concerns that must survive current-step promotion are 
 The global-vs-phase open-issues transition boundary and required promotion-time triage are also now saved as an explicit decision.
 The bootstrap entrypoint migration finding is addressed in the phase-model draft by defining the promotion-time boxed `AGENTS.md` template and keeping live bootstrap implementation deferred until promotion.
 The decision carry-through rule is also now recorded globally in `RULES.md`, locally in the phase-model draft, and as an explicit decision.
+The former-step collision finding is now addressed by boxing all step folders under the phase-local `steps/` namespace and adding a promotion-time migration task for legacy root-level step folders.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred foundation-phase concerns now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` include the known context gap, persistent memory, traceability gaps, KPI support, and later script-governance implementation.
