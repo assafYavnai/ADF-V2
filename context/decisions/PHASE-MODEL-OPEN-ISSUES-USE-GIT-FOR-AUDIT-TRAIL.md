@@ -23,6 +23,10 @@ The agreed target phase-model rules are:
 - every meaningful `OPEN-ISSUES.md` update must be committed in the same logical checkpoint as the event it records
 - do not leave open-issue lifecycle changes uncommitted across later unrelated work
 - `OPEN-ISSUES.md` does not require a separate dedicated commit when the related repo-truth change is already part of the same logical checkpoint
+- each open issue entry must follow the lean file-friendly open issue entry contract defined in the phase-model artifact
+- open issue entries do not use issue IDs at this stage; the title is the human handle
+- each entry must preserve one unresolved reality gap and include concrete evidence, impact, next action, closure condition, last meaningful update, and source session when available
+- `Owner` may be an owning scope or responsible actor, not necessarily a person
 
 This decision keeps the model simple, uses git as the audit layer, and avoids introducing a second local history surface that the future context architecture may not keep.
 

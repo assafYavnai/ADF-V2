@@ -716,6 +716,165 @@ Audit trail for open-issue creation, closure, and transfer is provided by git ch
 An empty `OPEN-ISSUES.md` means only that no issues are currently open at that scope.
 It does not itself distinguish whether no issue was ever found, all issues were resolved locally, or issues were transferred upward.
 
+### Open Issue Entry Contract
+
+This contract resolves the review finding that `OPEN-ISSUES.md` was not yet script-ready or contextless-agent-ready at the item level.
+
+The contract is lean, artifact-agnostic, and file-friendly.
+It does not introduce issue IDs.
+The entry title is the human handle.
+Stable IDs may be added later only if cross-file automation, reopening, duplicate tracking, or other real needs prove that titles plus git history are insufficient.
+
+An open issue entry preserves one unresolved reality gap so another person or agent can:
+1. understand it
+2. trust that it is real
+3. know why it matters
+4. know what to do next
+5. know what would close it
+
+One entry equals one unresolved reality gap.
+Do not mix facts and guesses.
+Observed behavior and expected behavior are both mandatory.
+Evidence is mandatory.
+Impact is mandatory.
+Next action must be actionable.
+Closure condition must be testable.
+If exact location is unknown, say that explicitly instead of faking precision.
+
+Required fields:
+- `Title`
+- `Affected artifact or surface`
+- `Exact location`
+- `Observed behavior`
+- `Expected behavior`
+- `Evidence`
+- `Impact`
+- `Owner`
+- `Next action`
+- `Closure condition`
+- `Last updated`
+- `Source session`
+
+`Title` answers what the unresolved issue is.
+It must be short, specific, and searchable.
+It names the issue, not the solution.
+
+`Affected artifact or surface` and `Exact location` answer where the issue lives.
+Valid locations include:
+- code file plus method plus line range
+- document file plus section or heading
+- workflow
+- route
+- screen
+- API
+- schema
+- config
+- test
+
+`Observed behavior` answers what current reality shows.
+It must describe actual current reality concretely, not interpretation.
+
+`Expected behavior` answers what should be true instead.
+It is the comparison point for the issue.
+
+`Evidence` answers how we know the issue is real.
+Valid evidence includes:
+- log excerpt
+- screenshot
+- failing test
+- reproduction note
+- file reference
+- line reference
+- commit reference
+- quoted text from a document
+- exact contradiction between artifacts
+
+Evidence must be concrete.
+`Seems wrong` is not evidence.
+
+`Impact` answers why the issue matters.
+Valid impacts include:
+- wrong behavior
+- ambiguity
+- broken contract
+- user risk
+- review risk
+- implementation risk
+- operational risk
+- maintainability risk
+- traceability gap
+
+Impact must explain consequence, not just restate the issue.
+
+`Owner` answers who moves the issue next.
+The owner may be an owning scope or responsible actor, not necessarily a person.
+Examples include:
+- `step`
+- `phase`
+- `global`
+- `user`
+- `agent`
+- `script-governance`
+
+There must be one clear owner.
+Even if others help, one owner is responsible for movement.
+
+`Next action` answers the next concrete move.
+It must be specific enough that someone can start immediately.
+Valid examples include:
+- investigate contradiction
+- update contract wording
+- verify route behavior
+- add missing evidence
+- decide canonical source
+
+`Closure condition` answers what must become true to close the issue.
+It must be testable or checkable.
+It should describe the required outcome, not vague intent.
+If needed, include how closure will be verified.
+
+`Last updated` records when the entry was last meaningfully touched.
+It must include a date and the reason for the update.
+Use meaningful updates, not cosmetic edits.
+
+`Source session` records the agent session UUID or `none`.
+If an agent creates or materially updates an open issue and the current session UUID is available, it must record that UUID.
+This supports deeper audit by letting a future reviewer locate the originating discussion when an issue is unclear.
+It does not replace evidence and does not become the primary issue identity.
+
+Optional fields may be added only when they carry real value:
+- `Status`, only if the open-issues list needs distinctions such as `new`, `investigating`, `blocked`, `waiting`, or `ready`
+- `Unknowns`, only if uncertainty itself is important
+- `Hypothesis`, only if it helps investigation and is clearly marked as hypothesis, not fact
+- `Blocked by`, only when there is a real dependency
+- `Transferred from`, only when the issue moved from step to phase or phase to global
+
+Avoid these fields for now because the best part is no part:
+- issue ID
+- priority or severity, unless the process actively uses them
+- root cause, unless already known and relevant
+- proposed solution, unless it is the next action
+- long history notes that version control already captures
+
+The lean entry template is:
+
+```md
+## <short, specific, searchable title>
+
+- Title: <same as heading or precise display title>
+- Affected artifact or surface: <artifact or surface>
+- Exact location: <specific location or unknown>
+- Observed behavior: <current reality>
+- Expected behavior: <desired/correct reality>
+- Evidence: <concrete evidence>
+- Impact: <consequence>
+- Owner: <owning scope or responsible actor>
+- Next action: <specific next move>
+- Closure condition: <testable outcome>
+- Last updated: <YYYY-MM-DD - reason>
+- Source session: <agent session UUID or none>
+```
+
 Global open issues act as the intake pool for deferred future work, but they are not the same thing as backlog phase candidates.
 `phases/backlog/` holds explicit future phase candidates, not every deferred global open issue.
 Promotion from a global open issue into `phases/backlog/<slug>/` is an explicit shaping step, not an automatic move.

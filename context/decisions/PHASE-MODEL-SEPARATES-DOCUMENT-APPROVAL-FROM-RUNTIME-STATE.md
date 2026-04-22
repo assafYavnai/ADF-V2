@@ -39,6 +39,7 @@ The agreed target phase-model rules are:
 - `Current step type` may be only `implementation-step`, `freeze-ready-preparation`, `close-gate-follow-up`, or `idle`
 - because no step-local `WORKPLAN.md` exists, step runtime lifecycle state is recorded in the phase `WORKPLAN.md`, not in the step `CONTRACT.md`
 - `OPEN-ISSUES.md` records scoped unresolved blockers, transfers, and explicit dispositions only
+- `OPEN-ISSUES.md` entries must follow the lean file-friendly open issue entry contract defined in the phase-model artifact
 - `OPEN-ISSUES.md` must not own current step, document approval state, or lifecycle state
 - global decision files are used only for broader repo-truth approvals that the decision rules require to be preserved as frozen decisions
 - current truth is reconstructed from the boxed current-state files

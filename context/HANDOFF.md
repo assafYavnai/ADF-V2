@@ -58,7 +58,8 @@ The draft now makes `context/decisions/INDEX.md` an explicitly governed support 
 That decisions-folder supersession rule was then saved as another explicit decision so later agents do not have to invent an exception by inference.
 The open-issues audit-trail question was then clarified in the draft.
 The draft now keeps `OPEN-ISSUES.md` as a current-state surface and uses git checkpoints, not a new local activity file, as the governed audit trail for open-issue lifecycle changes.
-That git-backed open-issues audit-trail rule was then saved as another explicit decision.
+The draft now also defines the lean file-friendly open issue entry contract, including title-as-handle, evidence, impact, next action, closure condition, owner, last updated, and source session.
+That git-backed open-issues audit-trail and entry-contract rule was then saved as another explicit decision.
 Second-pass reviewer pushback on promoted-phase inventory was then addressed in the draft.
 The draft now makes promotion eligibility depend on ready phase `CONTRACT.md` and `WORKPLAN.md`, while requiring the promotion checkpoint itself to end with a full promoted phase box, including phase `OPEN-ISSUES.md` and the first step box.
 That full-phase-box promotion rule was then saved as another explicit decision so later agents and scripts do not invent partial promotion behavior.
@@ -191,7 +192,7 @@ The two-gate approval, promotion, and routing-update pushback is also now fixed 
 The artifact-governance and promotion-enforceability pushback is also now fixed in the draft.
 The freeze-ready versus close-ready sequencing contradiction is also now fixed in the draft.
 The decisions-folder contract contradiction is also now fixed in the draft.
-The open-issues audit-trail rule is also now fixed in the draft.
+The open-issues audit-trail and item-schema finding is also now fixed in the draft.
 The promoted-phase inventory contradiction is also now fixed in the draft.
 The step numbering and former-step tracking contradiction is also now fixed in the draft.
 The backlog-shape and no-exceptions contradiction is also now fixed in the draft.
