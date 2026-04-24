@@ -34,9 +34,10 @@ The agreed target phase-model rules are:
   - runtime lifecycle state of each instantiated step
   - step close progression and next-step flow
 - phase `WORKPLAN.md` must serialize that runtime state through the required `## Workplan State`, `## Ordered Implementation Steps`, `## Instantiated Step Runtime`, `## Freeze-Ready Preparation`, and `## Close-Gate Follow-Up` sections defined in the phase-model artifact
+- when lifecycle state is `review-fix-cycle`, phase `WORKPLAN.md` must also serialize review-fix current work through `## Review-Fix Cycle`
 - phase `WORKPLAN.md` must serialize workplan document approval state with `Workplan document state: <draft|freeze-review-ready|frozen|unfrozen|retired>`
 - allowed phase and step lifecycle-state values are `in-progress`, `freeze-ready`, `freeze-gate-approved`, `review-fix-cycle`, `close-ready`, `close-gate-approved`, `promotion`, and `post-promotion`
-- `Current step type` may be only `implementation-step`, `freeze-ready-preparation`, `close-gate-follow-up`, or `idle`
+- `Current step type` may be only `implementation-step`, `freeze-ready-preparation`, `review-fix`, `close-gate-follow-up`, or `idle`
 - because no step-local `WORKPLAN.md` exists, step runtime lifecycle state is recorded in the phase `WORKPLAN.md`, not in the step `CONTRACT.md`
 - `OPEN-ISSUES.md` records scoped unresolved blockers, transfers, and explicit dispositions only
 - `OPEN-ISSUES.md` entries must follow the lean file-friendly open issue entry contract defined in the phase-model artifact

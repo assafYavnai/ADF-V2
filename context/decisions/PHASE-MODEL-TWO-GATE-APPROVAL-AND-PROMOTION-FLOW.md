@@ -79,11 +79,12 @@ The agreed target phase-model rules are:
 - if the freeze gate is approved:
   - execution for that scope is frozen for review
   - the review-fix cycle begins
+  - `WORKPLAN.md` records review-fix current work in `## Review-Fix Cycle`
   - the scope remains open
 
 - `close ready` means:
-  - the review-fix cycle is complete
-  - review findings are addressed
+  - every review-fix item is `closed` or `transferred`
+  - review findings are addressed through the governed `## Review-Fix Cycle` section
   - verification is rerun as required
   - close-gate dependencies are satisfied
   - scope-specific open-issue rules for closure are satisfied

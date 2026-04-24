@@ -19,7 +19,8 @@ The agreed target phase-model rules are:
 - when the original implementation steps are complete, `WORKPLAN.md` transitions into freeze-ready preparation as the next current-step area
 - when the scope is freeze ready, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject
 - if the freeze gate is approved, the review-fix cycle begins
-- after the review-fix cycle is complete, `WORKPLAN.md` transitions into close-gate follow-up steps as the next current-step area
+- during review-fix cycle, `WORKPLAN.md` uses `## Review-Fix Cycle` and `review-<slug>` item ids as the current-work authority
+- after every review-fix item is `closed` or `transferred`, `WORKPLAN.md` transitions into close-gate follow-up steps as the next current-step area
 - close-gate follow-up work may include remaining open-issue handling, rerun verification after review fixes, and any remaining close-gate dependencies required before close can be suggested
 - when all close-gate dependencies are satisfied, the next step is for the agent to suggest close with a summary and for the user to either approve or reject
 - if the user rejects either the freeze suggestion or the close suggestion and asks for further work that changes the frozen workplan flow, `WORKPLAN.md` must be unfrozen, revised, and re-frozen before execution continues

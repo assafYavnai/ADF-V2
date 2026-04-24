@@ -90,6 +90,8 @@ The boxed `AGENTS.md` shape is kept as a promotion-time template inside the phas
 The live bootstrap files must not be changed until the phase model is promoted and implemented.
 Decision carry-through was then made explicit as both a global rule in `RULES.md` and a local phase-model requirement.
 Approved decisions cannot be described as integrated, fixed, closed, or implemented until all dependent surfaces are updated or explicitly marked unchanged with reason.
+The current seven-finding review cycle then began.
+Finding 1, the missing review-fix current-work schema, was addressed by making phase `WORKPLAN.md` own `## Review-Fix Cycle`, adding `review-fix` as a `Current step type`, and defining local substeps as non-governed descriptive planning inside a step.
 
 ## Session pointers
 
@@ -140,6 +142,7 @@ Approved decisions cannot be described as integrated, fixed, closed, or implemen
 - `context/decisions/DECISION-CARRY-THROUGH-IS-MANDATORY.md`
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-TRANSITION-TRIAGE.md`
 - `context/decisions/PHASE-MODEL-STEPS-NAMESPACE-AND-LEGACY-MIGRATION.md`
+- `context/decisions/PHASE-MODEL-REVIEW-FIX-CYCLE-AND-SUBSTEPS.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -168,6 +171,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/DECISION-CARRY-THROUGH-IS-MANDATORY.md`
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-TRANSITION-TRIAGE.md`
 - `context/decisions/PHASE-MODEL-STEPS-NAMESPACE-AND-LEGACY-MIGRATION.md`
+- `context/decisions/PHASE-MODEL-REVIEW-FIX-CYCLE-AND-SUBSTEPS.md`
 
 ## Older decisions this handoff depends on
 
@@ -210,5 +214,8 @@ The global-vs-phase open-issues transition boundary and required promotion-time 
 The bootstrap entrypoint migration finding is addressed in the phase-model draft by defining the promotion-time boxed `AGENTS.md` template and keeping live bootstrap implementation deferred until promotion.
 The decision carry-through rule is also now recorded globally in `RULES.md`, locally in the phase-model draft, and as an explicit decision.
 The former-step collision finding is now addressed by boxing all step folders under the phase-local `steps/` namespace and adding a promotion-time migration task for legacy root-level step folders.
+The current seven-finding review cycle is now being handled one finding at a time.
+Finding 1 is addressed by the new governed review-fix cycle schema in `WORKPLAN.md` and the explicit rule that substeps remain local, non-governed step planning.
+The next review item to discuss is finding 2, the freeze / promotion approval authority finding.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred foundation-phase concerns now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` include the known context gap, persistent memory, traceability gaps, KPI support, and later script-governance implementation.

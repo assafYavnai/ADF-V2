@@ -436,6 +436,7 @@ No implementation starts until the phase workplan is frozen.
 - current step
 - runtime lifecycle state of each instantiated step
 - step close progression and default next-step flow inside the phase
+- review-fix cycle current work after freeze-gate approval
 
 No separate phase-local status tracker is introduced for step sequencing.
 Because steps do not have a step-local workplan, step runtime lifecycle state is not recorded in step `CONTRACT.md`.
@@ -471,17 +472,20 @@ Allowed `Phase lifecycle state` values are:
 Allowed `Current step type` values are:
 - `implementation-step`
 - `freeze-ready-preparation`
+- `review-fix`
 - `close-gate-follow-up`
 - `idle`
 
 `Current step` must be one of:
 - an instantiated step folder path such as `steps/stepNN-<slug>`
 - a freeze-ready preparation item id such as `freeze-<slug>`
+- a review-fix item id such as `review-<slug>`
 - a close-gate follow-up item id such as `close-<slug>`
 - `none`, only when `Current step type` is `idle`
 
 If `Current step type` is `implementation-step`, `Current step` must match an instantiated numbered step folder and a record in `## Instantiated Step Runtime`.
 If `Current step type` is `freeze-ready-preparation`, `Current step` must match an item in `## Freeze-Ready Preparation`.
+If `Current step type` is `review-fix`, `Current step` must match an item in `## Review-Fix Cycle`.
 If `Current step type` is `close-gate-follow-up`, `Current step` must match an item in `## Close-Gate Follow-Up`.
 
 The required field block shape is:
@@ -491,8 +495,8 @@ The required field block shape is:
 
 - Workplan document state: <draft|freeze-review-ready|frozen|unfrozen|retired>
 - Phase lifecycle state: <in-progress|freeze-ready|freeze-gate-approved|review-fix-cycle|close-ready|close-gate-approved|promotion|post-promotion>
-- Current step: <steps/stepNN-<slug>|freeze-<slug>|close-<slug>|none>
-- Current step type: <implementation-step|freeze-ready-preparation|close-gate-follow-up|idle>
+- Current step: <steps/stepNN-<slug>|freeze-<slug>|review-<slug>|close-<slug>|none>
+- Current step type: <implementation-step|freeze-ready-preparation|review-fix|close-gate-follow-up|idle>
 ```
 
 The ordered implementation step list is virtual until instantiation.
@@ -551,12 +555,39 @@ The required non-step follow-up shapes are:
 | close-<slug> | <pending|in-progress|complete|blocked> | <dependency or none> | <notes> |
 ```
 
+Review-fix cycle items are governed non-step current-work items.
+They exist after freeze-gate approval and before close-gate follow-up.
+They track review findings, review-driven fixes, required verification, and any explicit transfer out of the review-fix cycle.
+
+Allowed review-fix item states are:
+- `open`
+- `in-progress`
+- `fixed`
+- `verified`
+- `closed`
+- `transferred`
+
+The required review-fix cycle shape is:
+
+```md
+## Review-Fix Cycle
+
+| Item id | Title | Source | Scope | State | Owner | Next action | Closure condition | Verification | Linked surface |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| review-<slug> | <short title> | <review source> | <phase|step|artifact|global> | <open|in-progress|fixed|verified|closed|transferred> | <owner> | <next action> | <testable closure condition> | <verification or none> | <step/artifact/open issue/decision or none> |
+```
+
+`review-<slug>` ids must be unique within the `## Review-Fix Cycle` section.
+If a review-fix item requires implementation rework inside a step, the linked surface must point to the affected step or artifact.
+If a review-fix item is transferred out of the review-fix cycle instead of closed, the linked surface must point to the receiving `OPEN-ISSUES.md` entry or other governed target.
+The review-fix cycle is complete only when every review-fix item is `closed` or `transferred`.
+
 `Current step` must be an explicit field inside `WORKPLAN.md`.
 The ordered implementation step list defines the default implementation-step flow.
 The ordered implementation step list is the canonical execution order.
 Listed steps are virtual until they are instantiated in git.
 A step becomes an official execution step only when it is instantiated as a numbered folder under the phase-local `steps/` namespace.
-`Current step` may point only to an instantiated numbered step folder or to a governed non-step follow-up item.
+`Current step` may point only to an instantiated numbered step folder or to a governed non-step current-work item.
 Virtual listed steps remain planned in `WORKPLAN.md` until they are instantiated.
 Once a step is instantiated, its current runtime state must be recorded in the phase `WORKPLAN.md` using the governed lifecycle vocabulary in this document.
 
@@ -573,8 +604,10 @@ That preparation may include:
 
 When the scope is freeze ready, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject.
 If the freeze gate is approved, the review-fix cycle begins.
+During review-fix cycle, `WORKPLAN.md` uses the `review-fix` current step type and the `## Review-Fix Cycle` section as the current-work authority.
+Routing does not point to a step folder for review-fix work unless the active review-fix item explicitly links to step rework.
 
-After the review-fix cycle is complete, `WORKPLAN.md` transitions into close-gate follow-up steps as the next current-step area until phase close-gate dependencies are satisfied.
+After every review-fix item is `closed` or `transferred`, `WORKPLAN.md` transitions into close-gate follow-up steps as the next current-step area until phase close-gate dependencies are satisfied.
 
 Close-gate follow-up steps may be listed in a separate section of `WORKPLAN.md` so it is clear they happen after the review-fix cycle is complete.
 Those follow-up steps may include:
@@ -667,6 +700,11 @@ The exact required file inventory inside a step folder is:
 - `OPEN-ISSUES.md`
 
 A listed workplan step is virtual until instantiation.
+
+Substeps are allowed only as local descriptive planning inside a step.
+They are not a governed routing layer, they do not receive folders, and they do not own lifecycle state, promotion, numbering, or close gates.
+If a substep needs its own contract, gate, artifacts, or user approval, it must be promoted into a real governed step.
+Review-fix items are not substeps; they are governed runtime items in the phase `WORKPLAN.md`.
 
 All step folders live under the phase-local `steps/` namespace.
 Official instantiated step folders use `steps/stepNN-<slug>/`.
@@ -1027,15 +1065,15 @@ If the freeze gate is approved:
 - the scope remains open
 
 A phase is close ready when:
-- the review-fix cycle is complete
-- review findings are addressed
+- every review-fix item is `closed` or explicitly `transferred`
+- review findings are addressed through the governed `## Review-Fix Cycle` section
 - verification is rerun as required
 - close-gate dependencies are satisfied
 - no unresolved phase-scoped open items remain unless they are explicitly transferred out under the phase rules
 
 A step is close ready when:
-- the review-fix cycle is complete
-- review findings are addressed
+- every review-fix item affecting that step is `closed` or explicitly `transferred`
+- review findings are addressed through the governed `## Review-Fix Cycle` section
 - verification is rerun as required
 - close-gate dependencies are satisfied
 - no unresolved step-scoped open items remain unless they are explicitly transferred forward under the step rules
