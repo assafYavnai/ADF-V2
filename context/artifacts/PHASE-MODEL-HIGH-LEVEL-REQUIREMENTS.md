@@ -31,18 +31,25 @@ This model defines:
 
 ## Phase System Layout
 
-The `phases/` layer uses these top-level states:
+The `phases/` layer allows only these top-level governed entries:
+- `phases/PHASE-MODEL.md`
 - `phases/ROUTING.md`
 - `phases/backlog/`
 - `phases/complete/`
 - one or more promoted phases at `phases/phaseNNN-<slug>/`
 
 The meanings are:
+- `phases/PHASE-MODEL.md` is the canonical phase-system model file after promotion
+- `phases/ROUTING.md` is the phase-system routing entry point
 - `phases/backlog/` holds unpromoted phase candidates
 - `phases/complete/` holds closed promoted phases
 - the root `phases/phaseNNN-<slug>/` paths hold promoted open phases
 - exactly one promoted phase may be active at a time
 - active focus is selected by `phases/ROUTING.md`
+
+`PHASE-MODEL.md` is a fixed canonical support file for the phase layer.
+It is not a lifecycle state, not a phase, not a phase candidate, and not numbered.
+No other `phases/` root support files are allowed unless this model explicitly adds them to the root inventory.
 
 A blocked or deferred active phase does not need a separate suspended state.
 If a promoted phase is deferred, it may be demoted back to backlog.
@@ -81,10 +88,11 @@ This document defines the target phase model, not the current foundation-bootstr
 Until this phase model is frozen and promoted, the current foundation-bootstrap surfaces remain authoritative for the running repository state.
 
 This model must not become active piecemeal.
-When it is promoted, the same logical checkpoint must bring routing, decision reads, and phase layout into alignment with this document before this model becomes active repo truth.
+When it is promoted, the same logical checkpoint must bring routing, decision reads, phase layout, and canonical phase-system support files into alignment with this document before this model becomes active repo truth.
 
 No target-model structural exceptions are allowed.
 Current non-target structures remain part of the current bootstrap runtime only and do not count as valid target-model shapes.
+The allowed `phases/` root inventory is closed and must contain only the governed entries listed in `Phase System Layout`.
 The promotion checkpoint must normalize each affected current structure into one governed target storage class:
 - promoted open phase at `phases/phaseNNN-<slug>/`
 - backlog candidate under `phases/backlog/`
@@ -93,6 +101,7 @@ The promotion checkpoint must normalize each affected current structure into one
 A non-conforming current root folder must not remain ambiguous after the promotion checkpoint.
 That same checkpoint must also rename current folders into the governed naming pattern when needed.
 The target model does not permit carrying forward a non-compliant structure as an exception.
+The promotion checkpoint must promote this artifact into `phases/PHASE-MODEL.md` as the canonical phase-system model support file.
 
 Bootstrap-only current-state surfaces remain bootstrap-only until the promotion checkpoint.
 Until that checkpoint:

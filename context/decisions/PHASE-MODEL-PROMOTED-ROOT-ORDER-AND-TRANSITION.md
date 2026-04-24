@@ -30,6 +30,9 @@ The agreed ownership split is:
 - `phases/ROUTING.md` answers execution focus
 - the active phase `WORKPLAN.md` answers step sequencing
 
+A later root-inventory clarification added `phases/PHASE-MODEL.md` as the canonical phase-system support file at the `phases/` root.
+That file is not a promoted phase and does not participate in active phase selection or recommendation ordering.
+
 This replaced the earlier assumption that the root phase path itself must encode active status.
 Active status belongs to routing, not to the folder path.
 
@@ -61,6 +64,7 @@ Only after close does the next-phase selection transition run, update routing, a
 The agreed target phase-model rules are:
 
 - `phases/` root may contain one or more promoted open phases
+- `phases/` root may also contain the canonical support files explicitly allowed by the phase model, currently `PHASE-MODEL.md` and `ROUTING.md`
 - exactly one promoted phase may be active at a time
 - `phases/ROUTING.md` selects the currently active promoted phase
 - non-active promoted phases may remain at the root as promoted but inactive/selectable phases
