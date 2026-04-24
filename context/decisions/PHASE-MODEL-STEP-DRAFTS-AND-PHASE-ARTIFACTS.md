@@ -40,6 +40,10 @@ Instead, the contracts become the authoritative source for:
 The discussion also clarified rework.
 If a collected phase artifact later needs revision before phase close, it must return to explicit step scope for rework rather than being revised ad hoc inside phase scope.
 
+Later review clarified the approval boundary for this artifact model.
+Step promotion into phase `artifacts/` remains mechanical after step close because collected artifacts remain isolated inside the active phase.
+Phase promotion into canonical repo locations requires CEO+CTO artifact-freeze approval under the global freeze rule before canonical movement occurs.
+
 ## OPTIONS
 
 - Keep both step-local and phase-local draft artifact creation.
@@ -75,10 +79,15 @@ The agreed target phase-model artifact rules are:
 
 - when a step closes, the phase scope executes step promotion under the step contract promotion rule
 - approved step outputs move from `steps/stepNN-<slug>/drafts/` into the phase-root `artifacts/` folder
+- this step promotion remains mechanical after step close because the outputs are still isolated inside the active phase
+- this step promotion does not by itself promote artifacts to canonical repo truth
 
 - while the phase is active, `phases/phaseNNN-<slug>/artifacts/` holds collected phase-owned artifacts in isolation
 - when a phase closes, the phase scope executes phase promotion under the phase contract artifact collection and promotion rule
 - selected collected artifacts move from the phase-root `artifacts/` folder to the canonical repo locations named by the phase contract
+- selected collected artifacts may move into canonical repo locations only after CEO+CTO artifact-freeze approval under the global freeze rule is recorded
+- if artifact-freeze approval was recorded before phase close, phase promotion may reference that prior approval and remain mechanical after close approval
+- if artifact-freeze approval is recorded as part of phase close, the close approval must explicitly include that CEO+CTO artifact-freeze approval
 
 - if a collected artifact later needs revision before phase close, it must return to an explicit step `drafts/` scope for rework
 - that rework may happen in the original step or in a new explicit revision step

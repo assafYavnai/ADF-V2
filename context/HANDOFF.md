@@ -92,6 +92,7 @@ Decision carry-through was then made explicit as both a global rule in `RULES.md
 Approved decisions cannot be described as integrated, fixed, closed, or implemented until all dependent surfaces are updated or explicitly marked unchanged with reason.
 The current seven-finding review cycle then began.
 Finding 1, the missing review-fix current-work schema, was addressed by making phase `WORKPLAN.md` own `## Review-Fix Cycle`, adding `review-fix` as a `Current step type`, and defining local substeps as non-governed descriptive planning inside a step.
+Finding 2, the freeze / promotion approval authority gap, was addressed by requiring freeze-gate approval to use the global CEO+CTO freeze rule and requiring CEO+CTO artifact-freeze approval before canonical artifact movement during phase promotion.
 
 ## Session pointers
 
@@ -143,6 +144,7 @@ Finding 1, the missing review-fix current-work schema, was addressed by making p
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-TRANSITION-TRIAGE.md`
 - `context/decisions/PHASE-MODEL-STEPS-NAMESPACE-AND-LEGACY-MIGRATION.md`
 - `context/decisions/PHASE-MODEL-REVIEW-FIX-CYCLE-AND-SUBSTEPS.md`
+- `context/decisions/PHASE-MODEL-FREEZE-AND-CANONICAL-PROMOTION-USE-GLOBAL-RULE.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -172,6 +174,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/PHASE-MODEL-OPEN-ISSUES-TRANSITION-TRIAGE.md`
 - `context/decisions/PHASE-MODEL-STEPS-NAMESPACE-AND-LEGACY-MIGRATION.md`
 - `context/decisions/PHASE-MODEL-REVIEW-FIX-CYCLE-AND-SUBSTEPS.md`
+- `context/decisions/PHASE-MODEL-FREEZE-AND-CANONICAL-PROMOTION-USE-GLOBAL-RULE.md`
 
 ## Older decisions this handoff depends on
 
@@ -216,6 +219,7 @@ The decision carry-through rule is also now recorded globally in `RULES.md`, loc
 The former-step collision finding is now addressed by boxing all step folders under the phase-local `steps/` namespace and adding a promotion-time migration task for legacy root-level step folders.
 The current seven-finding review cycle is now being handled one finding at a time.
 Finding 1 is addressed by the new governed review-fix cycle schema in `WORKPLAN.md` and the explicit rule that substeps remain local, non-governed step planning.
-The next review item to discuss is finding 2, the freeze / promotion approval authority finding.
+Finding 2 is addressed by binding freeze gates and canonical artifact movement to the global CEO+CTO freeze rule while keeping promotion mechanical after required approval is recorded.
+The next review item to discuss is finding 3, the `phases/PHASE-MODEL.md` root-inventory finding.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred foundation-phase concerns now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` include the known context gap, persistent memory, traceability gaps, KPI support, and later script-governance implementation.

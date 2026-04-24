@@ -77,8 +77,8 @@ The agreed target phase-model rules are:
   - completing any remaining close-gate dependencies required before close can be suggested
   - preparing the agent close recommendation and summary for user review
 
-- when all freeze-ready preparation dependencies are satisfied, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject
-- when all close-gate dependencies are satisfied, the next step is for the agent to suggest close with a summary and for the user to either approve or reject
+- when all freeze-ready preparation dependencies are satisfied, the next step is for the agent to suggest freeze with a summary and request CEO+CTO approval under the global freeze rule
+- when all close-gate dependencies are satisfied, the next step is for the agent to suggest close with a summary and request the required close-gate approval
 - if the user rejects and asks for further work that changes the frozen workplan flow, that rejection triggers a quick workplan unfreeze, revision, and re-freeze before execution continues
 
 This decision clarifies the workplan authority model and closes the active-step-tracker ambiguity without introducing a new tracker surface.

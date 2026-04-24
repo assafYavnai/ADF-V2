@@ -17,12 +17,12 @@ The agreed target phase-model rules are:
 
 - freeze-ready preparation happens before the freeze gate, not after close-gate dependency completion
 - when the original implementation steps are complete, `WORKPLAN.md` transitions into freeze-ready preparation as the next current-step area
-- when the scope is freeze ready, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject
+- when the scope is freeze ready, the next step is for the agent to suggest freeze with a summary and request CEO+CTO approval under the global freeze rule
 - if the freeze gate is approved, the review-fix cycle begins
 - during review-fix cycle, `WORKPLAN.md` uses `## Review-Fix Cycle` and `review-<slug>` item ids as the current-work authority
 - after every review-fix item is `closed` or `transferred`, `WORKPLAN.md` transitions into close-gate follow-up steps as the next current-step area
 - close-gate follow-up work may include remaining open-issue handling, rerun verification after review fixes, and any remaining close-gate dependencies required before close can be suggested
-- when all close-gate dependencies are satisfied, the next step is for the agent to suggest close with a summary and for the user to either approve or reject
+- when all close-gate dependencies are satisfied, the next step is for the agent to suggest close with a summary and request the required close-gate approval
 - if the user rejects either the freeze suggestion or the close suggestion and asks for further work that changes the frozen workplan flow, `WORKPLAN.md` must be unfrozen, revised, and re-frozen before execution continues
 
 This decision supersedes only the conflicting lifecycle-sequencing wording in `context/decisions/PHASE-MODEL-WORKPLAN-CURRENT-STEP-AND-CLOSE-GATE-FLOW.md`.

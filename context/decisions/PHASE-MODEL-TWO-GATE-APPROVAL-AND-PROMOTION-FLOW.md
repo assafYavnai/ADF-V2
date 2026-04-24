@@ -37,6 +37,9 @@ The discussion also clarified promotion ownership.
 Promotion is not a separate approval gate.
 It is a mechanical step that runs after close-gate approval.
 Because the phase workplan owns completion flow, promotion execution is owned by the phase scope.
+Later review clarified that mechanical promotion does not weaken the global freeze rule.
+Freeze gates require CEO+CTO approval under the global freeze rule.
+Canonical artifact movement during phase promotion is allowed only after CEO+CTO artifact-freeze approval is recorded.
 
 That means:
 - a step does not promote itself in isolation
@@ -73,8 +76,10 @@ The agreed target phase-model rules are:
 - `freeze ready` means the scope is ready to ask for freeze-gate approval and begin the review-fix cycle
 - `freeze ready` does not itself close the scope
 
-- both freeze gate and close gate require explicit user approval
-- where a freeze event also changes trusted repo truth under the broader active context governance, that freeze approval must still satisfy the broader freeze rule
+- freeze gate approval requires CEO+CTO approval under the global freeze rule
+- close gate approval requires explicit user approval
+- if close approval also authorizes canonical artifact promotion, that close approval must include CEO+CTO artifact-freeze approval under the global freeze rule
+- if canonical artifact-freeze approval was already recorded before close, close approval may remain a separate explicit user approval
 
 - if the freeze gate is approved:
   - execution for that scope is frozen for review
@@ -93,17 +98,20 @@ The agreed target phase-model rules are:
   - the scope closes
   - promotion runs next as a mechanical transition
   - promotion is not a separate approval gate
+  - canonical artifact movement is allowed only after the required CEO+CTO artifact-freeze approval is already recorded
 
 - promotion execution is owned by the phase scope because the phase workplan owns completion flow
 
 - for step close and promotion:
   - the phase scope executes step promotion under the step contract promotion rule
+  - step promotion to phase artifacts remains mechanical because artifacts remain isolated inside the active phase
   - the phase scope updates the phase workplan and any affected phase-local files in the same logical checkpoint
   - after step promotion, control returns to phase scope for the next current step
 
 - for phase close and promotion:
   - the phase scope executes phase promotion
   - the phase moves to `phases/complete/` with the number it closed under
+  - canonical artifact outputs may move only if their artifact-freeze approval under the global freeze rule is already recorded
   - the phase scope updates `phases/ROUTING.md` in the same logical checkpoint
   - after phase promotion, routing either points to the selected next active phase or explicitly says that no active phase is selected and the system is idle / waiting for input
 

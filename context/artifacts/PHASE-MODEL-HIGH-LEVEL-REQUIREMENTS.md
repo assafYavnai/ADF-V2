@@ -425,6 +425,7 @@ The minimum required field list for a phase `WORKPLAN.md` is:
 - step dependencies or prerequisites
 - default next-step rule
 - freeze-ready preparation items
+- review-fix cycle items
 - close-gate follow-up items
 - change-control rule
 - phase workplan close gate
@@ -602,7 +603,7 @@ That preparation may include:
 - confirming the implementation outputs are complete enough to stop execution and enter review
 - preparing the agent freeze recommendation and summary for user review
 
-When the scope is freeze ready, the next step is for the agent to suggest freeze with a summary and for the user to either approve or reject.
+When the scope is freeze ready, the next step is for the agent to suggest freeze with a summary and request CEO+CTO approval under the global freeze rule.
 If the freeze gate is approved, the review-fix cycle begins.
 During review-fix cycle, `WORKPLAN.md` uses the `review-fix` current step type and the `## Review-Fix Cycle` section as the current-work authority.
 Routing does not point to a step folder for review-fix work unless the active review-fix item explicitly links to step rework.
@@ -615,7 +616,7 @@ Those follow-up steps may include:
 - rerunning required verification after review fixes
 - completing any remaining close-gate dependencies required before close can be suggested
 
-When all close-gate dependencies are satisfied, the next step is for the agent to suggest close with a summary and for the user to either approve or reject.
+When all close-gate dependencies are satisfied, the next step is for the agent to suggest close with a summary and request the required close-gate approval.
 If the user rejects either the freeze suggestion or the close suggestion and asks for further work that changes the frozen workplan flow, that rejection triggers a quick workplan unfreeze, revision, and re-freeze before execution continues.
 
 ## Workplan Change Control
@@ -1019,12 +1020,17 @@ The step contract must define:
 
 When a step closes, the phase scope executes step promotion under the step contract promotion rule.
 Approved step outputs move from `steps/stepNN-<slug>/drafts/` into the phase-root `artifacts/` folder.
+Step promotion to phase artifacts is mechanical after step close because collected artifacts remain isolated inside the active phase.
+Step promotion does not by itself promote artifacts to canonical repo truth.
 
 `phases/phaseNNN-<slug>/artifacts/` holds collected phase-owned artifacts while the phase is still active.
 Those artifacts remain isolated inside the phase until phase promotion.
 
 When a phase closes, the phase scope executes phase promotion under the phase contract artifact collection and promotion rule.
 Selected collected artifacts move from the phase-root `artifacts/` folder to the canonical repo locations named by the phase contract.
+Moving collected phase artifacts into canonical repo locations requires artifact-freeze approval under the global freeze rule.
+That CEO+CTO artifact-freeze approval must be recorded before canonical artifact movement, either as part of the phase close gate or as a prior explicit artifact-freeze approval.
+If the required artifact-freeze approval is already recorded, canonical artifact movement remains a mechanical promotion step after close approval.
 
 If a collected artifact later needs revision before phase close, it must return to an explicit step `drafts/` scope for rework rather than being revised ad hoc at phase scope.
 That rework may happen in the original step or in a new explicit revision step, but it must return to step scope before being collected again by the phase.
@@ -1056,8 +1062,10 @@ A step is freeze ready when its implementation outputs are complete enough to st
 Freeze ready means the scope is ready to ask for freeze-gate approval and begin the review-fix cycle.
 Freeze ready does not itself close the scope.
 
-Both freeze gate and close gate require explicit user approval.
-Where a freeze event also changes trusted repo truth under the broader active context governance, that freeze approval must still satisfy the broader freeze rule.
+Freeze gate approval requires CEO+CTO approval under the global freeze rule.
+Close gate approval requires explicit user approval.
+If close approval also authorizes canonical artifact promotion, that close approval must include CEO+CTO artifact-freeze approval under the global freeze rule.
+If canonical artifact-freeze approval was already recorded before close, close approval may remain a separate explicit user approval and promotion stays mechanical after close.
 
 If the freeze gate is approved:
 - execution for that scope is frozen for review
@@ -1082,6 +1090,7 @@ If the close gate is approved:
 - the scope closes
 - promotion runs next as a mechanical transition
 - promotion is not a separate approval gate
+- any canonical artifact movement during promotion is allowed only after the required CEO+CTO artifact-freeze approval is already recorded
 
 Promotion execution is owned by the phase scope because the phase workplan owns completion flow.
 
@@ -1094,6 +1103,7 @@ For phase close and promotion:
 - the phase scope executes phase promotion
 - the phase moves to `phases/complete/` with the number it closed under
 - completion may also move outputs to other destinations if that is defined in the phase contract
+- canonical artifact outputs may move only if their artifact-freeze approval under the global freeze rule is already recorded
 - the phase scope updates `phases/ROUTING.md` in the same logical checkpoint
 - after phase promotion, routing either points to the selected next active phase or explicitly says that no active phase is selected and the system is idle / waiting for input
 
@@ -1136,6 +1146,7 @@ Approval is recorded as follows:
 - scope-lifecycle approval in the governing phase `WORKPLAN.md`
 - blocker/open-item status in the relevant scope `OPEN-ISSUES.md`
 - broader repo-truth approval in a global decision file when the decision rules require it
+- artifact-freeze approval for canonical promotion in the phase `WORKPLAN.md`, the phase workplan close-gate record, or a global decision file, as required by the active governance rule
 
 For contracts and workplans:
 - the approved file must explicitly say it is frozen or approved
@@ -1144,6 +1155,7 @@ For contracts and workplans:
 For step and phase closure:
 - closure approval must be reflected in the governing workplan and any affected `OPEN-ISSUES.md`
 - if closure causes promotion, the related artifact or folder move must be part of the same logical checkpoint
+- if closure causes canonical artifact promotion, that checkpoint must also include the recorded CEO+CTO artifact-freeze approval or point to the prior recorded approval that authorizes the move
 
 For next-phase selection and renumbering:
 - routing updates, folder renames, and reference updates caused by the reviewed selection order must be part of the same logical checkpoint
