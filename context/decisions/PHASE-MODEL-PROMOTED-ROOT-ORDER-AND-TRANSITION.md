@@ -44,6 +44,9 @@ The user may change the recommended order when choosing the next phase because i
 
 The third clarification was transition handling.
 The draft needed to say explicitly that the current foundation-bootstrap root folders are transition-era exceptions until the phase-model promotion checkpoint normalizes them into the governed shape.
+A later activation-boundary clarification narrowed that wording further.
+The phase-model promotion checkpoint must complete structural activation compliance for `phases/phase0-foundation/` before the target model becomes active.
+Foundation Step 2 cannot be used to make the foundation phase structurally valid after activation.
 
 The fourth clarification was operational sequencing.
 Phase close gate and next-phase selection are separate transitions.
@@ -96,11 +99,14 @@ The agreed target phase-model rules are:
 
 - until the phase model is frozen and promoted, the current foundation-bootstrap tree remains a transition-era exception
 - when the phase model is promoted, the same logical checkpoint must normalize each transition-era root folder into one governed storage class and rename it into the governed naming pattern where required
+- target activation requires `phases/phase0-foundation/` to be structurally compliant before routing may select it as active
+- no target-model active phase may remain structurally non-compliant
 
 - the current intended transition mapping is:
-  - `phases/phase0-foundation/` becomes the active promoted foundation phase
+  - after structural activation compliance is complete, `phases/phase0-foundation/` becomes the active promoted foundation phase
   - the current phase-model work becomes Foundation Step 1 inside that phase
-  - foundation normalization into full target-model compliance becomes Foundation Step 2
+  - structural normalization of `phases/phase0-foundation/` into target-model compliance happens inside the phase-model promotion checkpoint before target activation
+  - any later Foundation Step 2 is foundation implementation or governance work inside the already compliant foundation phase box
   - `phases/phase1-Strategic_Definition/` remains a promoted but inactive/selectable phase after normalization into governed target-model shape
 
 This decision defines the target model and its transition rule.

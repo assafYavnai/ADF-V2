@@ -89,6 +89,9 @@ Until this phase model is frozen and promoted, the current foundation-bootstrap 
 
 This model must not become active piecemeal.
 When it is promoted, the same logical checkpoint must bring routing, decision reads, phase layout, and canonical phase-system support files into alignment with this document before this model becomes active repo truth.
+Target activation and foundation normalization are separate concepts.
+Structural activation compliance is part of the phase-model promotion checkpoint.
+Foundation Step 2, if later created, is implementation work inside an already compliant foundation phase box.
 
 No target-model structural exceptions are allowed.
 Current non-target structures remain part of the current bootstrap runtime only and do not count as valid target-model shapes.
@@ -102,6 +105,8 @@ A non-conforming current root folder must not remain ambiguous after the promoti
 That same checkpoint must also rename current folders into the governed naming pattern when needed.
 The target model does not permit carrying forward a non-compliant structure as an exception.
 The promotion checkpoint must promote this artifact into `phases/PHASE-MODEL.md` as the canonical phase-system model support file.
+The target phase model is not active until `phases/phase0-foundation/` is normalized into a compliant promoted phase box.
+No phase may be active under the target model while structurally non-compliant.
 
 Bootstrap-only current-state surfaces remain bootstrap-only until the promotion checkpoint.
 Until that checkpoint:
@@ -116,13 +121,16 @@ When the target phase model is promoted:
 - `AGENTS.md` remains the top-level layer entry funnel and is updated only when top-level layer entry points change
 - `CLAUDE.md` and `GEMINI.md` remain static funnel stubs unless an LLM-specific setting is required
 - implementation is only through this phase-model document until the phase model is promoted; live bootstrap files must not be changed early
+- the promotion checkpoint must normalize `phases/phase0-foundation/` into full target structural shape before routing may select it as active
+- full target structural shape for `phases/phase0-foundation/` means `CONTRACT.md`, `WORKPLAN.md`, `OPEN-ISSUES.md`, `steps/`, one active first step box under `steps/stepNN-<slug>/`, and that step box's `CONTRACT.md` and `OPEN-ISSUES.md`
 - the promotion checkpoint must triage `context/OPEN-ISSUES.md`, move foundation-scoped items into `phases/phase0-foundation/OPEN-ISSUES.md`, and leave only true global/bootstrap items in the global file so the post-transition structure is clean
 - the promotion checkpoint must migrate legacy phase step folders into the `steps/` namespace; any root-level `stepNN-<slug>/` folder becomes `steps/stepNN-<slug>/`, any root-level preserved former-step `<slug>/` folder becomes `steps/<slug>/`, and all workplan, routing, open-issues, handoff, artifact, and decision references affected by the move must be updated in the same logical checkpoint
 
 The current intended transition mapping is:
-- `phases/phase0-foundation/` becomes the active promoted foundation phase under the target model
+- after structural activation compliance is complete, `phases/phase0-foundation/` becomes the active promoted foundation phase under the target model
 - the current phase-model work becomes Foundation Step 1 inside that phase
-- foundation normalization into full target-model compliance becomes Foundation Step 2
+- structural normalization of `phases/phase0-foundation/` into target-model compliance happens inside the phase-model promotion checkpoint before target activation
+- any later Foundation Step 2 is foundation implementation or governance work inside the already compliant foundation phase box, not structural activation cleanup
 - `phases/phase1-Strategic_Definition/` remains a promoted but inactive/selectable phase after it is normalized into the governed target-model shape
 - `phases/backlog/system-definition/` is normalized as a folder-based backlog candidate by keeping its backlog `WORKPLAN.md` and removing the nested legacy `phases/` subtree
 - if `system-definition` is later selected for promotion, that retained workplan may be reused if still compliant, and the promotion checkpoint must add the missing compliant phase contract and the rest of the required promoted-phase inventory

@@ -81,5 +81,11 @@ Current focus:
 Current gate status:
 - not ready for approval yet
 
+Target phase-model activation note:
+- structural activation compliance belongs to the phase-model promotion checkpoint
+- `phases/phase0-foundation/` must be normalized into a full compliant promoted phase box before the target phase model becomes active
+- no later Foundation Step 2 may be used to make the foundation phase structurally valid after activation
+- any later Foundation Step 2 can only be foundation implementation or governance work inside an already compliant phase box
+
 Deferred foundation-phase concerns that must survive current-step promotion are tracked in:
 - `phases/phase0-foundation/OPEN-ISSUES.md`

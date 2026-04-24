@@ -9,6 +9,8 @@ The backlog example under `phases/backlog/memory/` shows that a backlog candidat
 The current odd legacy backlog shape is the nested `phases/backlog/system-definition/phases/...` structure, which should be normalized rather than preserved as an exception.
 A later root-inventory clarification added `phases/PHASE-MODEL.md` as an explicit canonical phase-system support file.
 That support file is not an exception because it is part of the closed target root inventory.
+A later activation-boundary clarification also made clear that `phases/phase0-foundation/` must be structurally compliant before target activation.
+Foundation Step 2 cannot carry structural activation cleanup after the target model is active.
 
 ## OPTIONS
 
@@ -25,6 +27,8 @@ The agreed target phase-model rules are:
 - `phases/PHASE-MODEL.md` is an allowed canonical support file in that closed inventory
 - current non-target structures remain part of the bootstrap runtime only until the target model is activated
 - the target-model activation checkpoint must normalize each affected current structure into a governed target storage class
+- `phases/phase0-foundation/` must be normalized into a full compliant promoted phase box before target activation
+- no active target phase may remain structurally non-compliant
 - backlog candidates are folder-based, not entry-file-based
 - no special `README.md` file is required for a backlog candidate
 - the meaning of a backlog candidate is carried by the files inside its slug folder

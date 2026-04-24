@@ -94,6 +94,7 @@ The current seven-finding review cycle then began.
 Finding 1, the missing review-fix current-work schema, was addressed by making phase `WORKPLAN.md` own `## Review-Fix Cycle`, adding `review-fix` as a `Current step type`, and defining local substeps as non-governed descriptive planning inside a step.
 Finding 2, the freeze / promotion approval authority gap, was addressed by requiring freeze-gate approval to use the global CEO+CTO freeze rule and requiring CEO+CTO artifact-freeze approval before canonical artifact movement during phase promotion.
 Finding 3, the `phases/PHASE-MODEL.md` root-inventory gap, was addressed by making `PHASE-MODEL.md` an explicit canonical support file in the closed `phases/` root inventory.
+Finding 4, the target activation versus Foundation Step 2 normalization gap, was addressed by requiring structural activation compliance for `phases/phase0-foundation/` during the phase-model promotion checkpoint before the target model becomes active.
 
 ## Session pointers
 
@@ -147,6 +148,7 @@ Finding 3, the `phases/PHASE-MODEL.md` root-inventory gap, was addressed by maki
 - `context/decisions/PHASE-MODEL-REVIEW-FIX-CYCLE-AND-SUBSTEPS.md`
 - `context/decisions/PHASE-MODEL-FREEZE-AND-CANONICAL-PROMOTION-USE-GLOBAL-RULE.md`
 - `context/decisions/PHASE-MODEL-ROOT-SUPPORT-FILE-INVENTORY.md`
+- `context/decisions/PHASE-MODEL-ACTIVATION-REQUIRES-COMPLIANT-FOUNDATION-BOX.md`
 
 These are the decisions the next agent must read to reconstruct current truth for this handoff.
 The list includes both the current-session decisions and the older decisions this session depends on.
@@ -178,6 +180,7 @@ The list includes both the current-session decisions and the older decisions thi
 - `context/decisions/PHASE-MODEL-REVIEW-FIX-CYCLE-AND-SUBSTEPS.md`
 - `context/decisions/PHASE-MODEL-FREEZE-AND-CANONICAL-PROMOTION-USE-GLOBAL-RULE.md`
 - `context/decisions/PHASE-MODEL-ROOT-SUPPORT-FILE-INVENTORY.md`
+- `context/decisions/PHASE-MODEL-ACTIVATION-REQUIRES-COMPLIANT-FOUNDATION-BOX.md`
 
 ## Older decisions this handoff depends on
 
@@ -224,6 +227,7 @@ The current seven-finding review cycle is now being handled one finding at a tim
 Finding 1 is addressed by the new governed review-fix cycle schema in `WORKPLAN.md` and the explicit rule that substeps remain local, non-governed step planning.
 Finding 2 is addressed by binding freeze gates and canonical artifact movement to the global CEO+CTO freeze rule while keeping promotion mechanical after required approval is recorded.
 Finding 3 is addressed by adding `PHASE-MODEL.md` as an explicit canonical support file in the closed `phases/` root inventory.
-The next review item to discuss is finding 4, the target activation versus Foundation Step 2 normalization finding.
+Finding 4 is addressed by requiring `phases/phase0-foundation/` to be structurally compliant before target activation, while keeping any later Foundation Step 2 as implementation or governance work inside the compliant box.
+The next review item to discuss is finding 5, the demotion state-transition finding.
 If the full artifact is later approved for freeze-readiness, move it into freeze approval under the global CEO+CTO freeze rule before returning to the remaining unfrozen foundation support docs.
 If the foundation gate later decides foundation is incomplete, the deferred foundation-phase concerns now tracked in `phases/phase0-foundation/OPEN-ISSUES.md` include the known context gap, persistent memory, traceability gaps, KPI support, and later script-governance implementation.
