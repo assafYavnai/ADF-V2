@@ -210,6 +210,37 @@ layers:
 ```
 ````
 
+## Boxed Builder-Reviewer Processes
+
+The boxed model is a global ADF principle, not only a phase-folder convention.
+A governed box is a process boundary with:
+- input artifacts or inputs
+- rules
+- an output artifact
+- a maturity check
+- a failure path
+- promotion or handoff behavior
+
+Each builder box is also a reviewer of the previous box.
+It must validate that the input artifact is mature enough to produce the next artifact.
+If the input is not mature enough, the builder must return a specific gap to the owning upstream box instead of inventing missing truth.
+
+The phase-model use of this pattern is:
+- phase need or pain goes into a phase contract builder
+- phase contract builder outputs phase `CONTRACT.md`
+- phase workplan builder consumes phase `CONTRACT.md`, reviews whether it is mature enough to plan from, and outputs phase `WORKPLAN.md`
+- step builder consumes the selected workplan step intent, reviews whether the workplan supplies enough context, and outputs step `CONTRACT.md`
+- step instantiation consumes step `CONTRACT.md` and phase `WORKPLAN.md`, then creates or reuses the step folder under `steps/`
+- implementation, review, test, gate, and promotion boxes consume those artifacts and validate the previous outputs before advancing
+
+This is the intended later script shape.
+Future scripts may implement each builder/reviewer box with explicit inputs and outputs.
+Those scripts enforce the frozen model; they do not redefine it.
+
+Discovery during implementation is therefore normal governance input.
+If a step builder or implementation box discovers that the workplan is not mature enough, the workplan returns to governed change control.
+If the gap does not fit the phase contract, it must not be absorbed by the workplan and must move to the appropriate backlog or open-issue path.
+
 ## Routing
 
 `phases/ROUTING.md` is the only phase-system entry point for agents.
@@ -398,6 +429,7 @@ A phase is an ADF work container governed by explicit repo contracts.
 
 The minimum required field list for a phase `CONTRACT.md` is:
 - goal
+- pain / problem statement
 - scope
 - out-of-scope
 - outputs
